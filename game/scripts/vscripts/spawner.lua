@@ -18,12 +18,12 @@ function Spawner:SpawnHumanWaves()
     local team = DOTA_TEAM_GOODGUYS
 
     --Loop trough all human buildings and check the levels of all the abilities then add unit level and new units to spawn
-    for position, value in ipairs(humanBuildings) do
-        print(position, value)
-        local ability_1 = value:GetAbilityByIndex(0):GetLevel()
-        local ability_2 = value:GetAbilityByIndex(1):GetLevel()
-        local ability_3 = value:GetAbilityByIndex(2):GetLevel()
-        local ability_4 = value:GetAbilityByIndex(3):GetLevel()
+    for position, building in ipairs(humanBuildings) do
+        print(position, building)
+        local ability_1 = building:GetAbilityByIndex(0):GetLevel()
+        local ability_2 = building:GetAbilityByIndex(1):GetLevel()
+        local ability_3 = building:GetAbilityByIndex(2):GetLevel()
+        local ability_4 = building:GetAbilityByIndex(3):GetLevel()
         
         local waypoint = nil
         if humanBuildings[position] == humanBuildings[1] or humanBuildings[position] == humanBuildings[2] then
@@ -34,7 +34,7 @@ function Spawner:SpawnHumanWaves()
             waypoint = human_waypoint_3
         end
 
-        if value:GetUnitName() == "human_melee_barracks" then
+        if building:GetUnitName() == "human_melee_barracks" then
             if ability_1 >= 2 then
                 Spawner:SpawnAndMoveAtPosition(footmans_to_spawn, ("footman_"..ability_1), humanSpawners[position], waypoint, team)
             else
@@ -52,7 +52,7 @@ function Spawner:SpawnHumanWaves()
             end
         end
 
-        if value:GetUnitName() == "human_ranged_barracks" then
+        if building:GetUnitName() == "human_ranged_barracks" then
             if ability_1 >= 2 then
                 Spawner:SpawnAndMoveAtPosition(riflemans_to_spawn, ("rifleman_"..ability_1), humanSpawners[position], waypoint, team)
             else
@@ -133,11 +133,14 @@ function Spawner:SpawnOrcWaves()
     Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "headhunter", orc_range_spawn_point_2, orc_waypoint_2, team)
 end
 
---[[Local functions]]
 function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point, waypoint, team )
     for i=1, units_to_spawn do
         Timers:CreateTimer(function()
             local unit = CreateUnitByName(unit_name, spawn_point+RandomVector(RandomInt(100,200)), true, nil, nil, team) --Creates a DOTA unit by its dota_npc_units.txt name ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
+            if team == DOTA_TEAM_GOODGUYS then
+                local damage_ability = humanUpgradeBuildings[1]:GetAbilityByIndex(0)
+                local damage_ability_level = humanUpgradeBuildings[1]:GetAbilityByIndex(0):GetLevel()
+            end
             local order = { 
                             UnitIndex = unit:GetEntityIndex(), 
                             OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE, 

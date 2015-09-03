@@ -1295,4 +1295,9 @@
 			}
 		}
 	}
+
+	"human_units_damage_upgrade"
+	{
+		
+	}
 }

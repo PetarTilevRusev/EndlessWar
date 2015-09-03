@@ -182,6 +182,7 @@ function GameMode:InitGameMode()
 
   -- Tables that will hold the buildings for every team
   humanBuildings = {}
+  humanUpgradeBuildings = {}
   undeadBuildings = {}
   nightElfBuildings = {}
   orcBuildings = {}

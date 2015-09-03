@@ -41,44 +41,55 @@ function BuildingSpawner:CreateUndeadBuildings()
     BuildingSpawner:CreateBuldingAtPosition("undead_ranged_barracks", ranged_barracks_2_spawn_point, team)
 end
 
-function BuildingSpawner:CreateBuldingAtPosition(building_name, building_location, team)
-    local building = CreateUnitByName(building_name, building_location, false, nil, nil, team) --Returns:handle ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
+function BuildingSpawner:CreateBuldingAtPosition(unit_name, building_location, team)
+    local building = CreateUnitByName(unit_name, building_location, false, nil, nil, team) --Returns:handle ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
     building:SetHasInventory(true)
 
     if team == DOTA_TEAM_GOODGUYS then
-        if building_name == "human_king" then
+        if unit_name == "human_king" then
             --Set the Human King AI system
             HumanKingAI:MakeInstance( building, { spawnPos = building_location, aggroRange = 800, leashRange = 1200 } )
         end
 
-        if building_name == "human_melee_barracks" then
+        if unit_name == "human_melee_barracks" then
             -- Abilities for unit upgrades
             building:AddAbility("human_footman_upgrade"):SetLevel(0)
             building:AddAbility("human_knight_upgrade"):SetLevel(0)
             building:AddAbility("human_siege_unit_disabled"):SetLevel(0)
             building:AddAbility("human_melee_barracks_upgrade"):SetLevel(1)
 
-            -- Items to spawn extra units
+            -- Items to spawn reinforcements
             building:AddItemByName("item_spawn_footman")
             building:AddItemByName("item_spawn_knight")
             building:AddItemByName("item_spawn_siege_unit")
         end
 
-        if building_name == "human_ranged_barracks" then
+        if unit_name == "human_ranged_barracks" then
             -- Abilities for unit upgrades
             building:AddAbility("human_rifleman_upgrade"):SetLevel(0)
             building:AddAbility("human_sorcerer_upgrade"):SetLevel(0)
             building:AddAbility("human_priest_upgrade"):SetLevel(0)
             building:AddAbility("human_ranged_barracks_upgrade"):SetLevel(1)
 
-            -- Items to spawn extra units
+            -- Items to spawn reinforcements
             building:AddItemByName("item_spawn_rifleman")
             building:AddItemByName("item_spawn_sorcerer")
             building:AddItemByName("item_spawn_priest")
         end
-        if building_name ~= "human_king" and building_name ~= "human_blacksmith" then
-            table.insert(humanBuildings, building)
-            print("The building: "..building_name.." is created and added into humanBuildings, table number: "..#humanBuildings)
+
+        if unit_name == "human_blacksmith" then
+            building:AddAbility("human_damage_upgrade"):SetLevel(1)
+            --building:AddAbility("human_armor_upgrade"):SetLevel(1)
+            --building:AddAbility("human_speed_upgrade"):SetLevel(1)
+            --building:AddAbility("human_health_upgrade"):SetLevel(1)
+        end
+        if unit_name ~= "human_king" then
+            if unit_name == "human_blacksmith" then
+                table.insert(humanUpgradeBuildings, building)
+            else
+                table.insert(humanBuildings, building)
+            end
+            print("The building: "..unit_name.." is created and added into humanBuildings, table number: "..#humanBuildings)
         end
     end
 end

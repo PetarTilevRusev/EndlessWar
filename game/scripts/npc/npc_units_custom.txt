@@ -145,12 +145,11 @@
         }
         
         // Abilities
-        "AbilityLayout"     "5"
+        "AbilityLayout"     "4"
         "Ability1"          "human_units_damage_upgrade"      // Ability 1.
         "Ability2"          "human_units_armour_upgrade"      // Ability 2.
-        "Ability3"          "human_units_attack_and_move_speed_upgrade"      // Ability 3.
-        "Ability4"          "human_units_health_and_regeneration_upgrade"
-        "Ability5"          "human_forged_swords"
+        "Ability3"          "human_units_speed_upgrade"      // Ability 3.
+        "Ability4"          "human_units_health_upgrade"
 
         // Armor
         "ArmorPhysical"         "9999"     // Physical protection.
