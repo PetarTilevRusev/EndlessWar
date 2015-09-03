@@ -6,3 +6,10 @@ Every race has his own advantages and weakness, everithing will be upgradebale: 
 The goal is simple, defeat all the enemy kings to win.
 
 You can revew the progress [HERE](https://trello.com/b/P6a2RSZb/endless-war)
+
+---
+
+Special thanks to:
+
+[bmddota](https://github.com/bmddota) for creating [Barebones Starter Mod Kit](https://github.com/bmddota/barebones).
+[ModDota community](https://moddota.com/forums/) for their help when I need it.
