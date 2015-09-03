@@ -11,5 +11,5 @@ You can revew the progress [HERE](https://trello.com/b/P6a2RSZb/endless-war)
 
 Special thanks to:
 
-[bmddota](https://github.com/bmddota) for creating [Barebones Starter Mod Kit](https://github.com/bmddota/barebones).
-[ModDota community](https://moddota.com/forums/) for their help when I need it.
+* [bmddota](https://github.com/bmddota) for creating [Barebones Starter Mod Kit](https://github.com/bmddota/barebones).
+* [ModDota community](https://moddota.com/forums/) for their help when I need it.
