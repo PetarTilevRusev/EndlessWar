@@ -17,6 +17,8 @@ function Precache( context )
   ]]
     -- Human units
   PrecacheUnitByNameSync("human_king", context)
+  PrecacheUnitByNameSync("human_melee_guard", context)
+  PrecacheUnitByNameSync("human_ranged_guard", context)
   PrecacheUnitByNameSync("footman", context)
   PrecacheUnitByNameSync("footman_4", context)
   PrecacheUnitByNameSync("knight", context)

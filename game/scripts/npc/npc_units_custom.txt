@@ -184,7 +184,7 @@
         "VisionNighttimeRange"    "900"   // Range of vision at night time.
     }
 
-    // Melee Barrack
+    // Barracks
     "human_melee_barracks"
     {
         // GeneralS
@@ -306,6 +306,167 @@
         // Vision
         "VisionDaytimeRange"    "1200"   // Range of vision during day light.
         "VisionNighttimeRange"    "900"   // Range of vision at night time.
+    }
+
+    // Human Guards
+    "human_melee_guard"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/dragon_knight/dragon_knight.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_DragonKnight"
+        "Level"             "25"
+        "ModelScale"        "1.5"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+        }
+
+        // Armor
+        "ArmorPhysical"         "5"     // Physical protection.
+        "MagicalResistance"     "50"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "100"     // Damage range min.
+        "AttackDamageMax"        "130"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "120"   // Range within a target can be attacked.
+        "ProjectileModel"     "" // Particle system model for projectile.
+        "ProjectileSpeed"     ""   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "100"     // Experience earn.
+        "BountyGoldMin"       "290"     // Gold earned min.
+        "BountyGoldMax"       "390"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "90"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "350"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "2500"     // Base health.
+        "StatusHealthRegen"   "1"     // Health regeneration rate.
+        "StatusMana"          "200"     // Base mana.
+        "StatusManaRegen"     "1"     // Mana regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"   "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "7416" }  // Head
+                "Wearable2" { "ItemDef" "7417" }  // Shoulder
+                "Wearable3" { "ItemDef" "7418" }  // Arms
+                "Wearable6" { "ItemDef" "7419" }  // Back
+                "Wearable5" { "ItemDef" "7420" }  // Off hand
+                "Wearable4" { "ItemDef" "7421" }  // Weapon
+            }
+        }
+    }
+
+    "human_ranged_guard"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/sniper/sniper.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_Sniper"
+        "Level"             "1"
+        "ModelScale"        "1.5"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_sniper.vsndevts"
+            "particle"  "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"
+        }
+
+        "AbilityLayout"         "2"
+        "Ability1"              ""
+        "Ability2"              ""
+
+        // Armor
+        "ArmorPhysical"         "2"     // Physical protection.
+        "MagicalResistance"     "50"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "100"     // Damage range min.
+        "AttackDamageMax"        "140"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "900"   // Range within a target can be attacked.
+        "ProjectileModel"     "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf" //Particle system model for projectile.
+        "ProjectileSpeed"     "2000"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "200"     // Experience earn.
+        "BountyGoldMin"       "390"     // Gold earned min.
+        "BountyGoldMax"       "490"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "80"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "350"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "1500"     // Base health.
+        "StatusHealthRegen"   "1"     // Health regeneration rate.
+        "StatusMana"          "200"     // Base mana.
+        "StatusManaRegen"     "1"     // Mana regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "6453" } // Weapon
+                "Wearable3" { "ItemDef" "4698" } // Head
+                "Wearable4" { "ItemDef" "4700" } // Shoulder
+                "Wearable2" { "ItemDef" "4701" } // Back/Cape
+                "Wearable5" { "ItemDef" "4793" } // Arms
+            }
+        }
     }
 
     // Footman
@@ -959,12 +1120,12 @@
         "AttackDamageMin"        "100"     // Damage range min.
         "AttackDamageMax"        "120"     // Damage range max.
         "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
-        "AttackRate"             "2.5"     // Speed of attack.
+        "AttackRate"             "3"     // Speed of attack.
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
         "AttackAcquisitionRange"  "2200"   // Range within a target can be acquired.
         "AttackRange"             "1200"   // Range within a target can be attacked.
         "ProjectileModel"         "particles/base_attacks/ranged_siege_good.vpcf" // Particle system model for projectile.
-        "ProjectileSpeed"         "1500"   // Speed of projectile.
+        "ProjectileSpeed"         "1000"   // Speed of projectile.
 
         // Bounty
         "BountyXP"            "90"     // Experience earn.
@@ -978,7 +1139,7 @@
 
         // Movement
         "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
-        "MovementSpeed"       "330"   // Speed
+        "MovementSpeed"       "300"   // Speed
         "MovementTurnRate"      "1.0"   // Turning rate.
         "FollowRange"       "250"   // Distance to keep when following
 
@@ -1052,8 +1213,6 @@
         // Status
         "StatusHealth"        "300"     // Base health.
         "StatusHealthRegen"     "0.5"     // Health regeneration rate.
-        "StatusMana"        "20"     // Base mana.
-        "StatusManaRegen"     "0.5"     // Mana regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
@@ -1062,8 +1221,8 @@
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
         
         // Vision
-        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
-        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+        "VisionDaytimeRange"    "2200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "1900"   // Range of vision at night time.
 
         "Creature"
         {
@@ -1134,8 +1293,6 @@
         // Status
         "StatusHealth"        "400"     // Base health.
         "StatusHealthRegen"     "1"     // Health regeneration rate.
-        "StatusMana"        "20"     // Base mana.
-        "StatusManaRegen"     "0.5"     // Mana regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
@@ -1216,8 +1373,6 @@
         // Status
         "StatusHealth"        "500"     // Base health.
         "StatusHealthRegen"     "1"     // Health regeneration rate.
-        "StatusMana"        "20"     // Base mana.
-        "StatusManaRegen"     "0.5"     // Mana regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
@@ -1298,8 +1453,6 @@
         // Status
         "StatusHealth"        "600"     // Base health.
         "StatusHealthRegen"     "2"     // Health regeneration rate.
-        "StatusMana"        "20"     // Base mana.
-        "StatusManaRegen"     "0.5"     // Mana regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
