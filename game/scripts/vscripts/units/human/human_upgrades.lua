@@ -70,3 +70,13 @@ function ApplyBuildingUpgrade( event )
         end
     end
 end
+
+function ApplyUnitUpgrade( event )
+    local caster = event.caster
+    local ability = event.ability
+    local ability_name = ability:GetName()
+    local ability_level = ability:GetLevel()
+
+    ability:SetLevel(ability_level + 1)
+    caster:SetModifierStackCount((ability_name.."_modifier"), caster, ability_level - 1)
+end

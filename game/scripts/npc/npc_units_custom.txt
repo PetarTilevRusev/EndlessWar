@@ -147,12 +147,12 @@
         // Abilities
         "AbilityLayout"     "4"
         "Ability1"          "human_units_damage_upgrade"      // Ability 1.
-        "Ability2"          "human_units_armour_upgrade"      // Ability 2.
+        "Ability2"          "human_units_armor_upgrade"      // Ability 2.
         "Ability3"          "human_units_speed_upgrade"      // Ability 3.
-        "Ability4"          "human_units_health_upgrade"
+        "Ability4"          "human_units_regen_upgrade"
 
         // Armor
-        "ArmorPhysical"         "9999"     // Physical protection.
+        "ArmorPhysical"         "0"     // Physical protection.
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
@@ -167,12 +167,12 @@
         "BoundsHullName"            "DOTA_HULL_SIZE_BARRACKS"    // Hull type used for navigation/locomotion.
 
         // Movement
-        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
         "MovementSpeed"           "0"   // Speed
 
         // Status
         "StatusHealth"        "100"     // Base health.
-        "StatusHealthRegen"     "1"     // Health regeneration rate.
+        "StatusHealthRegen"     "0"     // Health regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"

@@ -137,10 +137,21 @@ function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point,
     for i=1, units_to_spawn do
         Timers:CreateTimer(function()
             local unit = CreateUnitByName(unit_name, spawn_point+RandomVector(RandomInt(100,200)), true, nil, nil, team) --Creates a DOTA unit by its dota_npc_units.txt name ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
+            
+            -- Loop trough the blacksmith abilities and apply their modifiers to the unit
             if team == DOTA_TEAM_GOODGUYS then
-                local damage_ability = humanUpgradeBuildings[1]:GetAbilityByIndex(0)
-                local damage_ability_level = humanUpgradeBuildings[1]:GetAbilityByIndex(0):GetLevel()
+                local blacksmith = humanUpgradeBuildings[1]
+                for i=0, 3 do
+                    local ability = blacksmith:GetAbilityByIndex(i)
+                    local ability_name = ability:GetName()
+                    local ability_level = blacksmith:GetAbilityByIndex(i):GetLevel()
+
+                    ability:ApplyDataDrivenModifier(blacksmith, unit, (ability_name.."_modifier"), nil)
+                    unit:SetModifierStackCount((ability_name.."_modifier"), blacksmith, ability_level)
+                end
             end
+
+            -- Give order to this unit
             local order = { 
                             UnitIndex = unit:GetEntityIndex(), 
                             OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE, 

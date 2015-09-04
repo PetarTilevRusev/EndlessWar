@@ -1298,6 +1298,183 @@
 
 	"human_units_damage_upgrade"
 	{
-		
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"human_unit_damage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"200"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"1"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/human/human_upgrades.lua"
+	            "Function" 		"ApplyUnitUpgrade"
+	        } 
+    	}
+
+		"Modifiers"
+		{
+		    "human_units_damage_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%damage"
+		        }
+		    }
+		}
+	}
+
+	"human_units_armor_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"human_unit_armor"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"200"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"armor"							"1"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/human/human_upgrades.lua"
+	            "Function" 		"ApplyUnitUpgrade"
+	        } 
+    	}
+
+		"Modifiers"
+		{
+		    "human_units_armor_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+		        }
+		    }
+		}
+	}
+
+	"human_units_speed_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"human_unit_speed"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"600"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_speed"					"3"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"3"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/human/human_upgrades.lua"
+	            "Function" 		"ApplyUnitUpgrade"
+	        } 
+    	}
+
+		"Modifiers"
+		{
+		    "human_units_speed_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_speed"
+		            "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"  	  "%movespeed"
+		        }
+		    }
+		}
+	}
+
+	"human_units_regen_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"human_unit_health"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"500"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"regen"							"0.5"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/human/human_upgrades.lua"
+	            "Function" 		"ApplyUnitUpgrade"
+	        } 
+    	}
+
+		"Modifiers"
+		{
+		    "human_units_regen_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"%regen"
+		        }
+		    }
+		}
 	}
 }
