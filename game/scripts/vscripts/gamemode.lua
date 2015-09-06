@@ -30,6 +30,9 @@ require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
 require('events')
 
+-- Start the AI systems to control the guards behavior
+require("unitAI/human_guards_ai")
+
 
 --[[
   This function should be used to set up Async precache calls at the beginning of the gameplay.
@@ -79,6 +82,14 @@ function GameMode:OnAllPlayersLoaded()
 
   BuildingSpawner:CreateHumanBuildings()
   BuildingSpawner:CreateUndeadBuildings()
+
+  local repeat_interval = 5 -- Rerun this timer every *repeat_interval* game-time seconds
+  local start_after = 1 -- Start this timer *start_after* game-time seconds later
+
+    Timers:CreateTimer(start_after, function()
+        HumanGuardsAI:Start()
+        return repeat_interval
+    end)
 end
 
 --[[
@@ -94,15 +105,17 @@ function GameMode:OnHeroInGame(hero)
   local team = hero:GetTeamNumber()
 
   if team == DOTA_TEAM_GOODGUYS then
+    -- Save the hero into the humanTeam table
     if #humanTeam == 0 then
       table.insert(humanTeam, hero)
     else
       table.insert(#humanTeam + 1, hero)
     end
     print("Player "..hero:GetPlayerID().." is added to "..team)
+
+    -- Loop trought all the heroes and make them the owners of line barracks
     local counter = 1
     for _, player in ipairs(humanTeam) do
-      -- TODO: Set the buildings owned by the players, if a player is missing add AI system to control the barracks
       humanBuildings[counter]:SetControllableByPlayer(player:GetPlayerID(), true)
       humanBuildings[counter]:SetOwner(player)
       humanBuildings[counter + 1]:SetControllableByPlayer(player:GetPlayerID(), true)
@@ -150,9 +163,6 @@ end
   is useful for starting any game logic timers/thinkers, beginning the first round, etc.
 ]]
 function GameMode:OnGameInProgress()
-
-  
-
 
   local repeat_interval = 30 -- Rerun this timer every *repeat_interval* game-time seconds
   local start_after = 30 -- Start this timer *start_after* game-time seconds later

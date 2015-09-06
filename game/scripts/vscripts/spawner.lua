@@ -5,9 +5,9 @@ end
 --[[Human units
 =============================================================================================================]]
 function Spawner:SpawnHumanWaves()
-    local human_waypoint_1 = Entities:FindByName(nil, "undead_base"):GetAbsOrigin()
-    local human_waypoint_2 = Entities:FindByName(nil, "orc_base"):GetAbsOrigin()
-    local human_waypoint_3 = Entities:FindByName(nil, "middle"):GetAbsOrigin()
+    local human_waypoint_1 = Entities:FindByName(nil, "human_waypoint_undead_side")
+    local human_waypoint_2 = Entities:FindByName(nil, "human_waypoint_orc_side")
+    local human_waypoint_3 = Entities:FindByName(nil, "human_waypoint_night_elf_side")
 
     local footmans_to_spawn = 4
     local knights_to_spawn = 1
@@ -83,15 +83,15 @@ function Spawner:SpawnUndeadWaves()
     local undead_mele_spawn_point_2 = Entities:FindByName( nil, "undead_mele_spawner_2"):GetAbsOrigin()
     local undead_range_spawn_point_1 = Entities:FindByName( nil, "undead_range_spawner_1"):GetAbsOrigin()
     local undead_range_spawn_point_2 = Entities:FindByName( nil, "undead_range_spawner_2"):GetAbsOrigin()
-    local undead_waypoint_1 = Entities:FindByName(nil, "night_elf_base"):GetAbsOrigin()
-    local undead_waypoint_2 = Entities:FindByName(nil, "human_king"):GetAbsOrigin()
-    local mele_units_to_spawn = 40
-    local range_units_to_spawn = 10
+    local undead_waypoint_1 = Entities:FindByName(nil, "undead_waypoint_night_elf_side")
+    local undead_waypoint_2 = Entities:FindByName(nil, "undead_waypoint_human_side")
+    local mele_units_to_spawn = 20
+    local range_units_to_spawn = 1
     local team = DOTA_TEAM_BADGUYS
 
-    --SpawnAndMoveAtPosition(mele_units_to_spawn, "ghoul", undead_mele_spawn_point_1, undead_waypoint_1, team)
+    Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "ghoul", undead_mele_spawn_point_1, undead_waypoint_1, team)
+    Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "crypt_fiend", undead_range_spawn_point_1, undead_waypoint_1, team)
     Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "ghoul", undead_mele_spawn_point_2, undead_waypoint_2, team)
-    --SpawnAndMoveAtPosition(range_units_to_spawn, "crypt_fiend", undead_range_spawn_point_1, undead_waypoint_1, team)
     Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "crypt_fiend", undead_range_spawn_point_2, undead_waypoint_2, team)
 end
 
@@ -137,9 +137,11 @@ function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point,
     for i=1, units_to_spawn do
         Timers:CreateTimer(function()
             local unit = CreateUnitByName(unit_name, spawn_point+RandomVector(RandomInt(100,200)), true, nil, nil, team) --Creates a DOTA unit by its dota_npc_units.txt name ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
+            -- Give order to this unit
+            unit:SetInitialGoalEntity(waypoint) -- The unit will fallow the path_corner links after this waypoint
             
-            -- Loop trough the blacksmith abilities and apply their modifiers to the unit
             if team == DOTA_TEAM_GOODGUYS then
+                -- Loop trough the blacksmith abilities and apply their modifiers to the unit
                 local blacksmith = humanUpgradeBuildings[1]
                 for i=0, 3 do
                     local ability = blacksmith:GetAbilityByIndex(i)
@@ -147,17 +149,9 @@ function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point,
                     local ability_level = blacksmith:GetAbilityByIndex(i):GetLevel()
 
                     ability:ApplyDataDrivenModifier(blacksmith, unit, (ability_name.."_modifier"), nil)
-                    unit:SetModifierStackCount((ability_name.."_modifier"), blacksmith, ability_level)
+                    unit:SetModifierStackCount((ability_name.."_modifier"), blacksmith, (ability_level - 1))
                 end
             end
-
-            -- Give order to this unit
-            local order = { 
-                            UnitIndex = unit:GetEntityIndex(), 
-                            OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE, 
-                            Position = waypoint, 
-                            Queue = true }
-            ExecuteOrderFromTable(order)
         end)
     end
 end

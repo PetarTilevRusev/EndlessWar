@@ -7,9 +7,9 @@ function SpawnPriest ( keys )
 	local barracks_position = barracks:GetAbsOrigin()
 
 	-- Setting the waypoints
-	local human_waypoint_1 = Entities:FindByName(nil, "undead_base"):GetAbsOrigin()
-    local human_waypoint_2 = Entities:FindByName(nil, "orc_base"):GetAbsOrigin()
-    local human_waypoint_3 = Entities:FindByName(nil, "middle"):GetAbsOrigin()
+	local human_waypoint_1 = Entities:FindByName(nil, "human_waypoint_undead_side")
+    local human_waypoint_2 = Entities:FindByName(nil, "human_waypoint_orc_side")
+    local human_waypoint_3 = Entities:FindByName(nil, "human_waypoint_night_elf_side")
 
 	local priest_level = barracks:GetAbilityByIndex(2):GetLevel()
 

@@ -16,7 +16,7 @@
         "Model"             "models/heroes/omniknight/omniknight.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
         "SoundSet"          "Hero_Omniknight"
-        "Level"             "1"
+        "Level"             "25"
         "ModelScale"        "2.5"
         "MinimapIcon"       "minimap_heroimage"
         "MinimapIconSize"   "800"
@@ -55,9 +55,9 @@
         "BountyGoldMax"       "3000"     // Gold earned max.
 
         // Bounds
-        "RingRadius"                "320"
+        "RingRadius"                "220"
         "HealthBarOffset"           "550"
-        "CollisionSize"             "320"
+        "CollisionSize"             "220"
         "BoundsHullName"            "DOTA_HULL_SIZE_HERO"    // Hull type used for navigation/locomotion.
 
         // Movement
@@ -258,13 +258,6 @@
         {
             "soundfile" "soundevents/game_sounds.vsndevts"
         }
-        
-        // Abilities
-        "AbilityLayout"     "5"
-        "Ability1"          "upgrade_rifleman"      // Ability 1.
-        "Ability2"          "upgrade_priest"      // Ability 2.
-        "Ability3"          "upgrade_mage"      // Ability 3.
-        "Ability4"          "human_ranged_barrack_upgrade"
 
         // Armor
         "ArmorPhysical"         "5"     // Physical protection.
@@ -329,34 +322,35 @@
         "MagicalResistance"     "50"     // Magical protection.
 
         // Attack
-        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "100"     // Damage range min.
-        "AttackDamageMax"        "130"     // Damage range max.
-        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
-        "AttackRate"             "1"     // Speed of attack.
+        "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"         "100"     // Damage range min.
+        "AttackDamageMax"         "130"     // Damage range max.
+        "AttackDamageType"        "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"              "1"     // Speed of attack.
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
         "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
-        "AttackRange"             "120"   // Range within a target can be attacked.
+        "AttackRange"             "200"   // Range within a target can be attacked.
         "ProjectileModel"     "" // Particle system model for projectile.
         "ProjectileSpeed"     ""   // Speed of projectile.
 
         // Bounty
-        "BountyXP"          "100"     // Experience earn.
+        "BountyXP"            "100"     // Experience earn.
         "BountyGoldMin"       "290"     // Gold earned min.
         "BountyGoldMax"       "390"     // Gold earned max.
 
         // Bounds
-        "RingRadius"                "90"
-        "HealthBarOffset"           "160"
+        "RingRadius"                "100"
+        "HealthBarOffset"           "260"
         "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
 
         // Movement
-        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
-        "MovementSpeed"       "350"   // Speed
+        "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"         "350"   // Speed
         "MovementTurnRate"      "1.0"   // Turning rate.
-        "FollowRange"       "250"   // Distance to keep when following
+        "FollowRange"           "250"   // Distance to keep when following
 
         // Status
+        "ConsideredHero"      "1"      // Adds hero like health bar
         "StatusHealth"        "2500"     // Base health.
         "StatusHealthRegen"   "1"     // Health regeneration rate.
         "StatusMana"          "200"     // Base mana.
@@ -370,10 +364,36 @@
         
         // Vision
         "VisionDaytimeRange"    "1200"   // Range of vision during day light.
-        "VisionNighttimeRange"   "900"   // Range of vision at night time.
+        "VisionNighttimeRange"  "900"   // Range of vision at night time.
 
         "Creature"
         {
+            "DefaultState"              "Idle"
+            "States"
+            {
+                "Idle"
+                {
+                    "Name"              "Idle"
+                    "Aggression"        "0.0"
+                    "Avoidance"         "0.0"
+                    "Support"           "0.0"
+                }
+                "Aggresive"
+                {
+                    "Name"              "Aggresive"
+                    "Aggression"        "100.0"
+                    "Avoidance"         "0.0"
+                    "Support"           "0.0"
+                }
+                "Returning"
+                {
+                    "Name"              "Returning"
+                    "Aggression"        "0.0"
+                    "Avoidance"         "100.0"
+                    "Support"           "0.0"
+                }
+            }
+
             "DisableClumpingBehavior"       "1"
             "AttachWearables"
             {
@@ -418,8 +438,8 @@
         "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
         "AttackRate"             "1"     // Speed of attack.
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
-        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
-        "AttackRange"             "900"   // Range within a target can be attacked.
+        "AttackAcquisitionRange"  "1100"   // Range within a target can be acquired.
+        "AttackRange"             "1200"   // Range within a target can be attacked.
         "ProjectileModel"     "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf" //Particle system model for projectile.
         "ProjectileSpeed"     "2000"   // Speed of projectile.
 
@@ -430,16 +450,16 @@
 
         // Bounds
         "RingRadius"                "80"
-        "HealthBarOffset"           "160"
+        "HealthBarOffset"           "260"
         "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
 
         // Movement
-        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
-        "MovementSpeed"       "350"   // Speed
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
+        "MovementSpeed"           "0"   // Speed
         "MovementTurnRate"      "1.0"   // Turning rate.
-        "FollowRange"       "250"   // Distance to keep when following
 
         // Status
+        "ConsideredHero"      "1"      // Adds hero like health bar
         "StatusHealth"        "1500"     // Base health.
         "StatusHealthRegen"   "1"     // Health regeneration rate.
         "StatusMana"          "200"     // Base mana.
@@ -453,7 +473,7 @@
         
         // Vision
         "VisionDaytimeRange"    "1200"   // Range of vision during day light.
-        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+        "VisionNighttimeRange"  "900"   // Range of vision at night time.
 
         "Creature"
         {

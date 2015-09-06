@@ -1,5 +1,5 @@
 --AI parameter constants
-AI_THINK_INTERVAL = 0.5 -- The interval in seconds between two think ticks
+AI_THINK_INTERVAL = 1 -- The interval in seconds between two think ticks
 
 --AI state constants
 AI_STATE_IDLE = 0

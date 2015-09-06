@@ -45,14 +45,14 @@ function BuildingSpawner:CreateUndeadBuildings()
     BuildingSpawner:CreateBuldingAtPosition("undead_ranged_barracks", ranged_barracks_2_spawn_point, team)
 end
 
-function BuildingSpawner:CreateBuldingAtPosition(unit_name, building_location, team)
-    local unit = CreateUnitByName(unit_name, building_location, false, nil, nil, team) --Returns:handle ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
+function BuildingSpawner:CreateBuldingAtPosition(unit_name, unit_location, team)
+    local unit = CreateUnitByName(unit_name, unit_location, false, nil, nil, team) --Returns:handle ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
     unit:SetHasInventory(true)
 
     if team == DOTA_TEAM_GOODGUYS then
         if unit_name == "human_king" then
             --Set the Human King AI system
-            HumanKingAI:MakeInstance( unit, { spawnPos = building_location, aggroRange = 800, leashRange = 1200 } )
+            HumanKingAI:MakeInstance( unit, { spawnPos = unit_location, aggroRange = 800, leashRange = 1200 } )
         end
 
         -- Add upgrade abilities and spawn items to the barracks
@@ -78,6 +78,7 @@ function BuildingSpawner:CreateBuldingAtPosition(unit_name, building_location, t
             unit:AddItemByName("item_spawn_priest")
         end
 
+        -- Insert the buildings and the guards into a proper table, for later use
         if unit_name ~= "human_king" then
             if unit_name == "human_blacksmith" then
                 table.insert(humanUpgradeBuildings, unit)
