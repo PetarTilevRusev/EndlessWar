@@ -147,9 +147,10 @@ function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point,
                     local ability = blacksmith:GetAbilityByIndex(i)
                     local ability_name = ability:GetName()
                     local ability_level = blacksmith:GetAbilityByIndex(i):GetLevel()
-
-                    ability:ApplyDataDrivenModifier(blacksmith, unit, (ability_name.."_modifier"), nil)
-                    unit:SetModifierStackCount((ability_name.."_modifier"), blacksmith, (ability_level - 1))
+                    if ability_level > 1 then
+                        ability:ApplyDataDrivenModifier(blacksmith, unit, (ability_name.."_modifier"), nil)
+                        unit:SetModifierStackCount((ability_name.."_modifier"), blacksmith, (ability_level - 1))
+                    end
                 end
             end
         end)

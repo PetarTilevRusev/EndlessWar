@@ -83,7 +83,8 @@ function GameMode:OnAllPlayersLoaded()
   BuildingSpawner:CreateHumanBuildings()
   BuildingSpawner:CreateUndeadBuildings()
 
-  local repeat_interval = 5 -- Rerun this timer every *repeat_interval* game-time seconds
+  -- Start the AI systems for all races
+  local repeat_interval = 1 -- Rerun this timer every *repeat_interval* game-time seconds
   local start_after = 1 -- Start this timer *start_after* game-time seconds later
 
     Timers:CreateTimer(start_after, function()
@@ -130,17 +131,17 @@ function GameMode:OnHeroInGame(hero)
 
   if team == DOTA_TEAM_BADGUYS then
     table.insert(undeadTeam, player)
-    print("Player "..undeadTeam[#undeadTeam].." is added to "..team)
+    print("Player "..hero:GetPlayerID().." is added to "..team)
   end
 
   if team == DOTA_TEAM_CUSTOM_1 then
     table.insert(nightElfTeam, player)
-    print("Player "..nightElfTeam[player].." is added to "..team)
+    print("Player "..hero:GetPlayerID().." is added to "..team)
   end
 
   if team == DOTA_TEAM_CUSTOM_2 then
     table.insert(orcTeam, player)
-    print("Player "..orcTeam[player].." is added to "..team)
+    print("Player "..hero:GetPlayerID().." is added to "..team)
   end
   -- This line for example will set the starting gold of every hero to 500 unreliable gold
   --hero:SetGold(500, false)

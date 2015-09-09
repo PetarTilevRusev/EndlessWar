@@ -21,9 +21,9 @@ MINIMAP_CREEP_ICON_SIZE = 1             -- What icon size should we use for cree
 MINIMAP_RUNE_ICON_SIZE = 1              -- What icon size should we use for runes?
 
 RUNE_SPAWN_TIME = 120                   -- How long in seconds should we wait between rune spawns?
-CUSTOM_BUYBACK_COST_ENABLED = true      -- Should we use a custom buyback cost setting?
-CUSTOM_BUYBACK_COOLDOWN_ENABLED = true  -- Should we use a custom buyback time?
-BUYBACK_ENABLED = false                 -- Should we allow people to buyback when they die?
+CUSTOM_BUYBACK_COST_ENABLED = false      -- Should we use a custom buyback cost setting?
+CUSTOM_BUYBACK_COOLDOWN_ENABLED = false  -- Should we use a custom buyback time?
+BUYBACK_ENABLED = true                 -- Should we allow people to buyback when they die?
 
 DISABLE_FOG_OF_WAR_ENTIRELY = false     -- Should we disable fog of war entirely for both teams?
 USE_UNSEEN_FOG_OF_WAR = false           -- Should we make unseen and fogged areas of the map completely black until uncovered by each team? 
@@ -31,7 +31,7 @@ USE_UNSEEN_FOG_OF_WAR = false           -- Should we make unseen and fogged area
 USE_STANDARD_DOTA_BOT_THINKING = false  -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 USE_STANDARD_HERO_GOLD_BOUNTY = true    -- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 
-USE_CUSTOM_TOP_BAR_VALUES = true        -- Should we do customized top bar values or use the default kill count per team?
+USE_CUSTOM_TOP_BAR_VALUES = false        -- Should we do customized top bar values or use the default kill count per team?
 TOP_BAR_VISIBLE = true                  -- Should we display the top bar score/count at all?
 SHOW_KILLS_ON_TOPBAR = true             -- Should we display kills only on the top bar? (No denies, suicides, kills by neutrals)  Requires USE_CUSTOM_TOP_BAR_VALUES
 

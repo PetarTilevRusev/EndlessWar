@@ -1,14 +1,4 @@
 
---[[Author: Pizzalol
-    Date: 09.02.2015.
-    Chains from target to target, healing them and dealing damage to enemies in a small
-    radius around them
-
-    Jump priority is
-    1. Hurt heroes
-    2. Hurt units
-    3. Heroes
-    4. Units]]
 function HealingWave( keys )
     local caster = keys.caster
     local caster_location = caster:GetAbsOrigin()

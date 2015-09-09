@@ -2,21 +2,25 @@ function ApplyKingUpgrade( event )
     local caster = event.caster -- Saving the Caster Handle]
     local ability = event.ability -- Saving The Ability Handle
     local ability_name = ability:GetName()
+    local ability_modifier = ability_name.."_modifier"
 
-    ability:ApplyDataDrivenModifier(caster,caster, (ability_name.."_modifier"), nil)
+    ability:ApplyDataDrivenModifier(caster, caster, ability_modifier, nil)
 
+    local health_bonus = ability:GetLevelSpecialValueFor("health", ability:GetLevel())
+    
     if ability_name == "human_king_health_upgrade" then
         local max_health = caster:GetMaxHealth()
         local current_health = caster:GetHealth()
-        caster:SetMaxHealth(max_health + 200)
-        caster:SetHealth(current_health + 200)
+        caster:SetMaxHealth(max_health + health_bonus)
+        caster:SetHealth(current_health + health_bonus)
     end
 
     -- Setting stack couters
-    if (caster:HasModifier(ability_name.."_modifier")) then
-        caster:SetModifierStackCount((ability_name.."_modifier"), caster, (caster:GetModifierStackCount((ability_name.."_modifier"), caster) + 1))
+    if caster:HasModifier(ability_modifier) then
+        local stack_count = caster:GetModifierStackCount(ability_modifier, caster)
+        caster:SetModifierStackCount(ability_modifier, caster, (stack_count + 1))
     else 
-        caster:SetModifierStackCount((ability_name.."_modifier"),caster,1)
+        caster:SetModifierStackCount(ability_modifier, caster, 1)
     end
 end
 
@@ -76,7 +80,39 @@ function ApplyUnitUpgrade( event )
     local ability = event.ability
     local ability_name = ability:GetName()
     local ability_level = ability:GetLevel()
+    local ability_modifier = ability_name.."_modifier"
 
     ability:SetLevel(ability_level + 1)
-    caster:SetModifierStackCount((ability_name.."_modifier"), caster, ability_level - 1)
+    caster:SetModifierStackCount(ability_modifier, caster, (ability_level - 1))
+
+    -- Loop trough the guard and apply the datadriven modifier
+    for _,guard in pairs(humanMeleeGuards) do
+        -- Check if the guard is alive
+        if IsValidEntity(guard) then
+            ability:ApplyDataDrivenModifier(caster, guard, ability_modifier, nil)
+
+            -- Set the stack counts
+            if guard:HasModifier(ability_modifier) then
+                local stack_count = guard:GetModifierStackCount(ability_modifier, caster)
+                guard:SetModifierStackCount(ability_modifier, caster, (stack_count + 1))
+            else
+                guard:SetModifierStackCount(ability_modifier, caster, 1)
+            end
+        end
+    end
+
+    for _,guard in pairs(humanRangedGuards) do
+        -- Check if the guard is alive
+        if IsValidEntity(guard) then
+            ability:ApplyDataDrivenModifier(caster, guard, ability_modifier, nil)
+
+            -- Set the stack counts
+            if guard:HasModifier(ability_modifier) then
+                local stack_count = guard:GetModifierStackCount(ability_modifier, caster)
+                guard:SetModifierStackCount(ability_modifier, caster, (stack_count + 1))
+            else
+                guard:SetModifierStackCount(ability_modifier, caster, 1)
+            end
+        end
+    end
 end

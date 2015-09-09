@@ -193,8 +193,6 @@
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
         "Level"             "1"
         "ModelScale"        "1"
-        "MinimapIcon"       "minimap_racks90"
-        "MinimapIconSize"   "300"
 
         "precache"
         {
@@ -251,8 +249,6 @@
         "SoundSet"          "Building_RadiantTower"
         "Level"             "1"
         "ModelScale"        "1"
-        "MinimapIcon"       "minimap_racks90"
-        "MinimapIconSize"   "300"
 
         "precache"
         {
@@ -293,7 +289,7 @@
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
         "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE | MODIFIER_STATE_MAGIC_IMMUNE"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
         
         // Vision
@@ -312,10 +308,16 @@
         "Level"             "25"
         "ModelScale"        "1.5"
 
+
         "precache"
         {
             "soundfile" "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
         }
+
+        "AbilityLayout"         "2"
+        "Ability1"              "human_guards_gods_strength"
+        "Ability2"              "human_guards_shield_attack"
+        "Ability3"              "truesight"
 
         // Armor
         "ArmorPhysical"         "5"     // Physical protection.
@@ -334,7 +336,7 @@
         "ProjectileSpeed"     ""   // Speed of projectile.
 
         // Bounty
-        "BountyXP"            "100"     // Experience earn.
+        "BountyXP"            "500"     // Experience earn.
         "BountyGoldMin"       "290"     // Gold earned min.
         "BountyGoldMax"       "390"     // Gold earned max.
 
@@ -368,7 +370,7 @@
 
         "Creature"
         {
-            "DefaultState"              "Idle"
+            "DefaultState"              "Idle1"
             "States"
             {
                 "Idle"
@@ -423,9 +425,9 @@
             "particle"  "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"
         }
 
-        "AbilityLayout"         "2"
-        "Ability1"              ""
-        "Ability2"              ""
+        "AbilityLayout"         "1"
+        "Ability1"              "human_guards_assassinate"
+        "Ability2"              "truesight"
 
         // Armor
         "ArmorPhysical"         "2"     // Physical protection.
@@ -585,7 +587,7 @@
 
         // Abilities
         "AbilityLayout"     "1"
-        "Ability1"          "human_strenth"
+        "Ability1"          "human_strength"
 
         // Armor
         "ArmorPhysical"         "1"     // Physical protection.
@@ -665,7 +667,7 @@
 
         // Abilities
         "AbilityLayout"     "1"
-        "Ability1"          "human_strenth"
+        "Ability1"          "human_strength"
 
         // Armor
         "ArmorPhysical"         "2"     // Physical protection.
@@ -745,7 +747,7 @@
 
         // Abilities
         "AbilityLayout"     "1"
-        "Ability1"          "human_strenth"
+        "Ability1"          "human_strength"
 
         // Armor
         "ArmorPhysical"         "3"     // Physical protection.

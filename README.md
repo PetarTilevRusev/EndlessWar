@@ -1,11 +1,14 @@
 # EndlessWar
 A Dota 2 Custom Game
 
-Endless War is a game mod, where 12 players are separated in 4 teams: Humans, Undeads, Night Elfs and Orcs. 
-Every race has his own advantages and weakness, everithing will be upgradebale: King, Units, Barracks and Towers.
-The goal is simple, defeat all the enemy kings to win.
+Endless War is a game mod, where 12 players are separated in 4 teams: **Humans**, **Undeads**, **Night Elfs** and **Orcs**. 
+Every race has just one goal, defeat all the enemy kings to win. The races will be different and unique from eachother with advantages and weakness, everithing in the mod will be upgradebale: 
+ * King
+ * Units
+ * Barracks
+ * Guards(Towers)
 
-You can vew the progress [HERE](https://trello.com/b/P6a2RSZb/endless-war)
+You can view the progress [HERE](https://trello.com/b/P6a2RSZb/endless-war)
 
 ---
 
