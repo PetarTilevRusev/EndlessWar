@@ -17,6 +17,7 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
 
 		"precache"
 		{
@@ -81,6 +82,7 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
 
 		"precache"
 		{
@@ -145,6 +147,7 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
 
 		"precache"
 		{
@@ -214,6 +217,7 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
 
 		"precache"
 		{
@@ -938,6 +942,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationIgnoresModelScale"    "0"
 		
 		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"750"
@@ -1214,6 +1219,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+		"AnimationIgnoresModelScale"    "0"
 		
 		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"750"
@@ -1471,12 +1477,12 @@
 		}
 	}
 
-	"human_units_regen_upgrade"
+	"human_units_health_upgrade"
 	{
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"human_unit_health"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
-		"AbilityGoldCost"				"1000"
+		"AbilityGoldCost"				"2000"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
 
@@ -1484,13 +1490,18 @@
 		{
 			"01"
 			{
-				"var_type"						"FIELD_FLOAT"
+				"var_type"						"FIELD_INTEGER"
 				"regen"							"5"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"gold_cost"						"1000"
+				"health"						"500"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"gold_cost"						"2000"
 			}
 		}
 
@@ -1505,7 +1516,7 @@
 
 		"Modifiers"
 		{
-		    "human_units_regen_upgrade_modifier"
+		    "human_units_health_upgrade_modifier"
 		    {
 		       	"Duration"  "-1"
 		        "Passive"   "0"
@@ -1521,6 +1532,67 @@
 		}
 	}
 
+	"human_strength_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"dragon_knight_dragon_blood"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"300 600 900"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"4"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"regen"				"0 1 2 4"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"armor"				"0 2 4 6"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/human/human_upgrades.lua"
+	            "Function" 		"ApplyHumanStrength"
+	        } 
+    	}
+	}
+
+	"eagle_eye_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"human_rifleman_eagle_eye"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"300 600 900"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"4"
+
+		"AbilitySpecial"
+		{
+			"01"
+	        {
+	            "var_type"                      "FIELD_INTEGER"
+	            "bonus_attack_range"            "0 200 300 400"
+	        }
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/human/human_upgrades.lua"
+	            "Function" 		"ApplyEagleEye"
+	        } 
+    	}
+	}
+
 	"human_guards_gods_strength"
 	{
 	    // General
@@ -1531,6 +1603,7 @@
 	    "AbilityTextureName"            "human_guard_gods_strength"
 	    "MaxLevel"						"1"
 	    "AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	    "AnimationIgnoresModelScale"    "0"
 
 	    // Precache
 	    //-------------------------------------------------------------------------------------------------------------
@@ -1538,7 +1611,7 @@
 	    {
 	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
 	        "particle"          "particles/units/heroes/hero_sven/sven_spell_gods_strength.vpcf"
-	        "particle"          "particles/status_fx/status_effect_forcestaff.vpcf"
+	        "particle"          "particles/status_fx/status_effect_avatar.vpcf"
 	    }
 	    
 	    // Casting
@@ -1560,28 +1633,28 @@
 	    {
 	        "01"
 	        {
-	            "var_type"          		"FIELD_INTEGER"
-	            "gods_strength_damage"      "200"       
+	            "var_type"    "FIELD_INTEGER"
+	            "damage"      "200"       
 	        }
 	        "02"
 	        {
-	            "var_type"         		   "FIELD_INTEGER"
-	            "gods_strength_armor"      "30"       
+	            "var_type"   "FIELD_INTEGER"
+	            "armor"      "30"       
 	        }
 	        "03"
 	        {
-	            "var_type"          	   "FIELD_INTEGER"
-	            "gods_strength_regen"      "20"       
+	            "var_type"   "FIELD_INTEGER"
+	            "regen"      "20"       
 	        }
 	        "04"
 	        {
-	            "var_type"          			  "FIELD_INTEGER"
-	            "gods_strength_attack_speed"      "55"       
+	            "var_type"          "FIELD_INTEGER"
+	            "attack_speed"      "55"       
 	        }
 	        "03"
 	        {
-	            "var_type"          			"FIELD_INTEGER"
-	            "gods_strength_move_speed"      "100"       
+	            "var_type"          "FIELD_INTEGER"
+	            "move_speed"      	"100"       
 	        }
 	    }
 
@@ -1615,16 +1688,16 @@
 	            "IsPurgable"    "0"
 	            "Duration"      "%AbilityDuration"
 
-	            "StatusEffectName"  	"particles/status_fx/status_effect_forcestaff.vpcf"
+	            "StatusEffectName"  	"particles/status_fx/status_effect_avatar.vpcf"
 	            "StatusEffectPriority"  "10"
 
 	            "Properties"
 	            {
-	                "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"   "%gods_strength_damage"
-	                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%gods_strength_armor"
-	                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%gods_strength_regen"
-	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%gods_strength_attack_speed"
-	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"		"%gods_strength_move_speed"
+	                "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"   "%gdamage"
+	                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%armor"
+	                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%regen"
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed"
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"		"%move_speed"
 	            }
 	        }
 	    }
@@ -1639,6 +1712,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		"AnimationIgnoresModelScale"    "0"
 
 		"precache"
 		{
@@ -1664,12 +1738,17 @@
 
 		"AbilitySpecial"
 	    {
-	        "01"
+	    	"01"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "damage"         		"335"
+	        }
+	        "02"
 	        {
 	            "var_type"              "FIELD_INTEGER"
 	            "stun_duration"         "3"
 	        }
-	        "02"
+	        "03"
 	        {
 	        	"var_type"				"FIELD_INTEGER"
 	        	"radius"			    "400"

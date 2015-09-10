@@ -1,29 +1,19 @@
 function ApplyKingUpgrade( event )
-    local caster = event.caster -- Saving the Caster Handle]
+    local caster = event.caster -- Saving the Caster Handle
     local ability = event.ability -- Saving The Ability Handle
     local ability_name = ability:GetName()
-    local ability_modifier = ability_name.."_modifier"
+    local modifier_name = ability_name.."_modifier"
 
-    ability:ApplyDataDrivenModifier(caster, caster, ability_modifier, nil)
-
-    local health_bonus = ability:GetLevelSpecialValueFor("health", ability:GetLevel())
+    ability:ApplyDataDrivenModifier(caster, caster, modifier_name, nil)
     
     if ability_name == "human_king_health_upgrade" then
-        local max_health = caster:GetMaxHealth()
-        local current_health = caster:GetHealth()
-        caster:SetMaxHealth(max_health + health_bonus)
-        caster:SetHealth(current_health + health_bonus)
+        ApplyHealthUpgrade( caster, ability )
     end
 
-    -- Setting stack couters
-    if caster:HasModifier(ability_modifier) then
-        local stack_count = caster:GetModifierStackCount(ability_modifier, caster)
-        caster:SetModifierStackCount(ability_modifier, caster, (stack_count + 1))
-    else 
-        caster:SetModifierStackCount(ability_modifier, caster, 1)
-    end
+    SetStackCount( caster, caster, modifier_name)
 end
 
+-- Applues upgrades from the Barracks
 function UpgradeUnit( event )
     local caster = event.caster
     local caster_name = caster:GetName()
@@ -46,6 +36,7 @@ function ApplyBuildingUpgrade( event )
     local ability = event.ability
     local ability_level = ability:GetLevel()
     local ability_name = ability:GetName()
+
     if caster_name == "human_melee_barracks" then
         if ability_level == 3 then
             caster:FindAbilityByName("human_siege_unit_disabled"):SetLevel(1)
@@ -75,44 +66,127 @@ function ApplyBuildingUpgrade( event )
     end
 end
 
+-- Applyes upgrades from the Balacksmith
 function ApplyUnitUpgrade( event )
     local caster = event.caster
     local ability = event.ability
     local ability_name = ability:GetName()
     local ability_level = ability:GetLevel()
-    local ability_modifier = ability_name.."_modifier"
+    local modifier_name = ability_name.."_modifier"
 
     ability:SetLevel(ability_level + 1)
-    caster:SetModifierStackCount(ability_modifier, caster, (ability_level - 1))
+    caster:SetModifierStackCount(modifier_name, caster, (ability_level - 1))
 
     -- Loop trough the guard and apply the datadriven modifier
     for _,guard in pairs(humanMeleeGuards) do
         -- Check if the guard is alive
         if IsValidEntity(guard) then
-            ability:ApplyDataDrivenModifier(caster, guard, ability_modifier, nil)
+            ability:ApplyDataDrivenModifier(caster, guard, modifier_name, nil)
 
-            -- Set the stack counts
-            if guard:HasModifier(ability_modifier) then
-                local stack_count = guard:GetModifierStackCount(ability_modifier, caster)
-                guard:SetModifierStackCount(ability_modifier, caster, (stack_count + 1))
-            else
-                guard:SetModifierStackCount(ability_modifier, caster, 1)
+            if ability_name == "human_units_health_upgrade" then
+                ApplyHealthUpgrade( guard, ability )
             end
+
+            SetStackCount( caster, guard, modifier_name)
         end
     end
 
     for _,guard in pairs(humanRangedGuards) do
         -- Check if the guard is alive
         if IsValidEntity(guard) then
-            ability:ApplyDataDrivenModifier(caster, guard, ability_modifier, nil)
+            ability:ApplyDataDrivenModifier(caster, guard, modifier_name, nil)
 
-            -- Set the stack counts
-            if guard:HasModifier(ability_modifier) then
-                local stack_count = guard:GetModifierStackCount(ability_modifier, caster)
-                guard:SetModifierStackCount(ability_modifier, caster, (stack_count + 1))
-            else
-                guard:SetModifierStackCount(ability_modifier, caster, 1)
+            if ability_name == "human_units_health_upgrade" then
+                ApplyHealthUpgrade( guard, ability )
+            end
+
+            SetStackCount( caster, guard, modifier_name)
+        end
+    end
+end
+
+-- Applyes the upgrades from Research Facility
+function ResearchedUpgrades( event )
+    local caster = event.caster
+    local ability = event.ability
+    local ability_name = ability:GetName()
+    local modifier_name = ability_name.."_modifier"
+
+    for _,rax in pairs(humanBuildings) do
+        if IsValidEntity(rax) then
+            ability:ApplyDataDrivenModifier(caster, rax, modifier_name, nil)
+
+            if ability_name == "human_facility_health_upgrade" then
+                ApplyHealthUpgrade( rax, ability )
+                print("Health upgraded!")
             end
         end
+
+        SetStackCount( caster, rax, modifier_name)
+    end
+end
+
+function ApplyHumanStrength( event )
+    local caster = event.caster
+    local ability = event.ability
+    local ability_level = ability:GetLevel()
+
+    -- Add human_strength ability melee to the guards
+    for _,guard in pairs(humanMeleeGuards) do
+        -- Check if the guard is alive
+        if IsValidEntity(guard) then
+            if guard:HasAbility("human_strength") then
+                guard:FindAbilityByName("human_strength"):SetLevel( ability_level + 1)
+            else
+                guard:AddAbility("human_strength"):SetLevel( ability_level + 1)
+            end
+        end
+    end
+
+    if ability_level == 3 then
+        caster:RemoveAbility(ability:GetName())
+    else
+        ability:SetLevel(ability_level + 1)
+    end
+end
+
+function ApplyEagleEye( event )
+    local caster = event.caster
+    local ability = event.ability
+    local ability_level = ability:GetLevel()
+
+    -- Add eagle_eye ability to the ranged guards
+    for _,guard in pairs(humanRangedGuards) do
+        -- Check if the guard is alive
+        if IsValidEntity(guard) then
+            if guard:HasAbility("eagle_eye") then
+                guard:FindAbilityByName("eagle_eye"):SetLevel( ability_level + 1)
+            else
+                guard:AddAbility("eagle_eye"):SetLevel( ability_level + 1)
+            end
+        end
+    end
+
+    if ability_level == 3 then
+        caster:RemoveAbility(ability:GetName())
+    else
+        ability:SetLevel(ability_level + 1)
+    end
+end
+
+function ApplyHealthUpgrade( unit, ability )
+    local health_bonus = ability:GetLevelSpecialValueFor("health", ability:GetLevel())
+    local max_health = unit:GetMaxHealth()
+    local current_health = unit:GetHealth()
+    unit:SetMaxHealth(max_health + health_bonus)
+    unit:SetHealth(current_health + health_bonus)
+end
+
+function SetStackCount( caster, unit, modifier )
+    if unit:HasModifier(modifier) then
+        local stack_count = unit:GetModifierStackCount(modifier, caster)
+        unit:SetModifierStackCount(modifier, caster, (stack_count + 1))
+    else
+        unit:SetModifierStackCount(modifier, caster, 1)
     end
 end

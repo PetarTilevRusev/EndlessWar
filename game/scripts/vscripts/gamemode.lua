@@ -77,8 +77,8 @@ function GameMode:OnAllPlayersLoaded()
   table.insert(humanSpawners, Entities:FindByName( nil, "human_range_spawner_1"):GetAbsOrigin())
   table.insert(humanSpawners, Entities:FindByName( nil, "human_mele_spawner_2"):GetAbsOrigin())
   table.insert(humanSpawners, Entities:FindByName( nil, "human_range_spawner_2"):GetAbsOrigin())
-  table.insert(humanSpawners, Entities:FindByName( nil, "human_mele_spawner_mid"):GetAbsOrigin())
-  table.insert(humanSpawners, Entities:FindByName( nil, "human_range_spawner_mid"):GetAbsOrigin())
+  table.insert(humanSpawners, Entities:FindByName( nil, "human_mele_spawner_3"):GetAbsOrigin())
+  table.insert(humanSpawners, Entities:FindByName( nil, "human_range_spawner_3"):GetAbsOrigin())
 
   BuildingSpawner:CreateHumanBuildings()
   BuildingSpawner:CreateUndeadBuildings()
@@ -89,6 +89,8 @@ function GameMode:OnAllPlayersLoaded()
 
     Timers:CreateTimer(start_after, function()
         HumanGuardsAI:Start()
+        --UndeadGuardsAI:Start()
+        --etc
         return repeat_interval
     end)
 end

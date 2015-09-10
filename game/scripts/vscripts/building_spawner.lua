@@ -8,9 +8,11 @@ function BuildingSpawner:CreateHumanBuildings()
     local team = DOTA_TEAM_GOODGUYS
     local king_spawn_point = Entities:FindByName(nil, "human_king"):GetAbsOrigin()
     local human_blacksmith_position = Entities:FindByName(nil, "human_blacksmith"):GetAbsOrigin()
+    local human_research_facility_position = Entities:FindByName(nil, "human_research_facility"):GetAbsOrigin()
 
     BuildingSpawner:CreateBuldingAtPosition("human_king", king_spawn_point, team)
     BuildingSpawner:CreateBuldingAtPosition("human_blacksmith", human_blacksmith_position, team)
+    BuildingSpawner:CreateBuldingAtPosition("human_research_facility", human_research_facility_position, team)
 
     for i=1,3 do
         local melee_rax_position = Entities:FindByName(nil, ("human_melee_barracks_"..i)):GetAbsOrigin()
@@ -47,8 +49,7 @@ end
 
 function BuildingSpawner:CreateBuldingAtPosition(unit_name, unit_location, team)
     local unit = CreateUnitByName(unit_name, unit_location, false, nil, nil, team) --Returns:handle ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
-    unit:SetHasInventory(true)
-
+    unit:SetHasInventory(false)
     if team == DOTA_TEAM_GOODGUYS then
         if unit_name == "human_king" then
             --Set the Human King AI system
@@ -65,6 +66,11 @@ function BuildingSpawner:CreateBuldingAtPosition(unit_name, unit_location, team)
             unit:AddItemByName("item_spawn_footman")
             unit:AddItemByName("item_spawn_knight")
             unit:AddItemByName("item_spawn_siege_unit")
+
+            unit:SetHasInventory(true)
+
+            table.insert(humanBuildings, unit)
+            print("The building: "..unit_name.." is created and added into humanBuildings, table number: "..#humanBuildings)
         end
 
         if unit_name == "human_ranged_barracks" then
@@ -76,23 +82,23 @@ function BuildingSpawner:CreateBuldingAtPosition(unit_name, unit_location, team)
             unit:AddItemByName("item_spawn_rifleman")
             unit:AddItemByName("item_spawn_sorcerer")
             unit:AddItemByName("item_spawn_priest")
+
+            unit:SetHasInventory(true)
+
+            table.insert(humanBuildings, unit)
+            print("The building: "..unit_name.." is created and added into humanBuildings, table number: "..#humanBuildings)
         end
 
         -- Insert the buildings and the guards into a proper table, for later use
-        if unit_name ~= "human_king" then
-            if unit_name == "human_blacksmith" then
-                table.insert(humanUpgradeBuildings, unit)
-                print("The building: "..unit_name.." is created and added into humanUpgradeBuildings, table number: "..#humanUpgradeBuildings)
-            elseif unit_name == "human_melee_guard" then
-                table.insert(humanMeleeGuards, unit)
-                print("The building: "..unit_name.." is created and added into humanMeleeGuards, table number: "..#humanMeleeGuards)
-            elseif unit_name == "human_ranged_guard" then
-                table.insert(humanRangedGuards, unit)
-                print("The building: "..unit_name.." is created and added into humanRangedGuards, table number: "..#humanRangedGuards)
-            else
-                table.insert(humanBuildings, unit)
-            print("The building: "..unit_name.." is created and added into humanBuildings, table number: "..#humanBuildings)
-            end
+        if unit_name == "human_blacksmith" or unit_name == "human_research_facility" then
+            table.insert(humanUpgradeBuildings, unit)
+            print("The building: "..unit_name.." is created and added into humanUpgradeBuildings, table number: "..#humanUpgradeBuildings)
+        elseif unit_name == "human_melee_guard" then
+            table.insert(humanMeleeGuards, unit)
+            print("The building: "..unit_name.." is created and added into humanMeleeGuards, table number: "..#humanMeleeGuards)
+        elseif unit_name == "human_ranged_guard" then
+            table.insert(humanRangedGuards, unit)
+            print("The building: "..unit_name.." is created and added into humanRangedGuards, table number: "..#humanRangedGuards)
         end
     end
 end

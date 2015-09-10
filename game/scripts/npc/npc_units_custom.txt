@@ -136,8 +136,6 @@
         "SoundSet"          "Hero_Rattletrap"
         "Level"             "1"
         "ModelScale"        "3"
-        "MinimapIcon"       "minimap_racks45"
-        "MinimapIconSize"   "300"
 
         "precache"
         {
@@ -149,16 +147,10 @@
         "Ability1"          "human_units_damage_upgrade"      // Ability 1.
         "Ability2"          "human_units_armor_upgrade"      // Ability 2.
         "Ability3"          "human_units_speed_upgrade"      // Ability 3.
-        "Ability4"          "human_units_regen_upgrade"
-
-        // Armor
-        "ArmorPhysical"         "0"     // Physical protection.
+        "Ability4"          "human_units_health_upgrade"
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "0"     // Damage range min.
-        "AttackDamageMax"        "0"     // Damage range max.
-        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
 
         // Bounds
         "RingRadius"                "150"
@@ -168,11 +160,48 @@
 
         // Movement
         "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
-        "MovementSpeed"           "0"   // Speed
 
         // Status
         "StatusHealth"        "100"     // Base health.
-        "StatusHealthRegen"     "0"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"  "900"   // Range of vision at night time.
+    }
+
+    "human_research_facility"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/courier/mechjaw/mechjaw.vmdl"  // Model.
+        "BaseClass"         "npc_dota_building"  // Class of entity of link to.
+        "Level"             "1"
+        "ModelScale"        "2"
+        
+        // Abilities
+        "AbilityLayout"     "2"
+        "Ability1"          "human_strength_upgrade"
+        "Ability2"          "eagle_eye_upgrade"
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
+
+        // Bounds
+        "RingRadius"                "150"
+        "HealthBarOffset"           "260"
+        "CollisionSize"             "250"
+        "BoundsHullName"            "DOTA_HULL_SIZE_BARRACKS"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
+
+        // Status
+        "StatusHealth"        "100"     // Base health.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
@@ -204,9 +233,6 @@
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "0"     // Damage range min.
-        "AttackDamageMax"        "0"     // Damage range max.
-        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
 
         // Bounty
         "BountyXP"          "300"     // Experience earn.
@@ -221,17 +247,15 @@
 
         // Movement
         "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
-        "MovementSpeed"           "0"   // Speed
 
         // Status
-        "StatusHealth"        "1500"     // Base health.
-        "StatusHealthRegen"     "1"     // Health regeneration rate.
+        "StatusHealth"        "2500"     // Base health.
+        "StatusHealthRegen"     "5"     // Health regeneration rate.
         "StatusMana"        "100"     // Base mana.
         "StatusManaRegen"     "0"     // Mana regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
-        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
         "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
         
@@ -261,9 +285,6 @@
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "0"     // Damage range min.
-        "AttackDamageMax"        "0"     // Damage range max.
-        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
 
         // Bounty
         "BountyXP"          "300"     // Experience earn.
@@ -278,7 +299,6 @@
 
         // Movement
         "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
-        "MovementSpeed"           "0"   // Speed
 
         // Status
         "StatusHealth"        "1500"     // Base health.
@@ -288,7 +308,6 @@
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
-        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
         "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE | MODIFIER_STATE_MAGIC_IMMUNE"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
         
@@ -2344,8 +2363,8 @@
         "MovementSpeed"           "0"   // Speed
 
         // Status
-        "StatusHealth"        "1500"     // Base health.
-        "StatusHealthRegen"     "1"     // Health regeneration rate.
+        "StatusHealth"        "2500"     // Base health.
+        "StatusHealthRegen"     "5"     // Health regeneration rate.
         "StatusMana"        "100"     // Base mana.
         "StatusManaRegen"     "0"     // Mana regeneration rate.
 

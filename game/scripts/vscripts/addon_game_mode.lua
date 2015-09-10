@@ -32,8 +32,7 @@ function Precache( context )
   PrecacheUnitByNameSync("priest_4", context)
     -- Human buildings
   PrecacheUnitByNameSync("human_blacksmith", context)
-  PrecacheUnitByNameSync("human_altar_of_strenth", context)
-  PrecacheUnitByNameSync("human_building_research_center", context)
+  PrecacheUnitByNameSync("human_research_facility", context)
   PrecacheUnitByNameSync("human_melee_barracks", context)
   PrecacheUnitByNameSync("human_ranged_barracks", context)
 
