@@ -1,0 +1,363 @@
+﻿"lang"
+{
+	"Language"		"English"
+	"Tokens"
+	{		
+		"game_mode_15"				"Endless War"
+		"addon_game_name"			"Endless War"
+		
+//============UNITS===============
+
+		"human_king"			"Human King"
+		"human_blacksmith"		"Blacksmith"
+		"human_research_facility" "Research Facility"
+		"human_melee_barracks"	"Melee Barracks"
+		"human_ranged_barracks"	"Ranged Barracks"
+		"human_melee_guard"		"Melee Guard"
+		"human_ranged_guard"	"Ranged Guard"
+		"footman"				"Footman"
+		"footman_2"				"Footman"
+		"footman_3"				"Footman"
+		"footman_4"				"Footman"
+		"knight"				"Knight"
+		"knight_2"				"Knight"
+		"knight_3"				"Knight"
+		"knight_4"				"Knight"
+		"human_siege_unit"		"Siege Unit"
+		"rifleman"				"Rifleman"
+		"rifleman_2"			"Rifleman"
+		"rifleman_3"			"Rifleman"
+		"rifleman_4"			"Rifleman"
+		"sorcerer"				"Sorcerer"
+		"sorcerer_2"			"Sorcerer"
+		"sorcerer_3"			"Sorcerer"
+		"sorcerer_4"			"Sorcerer"
+		"priest"				"Priest"
+		"priest_2"				"Priest"
+		"priest_3"				"Priest"
+		"priest_4"				"Priest"
+
+//************************************************************
+//========================ABILITIES===========================
+//____________________________________________________________
+
+		// Human King
+		"DOTA_Tooltip_Ability_human_king_damage_upgrade"				"Damage Upgrade"
+		"DOTA_Tooltip_Ability_human_king_damage_upgrade_Description"    "Add bonus damage to the king."
+		"DOTA_Tooltip_Ability_human_king_damage_upgrade_Lore" 			"This effect can not be dispelled or purged"
+		"DOTA_Tooltip_Ability_human_king_damage_upgrade_damage"    		"Damage:"
+
+		"DOTA_Tooltip_Ability_human_king_armor_upgrade"					"Armor Upgrade"
+		"DOTA_Tooltip_Ability_human_king_armor_upgrade_Description"     "Add bonus armor to the king."
+		"DOTA_Tooltip_Ability_human_king_armor_upgrade_Lore" 			"This effect can not be dispelled or purged"
+		"DOTA_Tooltip_Ability_human_king_armor_upgrade_armor"    		"Armor:"
+
+		"DOTA_Tooltip_Ability_human_king_health_upgrade"				"Health Upgrade"
+		"DOTA_Tooltip_Ability_human_king_health_upgrade_Description"    "Add bonus maximum health and bonus health regeneration to the king."
+		"DOTA_Tooltip_Ability_human_king_health_upgrade_Lore" 			"This effect can not be dispelled or purged"
+		"DOTA_Tooltip_Ability_human_king_health_upgrade_health"    		"Health:"
+		"DOTA_Tooltip_Ability_human_king_health_upgrade_regen"    		"Regeneration:"
+
+		"DOTA_Tooltip_Ability_human_king_speed_upgrade"					"Speed Upgrade"
+		"DOTA_Tooltip_Ability_human_king_speed_upgrade_Description"     "Add bonus attack and move speed to the king."
+		"DOTA_Tooltip_Ability_human_king_speed_upgrade_Lore" 			"This effect can not be dispelled or purged"
+		"DOTA_Tooltip_Ability_human_king_speed_upgrade_attack_speed"    "Attack speed:"
+		"DOTA_Tooltip_Ability_human_king_speed_upgrade_move_speed"      "Move speed:"
+
+		// Human Melee Guard - "Gods Strength"
+
+		"DOTA_Tooltip_Ability_human_guards_gods_strength"				"Gods Strength"
+		"DOTA_Tooltip_Ability_human_guards_gods_strength_Description"   "At the guards final breath, he prays to the Gods for their strength. To be able to protect his king once more!"
+		"DOTA_Tooltip_Ability_human_guards_gods_strength_Lore" 			"The guard uses the Gods Strength when he is bellow 25% of his Health"
+		"DOTA_Tooltip_Ability_human_guards_gods_strength_damage"		"Damage percentage: "
+		"DOTA_Tooltip_Ability_human_guards_gods_strength_armor"			"Bonus armor: "
+		"DOTA_Tooltip_Ability_human_guards_gods_strength_regen"			"Bonus health regen: "
+		"DOTA_Tooltip_Ability_human_guards_gods_strength_attack_speed"  "Attack speed bonus:"
+		"DOTA_Tooltip_Ability_human_guards_gods_strength_move_speed"    "Move speed bonus:"
+
+		// Human Melee Guard - "Shield Attack"
+
+		"DOTA_Tooltip_Ability_human_guards_shield_attack"				"Shield Attack"
+		"DOTA_Tooltip_Ability_human_guards_shield_attack_Description"   "The guard uses his shield as weapon and hits his target with devastating power! Punch so strong that creates wave and deal damage in area!"
+		"DOTA_Tooltip_Ability_human_guards_shield_attack_Lore" 			"The guard uses hish shield and deals damage in area"
+		"DOTA_Tooltip_Ability_human_guards_shield_attack_stun_duration"	"Stun Duration: "
+		"DOTA_Tooltip_Ability_human_guards_shield_attack_radius"		"Radius: "
+
+		// Human Ranged Guard - "Assassinate"
+
+		"DOTA_Tooltip_Ability_human_guards_assassinate"					"Assassinate"
+		"DOTA_Tooltip_Ability_human_guards_assassinate_Description"     "The guard uses his only ability to punish those who dares to attack his people and run away!"
+		"DOTA_Tooltip_Ability_human_guards_assassinate_Lore" 			"The ability is activated only when enemy hero is bellow 50% health"
+		"DOTA_Tooltip_Ability_human_guards_assassinate_damage"			"Damage: "
+		"DOTA_Tooltip_Ability_human_guards_assassinate_range"	        "Range: "
+
+		// Human Footman 
+
+		"DOTA_Tooltip_Ability_human_footman_upgrade"					"Footman upgrade"
+		"DOTA_Tooltip_Ability_human_footman_upgrade_Description" 		"The footman is the basic human melee unit. Equiped with strong armor he is good versus phisicle attacks"
+		"DOTA_Tooltip_Ability_human_footman_upgrade_Note0"				"Upgrades at level 2 or higher will add 'Human Strength' ability to the footman, that will give him bonus armor and health regeneration "
+		"DOTA_Tooltip_Ability_human_footman_upgrade_Lore"				"Upon upgrade the footman also receives attack speed and magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_footman_upgrade_damage"				"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_footman_upgrade_regen"				"Regen: "
+		"DOTA_Tooltip_Ability_human_footman_upgrade_armor"				"Armor: "
+		"DOTA_Tooltip_Ability_human_footman_upgrade_health"				"Health: "
+
+		"DOTA_Tooltip_Ability_human_footman_upgrade_disabled"				"Footman upgrade"
+		"DOTA_Tooltip_Ability_human_footman_upgrade_disabled_Description" 	"Footman is fully upgraded"
+		"DOTA_Tooltip_Ability_human_footman_upgrade_disabled_Lore"			"Upon upgrade the footman also receives attack speed and magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_footman_upgrade_disabled_damage"		"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_footman_upgrade_disabled_regen"			"Regen: "
+		"DOTA_Tooltip_Ability_human_footman_upgrade_disabled_armor"			"Armor: "
+		"DOTA_Tooltip_Ability_human_footman_upgrade_disabled_health"		"Health: "
+
+			// Footman - 'Human Strength'
+		"DOTA_Tooltip_Ability_human_strength"				"Human Strength"
+		"DOTA_Tooltip_Ability_human_strength_Description" 	"The life blood of the humans improves health regeneration and strengthens armor."
+		"DOTA_Tooltip_Ability_human_strength_Lore"			"Human's blood still courses through Footman's veins, giving him twice the vitality of an ordinary knight"
+		"DOTA_Tooltip_Ability_human_strength_regen"			"Regen: "
+		"DOTA_Tooltip_Ability_human_strength_armor"			"Armor: "
+
+		// Human Knight
+
+		"DOTA_Tooltip_Ability_human_knight_upgrade"						"Knight upgrade"
+		"DOTA_Tooltip_Ability_human_knight_upgrade_Description" 		"The knight is the next rank melee unit. He has strong armor, allot of damage and move speed"
+		"DOTA_Tooltip_Ability_human_knight_upgrade_Note0"				"Upgrades at level 2 or higher will add 'Knight Strike' ability to the Knight, that will give him chance for critical damage"
+		"DOTA_Tooltip_Ability_human_knight_upgrade_Lore"				"Upon upgrade the knight also receives attack speed and magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_knight_upgrade_damage"				"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_knight_upgrade_regen"				"Regen: "
+		"DOTA_Tooltip_Ability_human_knight_upgrade_armor"				"Armor: "
+		"DOTA_Tooltip_Ability_human_knight_upgrade_health"				"Health: "
+
+		"DOTA_Tooltip_Ability_human_knight_upgrade_disabled"				"Knight upgrade"
+		"DOTA_Tooltip_Ability_human_knight_upgrade_disabled_Description" 	"Knight is fully upgraded"
+		"DOTA_Tooltip_Ability_human_knight_upgrade_disabled_Lore"			"Upon upgrade the knight also receives attack speed and magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_knight_upgrade_disabled_regen"			"Regen: "
+		"DOTA_Tooltip_Ability_human_knight_upgrade_disabled_armor"			"Armor: "
+		"DOTA_Tooltip_Ability_human_knight_upgrade_disabled_health"			"Health: "
+
+			// Knight - 'Knight Strike'
+		"DOTA_Tooltip_Ability_human_knight_strike"				"Knight Strike"
+		"DOTA_Tooltip_Ability_human_knight_strike_Description" 	"The Knight's mojo gives him a chance to deal bonus damage."
+		"DOTA_Tooltip_Ability_human_knight_strike_Lore"			"Knight's unwieldy power bludgeons those who stand before him, crushing the thickest of armors."
+		"DOTA_Tooltip_Ability_human_knight_strike_crit_damage"		"Critical Bonus: "
+		"DOTA_Tooltip_Ability_human_knight_strike_crit_chance"		"Chance: "
+
+		// Human Siege Unit
+
+		"DOTA_Tooltip_Ability_human_siege_unit_disabled"				"Siege unit"
+		"DOTA_Tooltip_Ability_human_siege_unit_disabled_Description" 	"With long attack range, the Siege Unit role is good in any battle"
+		"DOTA_Tooltip_Ability_human_siege_unit_disabled_damage"			"Damage: "
+		"DOTA_Tooltip_Ability_human_siege_unit_disabled_range"			"Attack Range: "
+		"DOTA_Tooltip_Ability_human_siege_unit_disabled_armor"			"Armor: "
+		"DOTA_Tooltip_Ability_human_siege_unit_disabled_health"			"Health: "
+
+		// Human Melee Barracks
+
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade"					"Melee Barracks Upgrade"
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_Description" 	"With every upgrade of the barracks, you can level up your units"
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_Lore"			"Depending on the barracks level diferen units are spawned"
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_footman"			"Number of Footman units: "
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_knight"			"Number of Knight units: "
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_siege_unit"		"Number of Siege Units: "
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_gold_cost"		"Upgrade price: "
+
+
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_disabled"				"Melee Barracks"
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_disabled_Description" 	"The rax is fully upgraded"
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_disabled_Lore"			"Depending on the barracks level diferen units are spawned"
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_disabled_footman"		"Number of Footman units: "
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_disabled_knight"			"Number of Knight units: "
+		"DOTA_Tooltip_Ability_human_melee_barracks_upgrade_disabled_siege_unit"		"Number of Siege units: "
+		
+		// Human Ranged Barracks
+
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade"				"Ranged Barracks Upgrade"
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_Description" 	"With every upgrade of the barracks, you can level up your units"
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_Lore"			"Depending on the barracks level diferen units are spawned"
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_rifleman"		"Number of Rifleman units: "
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_sorcerer"		"Number of Sorcerer units: "
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_priest"			"Number of Priest units: "
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_gold_cost"		"Upgrade price: "
+
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_disabled"				"Ranged Barracks Upgrade"
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_disabled_Description" 	"The rax is fully upgraded"
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_disabled_Lore"			"Depending on the barracks level diferen units are spawned"
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_disabled_rifleman"		"Number of Rifleman units: "
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_disabled_sorcerer"		"Number of Sorcerer units: "
+		"DOTA_Tooltip_Ability_human_ranged_barracks_upgrade_disabled_priest"		"Number of Priest units: "
+
+		// Human Rifleman
+
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade"					"Rifleman upgrade"
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_Description" 		"The rifleman is the basic human ranged unit. With long range and damage he can become the biggest nightmere for your enemies"
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_Note0"				"Upgrades at level 2 or higher will add 'Eagle Eye' ability to the rifleman, that gives him bonus attack range"
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_Lore"				"Upon upgrade the rifleman also receives attack speed and magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_damage"			"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_regen"				"Regen: "
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_armor"				"Armor: "
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_health"			"Health: "
+
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_disabled"				"Rifleman upgrade"
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_disabled_Description" 	"Rifleman is fully upgraded"
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_disabled_Lore"			"Upon upgrade the rifleman also receives attack speed and magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_disabled_damage"		"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_disabled_regen"		"Regen: "
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_disabled_armor"		"Armor: "
+		"DOTA_Tooltip_Ability_human_rifleman_upgrade_disabled_health"		"Health: "
+
+			// Rifleman - 'Eagle Eye'
+		"DOTA_Tooltip_Ability_eagle_eye"					"Eagle Eye"
+		"DOTA_Tooltip_Ability_eagle_eye_Description" 		"Extends the attack range of Rifleman's rifle."
+		"DOTA_Tooltip_Ability_eagle_eye_Lore"				"Rifleman always takes it upon himself to stay as far from harm as he can while still performing his role - killing from distance."
+		"DOTA_Tooltip_Ability_eagle_eye_bonus_attack_range"	"Bonus Range: "
+
+		// Human Sorcerer
+
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade"					"Sorcerer upgrade"
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_Description" 		"The sorcerer is rank 1 mage in the Human's army. With knowledge and wisdom he overcomes any enemy that dares to attack his race"
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_Note0"				"Upgrades at level 2 or higher will add 'Hex' ability to the sorcerer, that makes his enemy to turn into a sheep"
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_Lore"				"Upon upgrade the sorcerer also receives attack speed and ALOT of magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_damage"			"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_regen"				"Regen: "
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_armor"				"Armor: "
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_magic_resistance"	"Magic Resistance: "
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_health"			"Health: "
+
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_disabled"				"Sorcerer upgrade"
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_disabled_Description" 	"Sorcerer is fully upgraded"
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_disabled_Lore"			"Upon upgrade the sorcerer also receives attack speed and ALOT of magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_disabled_damage"		"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_disabled_regen"		"Regen: "
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_disabled_armor"		"Armor: "
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_disabled_magic_resistance"	"Magic Resistance: "
+		"DOTA_Tooltip_Ability_human_sorcerer_upgrade_disabled_health"		"Health: "
+
+			// Sorcerer - 'Hex'
+
+		"DOTA_Tooltip_Ability_sorcerer_hex"					"Hex"
+		"DOTA_Tooltip_Ability_sorcerer_hex_Description" 	"Transforms an enemy unit into a harmless creature, disabling their attacks and abilities."
+		"DOTA_Tooltip_Ability_sorcerer_hex_hex_duration"	"Duration: "
+		"DOTA_Tooltip_Ability_sorcerer_hex_movespeed"		"Movespeed: "
+		"DOTA_Tooltip_Ability_sorcerer_hex_autocast_radius" "Hex Range: "
+
+		// Human Priest
+
+		"DOTA_Tooltip_Ability_human_priest_upgrade"						"Priest upgrade"
+		"DOTA_Tooltip_Ability_human_priest_upgrade_Description" 		"The priest is rank 2 mage in the Human's army. His healing powers are valuable in every battle"
+		"DOTA_Tooltip_Ability_human_priest_upgrade_Note0"				"Upgrades at level 2 or higher will add 'Healing Wave' ability to the priest, that heals multiple ally units"
+		"DOTA_Tooltip_Ability_human_priest_upgrade_Lore"				"Upon upgrade the priest also receives attack speed and ALOT of magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_priest_upgrade_damage"				"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_regen"				"Regen: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_armor"				"Armor: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_magic_resistance"	"Magic Resistance: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_health"				"Health: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_gold_cost"			"Upgrade price: "
+
+		"DOTA_Tooltip_Ability_human_priest_upgrade_disabled"				"Priest upgrade"
+		"DOTA_Tooltip_Ability_human_priest_upgrade_disabled_Description" 	"Priest is fully upgraded"
+		"DOTA_Tooltip_Ability_human_priest_upgrade_disabled_Lore"			"Upon upgrade the priest also receives attack speed and ALOT of magic resistance. But gives more gold and xp when is killed from enemy players"
+		"DOTA_Tooltip_Ability_human_priest_upgrade_disabled_damage"			"Bonus Damage: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_disabled_regen"			"Regen: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_disabled_armor"			"Armor: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_disabled_magic_resistance"	"Magic Resistance: "
+		"DOTA_Tooltip_Ability_human_priest_upgrade_disabled_health"			"Health: "
+
+			// Priest - 'Healing Wave'
+
+		"DOTA_Tooltip_Ability_priest_healing_wave"						"Healing Wave"
+		"DOTA_Tooltip_Ability_priest_healing_wave_Description" 			"Heals multiple nearby ally units in radius."
+		"DOTA_Tooltip_Ability_priest_healing_wave_max_targets"			"Units to heal: "
+		"DOTA_Tooltip_Ability_priest_healing_wave_heal"					"Heal: "
+		"DOTA_Tooltip_Ability_priest_healing_wave_bounce_radius" 		"Bounce Distance: "
+		"DOTA_Tooltip_Ability_priest_healing_wave_autocast_radius" 		"Heal Range: "
+
+		// Human Units Damage Upgrade
+
+		"DOTA_Tooltip_Ability_human_units_damage_upgrade"						"Damage upgrade"
+		"DOTA_Tooltip_Ability_human_units_damage_upgrade_Description" 			"Strenthens the human weapons making them more deadly for you enemies"
+		"DOTA_Tooltip_Ability_human_units_damage_upgrade_Lore"					"The upgrade don't affects Human King and Heroes."
+		"DOTA_Tooltip_Ability_human_units_damage_upgrade_damage"				"Damage: "
+		"DOTA_Tooltip_Ability_human_units_damage_upgrade_gold_cost"				"Upgrade price: "
+
+		// Human Units Armor Upgrade
+
+		"DOTA_Tooltip_Ability_human_units_armor_upgrade"						"Armor upgrade"
+		"DOTA_Tooltip_Ability_human_units_armor_upgrade_Description" 			"Meke your units hard to kill, by upgrading their armor."
+		"DOTA_Tooltip_Ability_human_units_armor_upgrade_Lore"					"The upgrade don't affects Human King and Heroes."
+		"DOTA_Tooltip_Ability_human_units_armor_upgrade_armor"					"Armor: "
+		"DOTA_Tooltip_Ability_human_units_armor_upgrade_gold_cost"				"Upgrade price: "
+
+		// Human Units Speed Upgrade
+
+		"DOTA_Tooltip_Ability_human_units_speed_upgrade"						"Speed upgrade"
+		"DOTA_Tooltip_Ability_human_units_speed_upgrade_Description" 			"Don't let anyone escape, upgrade your units attack and move speed."
+		"DOTA_Tooltip_Ability_human_units_speed_upgrade_Lore"					"The upgrade don't affects Human King and Heroes."
+		"DOTA_Tooltip_Ability_human_units_speed_upgrade_attack_speed"			"Attack Speed: "
+		"DOTA_Tooltip_Ability_human_units_speed_upgrade_movespeed"				"Move Speed: "
+		"DOTA_Tooltip_Ability_human_units_speed_upgrade_gold_cost"				"Upgrade price: "
+
+		// Human Units Health Upgrade
+
+		"DOTA_Tooltip_Ability_human_units_health_upgrade"						"Health upgrade"
+		"DOTA_Tooltip_Ability_human_units_health_upgrade_Description" 			"Make sure your units will live longer in the battlefield by upgrading their health regeneration"
+		"DOTA_Tooltip_ability_human_units_health_upgrade_Note0"					"Bonus Health is given only to the GUARDS"
+		"DOTA_Tooltip_Ability_human_units_health_upgrade_Lore"					"The upgrade don't affects Human King and Heroes"
+		"DOTA_Tooltip_Ability_human_units_health_upgrade_regen"					"Regeneration: "
+		"DOTA_Tooltip_Ability_human_units_health_upgrade_health"				"Health: "
+		"DOTA_Tooltip_Ability_human_units_health_upgrade_gold_cost"				"Upgrade price: "
+
+		// Human Research Facility - Human Strength Upgrade
+
+		"DOTA_Tooltip_Ability_human_strength_upgrade"						"Human Strength Upgrade"
+		"DOTA_Tooltip_Ability_human_strength_upgrade_Description" 			"Add 'Human Strength' ability to your melee guards!"
+		"DOTA_Tooltip_Ability_human_strength_upgrade_Lore"					"The upgrade affects only MELEE GUARDS."
+		"DOTA_Tooltip_Ability_human_strength_upgrade_regen"					"Regen: "
+		"DOTA_Tooltip_Ability_human_strength_upgrade_armor"					"Armor: "
+
+		// Human Research Facility - Eagle Eye Upgrade
+
+		"DOTA_Tooltip_Ability_eagle_eye_upgrade"							"Eagle Eye Upgrade"
+		"DOTA_Tooltip_Ability_eagle_eye_upgrade_Description" 				"Add 'Eagle Eye' ability to your ranged guards."
+		"DOTA_Tooltip_Ability_eagle_eye_upgrade_Lore"						"The upgrade affects only RANGED GUARDS."
+		"DOTA_Tooltip_Ability_eagle_eye_upgrade_bonus_attack_range"			"Bonus Range: "
+
+		"DOTA_Tooltip_Ability_truesight"							"Truesight"
+		"DOTA_Tooltip_Ability_truesight_Description" 				"Provides truesight vision in radius."
+		"DOTA_Tooltip_Ability_truesight_radius"						"Radius: "
+		
+
+//************************************************************
+//==========================ITEMS=============================
+//____________________________________________________________
+
+		"DOTA_Tooltip_ability_item_spawn_footman"                                       "Footman reinforcements"
+		"DOTA_Tooltip_ability_item_spawn_footman_Description"                           "Spawns footman units"
+		"DOTA_Tooltip_ability_item_spawn_footman_Note0"									"The spawned unit will be at the current Footman level"
+		"DOTA_Tooltip_ability_item_spawn_footman_units"                            		"Number of units:"
+
+		"DOTA_Tooltip_ability_item_spawn_knight"                                        "Knight reinforcements"
+		"DOTA_Tooltip_ability_item_spawn_knight_Description"                            "Spawns knight unit"
+		"DOTA_Tooltip_ability_item_spawn_knight_Note0"									"The spawned unit will be at the current Knight level"
+		"DOTA_Tooltip_ability_item_spawn_knight_units"                            		"Number of units:"
+
+		"DOTA_Tooltip_ability_item_spawn_siege_unit"                                    "Siege Unit reinforcements"
+		"DOTA_Tooltip_ability_item_spawn_siege_unit_Description"                        "Spawns siege unit"
+		"DOTA_Tooltip_ability_item_spawn_siege_unit_Note0"								"The spawned unit will be at the current Siege Unit level"
+		"DOTA_Tooltip_ability_item_spawn_siege_unit_units"                            	"Number of units:"
+
+		"DOTA_Tooltip_ability_item_spawn_rifleman"                                      "Rifleman reinforcements"
+		"DOTA_Tooltip_ability_item_spawn_rifleman_Description"                          "Spawns rifleman unit"
+		"DOTA_Tooltip_ability_item_spawn_rifleman_Note0"								"The spawned unit will be at the current Rifleman level"
+		"DOTA_Tooltip_ability_item_spawn_rifleman_units"                            	"Number of units:"
+
+		"DOTA_Tooltip_ability_item_spawn_sorcerer"                                      "Sorcerer reinforcements"
+		"DOTA_Tooltip_ability_item_spawn_sorcerer_Description"                          "Spawns sorcerer unit"
+		"DOTA_Tooltip_ability_item_spawn_sorcerer_Note0"								"The spawned unit will be at the current Sorcerer level"
+		"DOTA_Tooltip_ability_item_spawn_sorcerer_units"                            	"Number of units:"
+
+		"DOTA_Tooltip_ability_item_spawn_priest"                                      	"Priest reinforcements"
+		"DOTA_Tooltip_ability_item_spawn_priest_Description"                          	"Spawns priest unit"
+		"DOTA_Tooltip_ability_item_spawn_priest_Note0"								  	"The spawned unit will be at the current Priest level"
+		"DOTA_Tooltip_ability_item_spawn_priest_units"                            		"Number of units:"
+	}
+}

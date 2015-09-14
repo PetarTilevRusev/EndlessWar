@@ -20,6 +20,7 @@ function BuildingSpawner:CreateHumanBuildings()
 
         BuildingSpawner:CreateBuldingAtPosition("human_melee_barracks", melee_rax_position, team)
         BuildingSpawner:CreateBuldingAtPosition("human_ranged_barracks", ranged_rax_position, team)
+
     end
 
     for i=1,6 do
@@ -30,29 +31,32 @@ function BuildingSpawner:CreateHumanBuildings()
         BuildingSpawner:CreateBuldingAtPosition("human_ranged_guard", ranged_guard_position, team)
     end
 
+    for i = 1, #humanBuildings do
+        humanBuildings[i]:SetForwardVector(humanSpawners[i])
+    end
 end
 
 function BuildingSpawner:CreateUndeadBuildings()
-    local king_spawn_point = Entities:FindByName(nil, "undead_base"):GetAbsOrigin()
-    local melee_barracks_1_spawn_point = Entities:FindByName(nil, "undead_melee_barracks_1"):GetAbsOrigin()
-    local melee_barracks_2_spawn_point = Entities:FindByName(nil, "undead_melee_barracks_2"):GetAbsOrigin()
-    local ranged_barracks_1_spawn_point = Entities:FindByName(nil, "undead_ranged_barracks_1"):GetAbsOrigin()
-    local ranged_barracks_2_spawn_point = Entities:FindByName(nil, "undead_ranged_barracks_2"):GetAbsOrigin()
     local team = DOTA_TEAM_BADGUYS
 
+    local king_spawn_point = Entities:FindByName(nil, "undead_king"):GetAbsOrigin()
     BuildingSpawner:CreateBuldingAtPosition("undead_king", king_spawn_point, team)
-    BuildingSpawner:CreateBuldingAtPosition("undead_melee_barracks", melee_barracks_1_spawn_point, team)
-    BuildingSpawner:CreateBuldingAtPosition("undead_melee_barracks", melee_barracks_2_spawn_point, team)
-    BuildingSpawner:CreateBuldingAtPosition("undead_ranged_barracks", ranged_barracks_1_spawn_point, team)
-    BuildingSpawner:CreateBuldingAtPosition("undead_ranged_barracks", ranged_barracks_2_spawn_point, team)
+
+    for i=1,3 do
+        local melee_rax_position = Entities:FindByName(nil, ("undead_melee_barracks_"..i)):GetAbsOrigin()
+        local ranged_rax_position = Entities:FindByName(nil, ("undead_ranged_barracks_"..i)):GetAbsOrigin()
+
+        BuildingSpawner:CreateBuldingAtPosition("undead_melee_barracks", melee_rax_position, team)
+        BuildingSpawner:CreateBuldingAtPosition("undead_ranged_barracks", ranged_rax_position, team)
+    end
 end
 
 function BuildingSpawner:CreateBuldingAtPosition(unit_name, unit_location, team)
     local unit = CreateUnitByName(unit_name, unit_location, false, nil, nil, team) --Returns:handle ( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
-    unit:SetHasInventory(false)
+    
     if team == DOTA_TEAM_GOODGUYS then
         if unit_name == "human_king" then
-            --Set the Human King AI system
+            --Start the Human King AI system
             HumanKingAI:MakeInstance( unit, { spawnPos = unit_location, aggroRange = 800, leashRange = 1200 } )
         end
 

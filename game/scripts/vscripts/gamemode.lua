@@ -80,14 +80,20 @@ function GameMode:OnAllPlayersLoaded()
   table.insert(humanSpawners, Entities:FindByName( nil, "human_mele_spawner_3"):GetAbsOrigin())
   table.insert(humanSpawners, Entities:FindByName( nil, "human_range_spawner_3"):GetAbsOrigin())
 
+  table.insert(undeadSpawners, Entities:FindByName( nil, "undead_mele_spawner_1"):GetAbsOrigin())
+  table.insert(undeadSpawners, Entities:FindByName( nil, "undead_range_spawner_1"):GetAbsOrigin())
+  table.insert(undeadSpawners, Entities:FindByName( nil, "undead_mele_spawner_2"):GetAbsOrigin())
+  table.insert(undeadSpawners, Entities:FindByName( nil, "undead_range_spawner_2"):GetAbsOrigin())
+  table.insert(undeadSpawners, Entities:FindByName( nil, "undead_mele_spawner_3"):GetAbsOrigin())
+  table.insert(undeadSpawners, Entities:FindByName( nil, "undead_range_spawner_3"):GetAbsOrigin())
+
   BuildingSpawner:CreateHumanBuildings()
   BuildingSpawner:CreateUndeadBuildings()
 
-  -- Start the AI systems for all races
+  -- Start the Guard AI systems for all races
   local repeat_interval = 1 -- Rerun this timer every *repeat_interval* game-time seconds
-  local start_after = 1 -- Start this timer *start_after* game-time seconds later
 
-    Timers:CreateTimer(start_after, function()
+    Timers:CreateTimer(function()
         HumanGuardsAI:Start()
         --UndeadGuardsAI:Start()
         --etc
@@ -114,7 +120,6 @@ function GameMode:OnHeroInGame(hero)
     else
       table.insert(#humanTeam + 1, hero)
     end
-    print("Player "..hero:GetPlayerID().." is added to "..team)
 
     -- Loop trought all the heroes and make them the owners of line barracks
     local counter = 1
@@ -129,10 +134,16 @@ function GameMode:OnHeroInGame(hero)
 
       counter = counter + 2
     end
+
+    print("Player "..hero:GetPlayerID().." is added to "..team)
   end
 
   if team == DOTA_TEAM_BADGUYS then
-    table.insert(undeadTeam, player)
+    if #undeadTeam == 0 then
+      table.insert(undeadTeam, hero)
+    else
+      table.insert(#undeadTeam + 1, hero)
+    end
     print("Player "..hero:GetPlayerID().." is added to "..team)
   end
 
@@ -145,6 +156,8 @@ function GameMode:OnHeroInGame(hero)
     table.insert(orcTeam, player)
     print("Player "..hero:GetPlayerID().." is added to "..team)
   end
+
+  
   -- This line for example will set the starting gold of every hero to 500 unreliable gold
   --hero:SetGold(500, false)
 
@@ -198,7 +211,12 @@ function GameMode:InitGameMode()
   humanUpgradeBuildings = {}
   humanMeleeGuards = {}
   humanRangedGuards = {}
+
   undeadBuildings = {}
+  undeadUpgradeBuildings = {}
+  undeadMeleeGuards = {}
+  undeadRangedGuards = {}
+
   nightElfBuildings = {}
   orcBuildings = {}
 

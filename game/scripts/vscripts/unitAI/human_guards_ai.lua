@@ -11,11 +11,14 @@ function HumanGuardsAI:Start()
 
 			-- Check if the guard has moved from his spawn position (Im using math.ceil to remove the floating point)
 			if math.ceil(guard_position:Length()) ~= math.ceil(spawn_position:Length()) then
-				
+
 				HumanGuardsAI:GodsStrength( guard )
 				HumanGuardsAI:ShieldAttack( guard )
 				HumanGuardsAI:ReturnToSpawnPosition( guard , spawn_position)
 
+			else
+				local vector = Entities:FindByName(nil, "human_waypoint_undead_side"):GetAbsOrigin()
+				guard:SetForwardVector( vector )
 			end
 		end
 	end
@@ -30,10 +33,10 @@ end
 
 function HumanGuardsAI:GodsStrength( guard )
 	local ability = guard:GetAbilityByIndex(0)
-	local guard_health = guard:GetHealthPercent()
+	local guard_health_percent = guard:GetHealthPercent()
 	
 	-- Use the ability when it's out of cooldown and the guard's healt is bellow 25%
-	if ability:GetCooldownTimeRemaining() == 0 and guard_health <= 25 then
+	if ability:IsCooldownReady() and guard_health_percent <= 25 then
 		guard:CastAbilityNoTarget(ability, 0)
 		print(ability:GetName().." is used")
 	end
@@ -55,7 +58,7 @@ function HumanGuardsAI:ShieldAttack( guard )
 		false )
 
 	-- Use the ability when it's out of cooldown, the guard has enough mana for it and there are at least 4 enemies in ability radius
-	if ability:GetCooldownTimeRemaining() == 0 and guard_mana > 120 and #enemies > 3 then
+	if ability:IsCooldownReady() and guard_mana > 120 and #enemies > 3 then
 		guard:CastAbilityOnTarget(enemies[1], ability, 0)
 		print(ability:GetName().." is used")
 	end

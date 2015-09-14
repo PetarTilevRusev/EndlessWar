@@ -246,14 +246,3 @@ function ToggleOnAutocast( event )
 
 	ability:ToggleAutoCast()
 end
-
--- Give order to attack move at posigion
-function GiveOrder( event )
-	local unit = event.caster
-	local order = { 
-                            UnitIndex = unit:GetEntityIndex(), 
-                            OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE, 
-                            Position = Entities:FindByName(nil, "undead_base"):GetAbsOrigin(), 
-                            Queue = true }
-    ExecuteOrderFromTable(order)
-end
