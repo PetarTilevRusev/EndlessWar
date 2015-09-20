@@ -66,6 +66,7 @@ function HexAutocast( event )
 	local caster = event.caster
 	local ability = event.ability
 	local autocast_radius = ability:GetSpecialValueFor("autocast_radius")
+    local hero_search_radius = autocast_radius * 1.5
 	local modifier_name = "sorcerer_hex_modifier"
 
 	-- Get if the ability is on autocast mode and cast the ability on a valid target
@@ -82,12 +83,35 @@ function HexAutocast( event )
 											DOTA_UNIT_TARGET_FLAG_NONE, 
 											FIND_ANY_ORDER, -- Order 
 											false)
-		for k,unit in pairs(enemies) do
-			if not caster:HasModifier(modifier_name) then
-				target = unit
-				break
-			end
-		end
+
+        local heroes = FindUnitsInRadius(
+                                            caster:GetTeamNumber(), -- Enemy team number
+                                            caster:GetAbsOrigin(), -- Enemy position
+                                            nil, -- Enemy handle
+                                            hero_search_radius, -- Search radius
+                                            DOTA_UNIT_TARGET_TEAM_ENEMY, -- Searching radius
+                                            DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, -- Attack tipes
+                                            DOTA_UNIT_TARGET_FLAG_NONE, 
+                                            FIND_ANY_ORDER, -- Order 
+                                            false)
+
+        -- First search fro heroes and if there are no heroes in raidus, use the ability at random enemy unit in raidus
+        if #heroes >= 1 then
+    		for k,hero in pairs(heroes) do
+    			if not caster:HasModifier(modifier_name) then
+    				target = hero
+    				break
+    			end
+    		end
+        else
+            for k,unit in pairs(enemies) do
+                if not caster:HasModifier(modifier_name) then
+                    target = unit
+                    break
+                end
+            end
+        end
+
 		if not target then
 			return
 		else

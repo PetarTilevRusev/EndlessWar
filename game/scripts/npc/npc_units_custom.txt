@@ -233,7 +233,7 @@
 
         // Armor
         "ArmorPhysical"         "5"     // Physical protection.
-        "MagicalResistance"     "0"     // Magical protection.
+        "MagicalResistance"     "100"     // Magical protection.
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
@@ -285,7 +285,7 @@
 
         // Armor
         "ArmorPhysical"         "5"     // Physical protection.
-        "MagicalResistance"     "0"     // Magical protection.
+        "MagicalResistance"     "100"     // Magical protection.
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
