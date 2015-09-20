@@ -134,7 +134,7 @@
         "Model"             "models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl"  // Model.
         "BaseClass"         "npc_dota_building"  // Class of entity of link to.
         "SoundSet"          "Hero_Rattletrap"
-        "Level"             "1"
+        "Level"             "25"
         "ModelScale"        "3"
 
         "precache"
@@ -180,13 +180,17 @@
         //----------------------------------------------------------------
         "Model"             "models/courier/mechjaw/mechjaw.vmdl"  // Model.
         "BaseClass"         "npc_dota_building"  // Class of entity of link to.
-        "Level"             "1"
+        "Level"             "25"
         "ModelScale"        "2"
         
         // Abilities
-        "AbilityLayout"     "2"
+        "AbilityLayout"     "6"
         "Ability1"          "human_strength_upgrade"
         "Ability2"          "eagle_eye_upgrade"
+        //"Ability3"          "rifleman_headshot"
+        //"Ability4"          "knight_armor_aura"
+        //"Ability5"          "sorcerer_arcane_aura"
+        //"Ability6"          "priest_healing_aura"
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
@@ -220,7 +224,7 @@
         //----------------------------------------------------------------
         "Model"             "models/props_structures/good_barracks_melee001.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "Level"             "1"
+        "Level"             "25"
         "ModelScale"        "1"
 
         "precache"
@@ -271,7 +275,7 @@
         "Model"             "models/props_structures/good_barracks_ranged001.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
         "SoundSet"          "Building_RadiantTower"
-        "Level"             "1"
+        "Level"             "25"
         "ModelScale"        "1"
 
         "precache"
@@ -308,7 +312,7 @@
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
-        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE | MODIFIER_STATE_MAGIC_IMMUNE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
         
         // Vision
@@ -2626,7 +2630,6 @@
         "StatusManaRegen"     "0.5"     // Mana regeneration rate.
 
         // Team
-        "TeamName"              "DOTA_TEAM_CUSTOM_1"
         "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
         "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
@@ -2710,7 +2713,6 @@
         "StatusManaRegen"     "0.5"     // Mana regeneration rate.
 
         // Team
-        "TeamName"              "DOTA_TEAM_CUSTOM_1"
         "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
         "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
@@ -2800,7 +2802,6 @@
         "StatusManaRegen"     "0.5"     // Mana regeneration rate.
 
         // Team
-        "TeamName"              "DOTA_TEAM_CUSTOM_2"
         "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
         "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
@@ -2887,7 +2888,6 @@
         "StatusManaRegen"     "0.5"     // Mana regeneration rate.
 
         // Team
-        "TeamName"              "DOTA_TEAM_CUSTOM_2"
         "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
         "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"

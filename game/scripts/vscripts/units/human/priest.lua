@@ -225,7 +225,7 @@ function HealAutocast( event )
 		local target
 		local allies = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, autocast_radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, FIND_CLOSEST, false)
 		for k,unit in pairs(allies) do
-			if unit:GetHealthDeficit() > 0 then
+			if unit:GetHealthDeficit() > 150 then
 				target = unit
 				break
 			end

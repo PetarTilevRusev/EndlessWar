@@ -9,23 +9,35 @@ function Spawner:SpawnHumanWaves()
     local human_waypoint_2 = Entities:FindByName(nil, "human_waypoint_orc_side")
     local human_waypoint_3 = Entities:FindByName(nil, "human_waypoint_night_elf_side")
 
-    local footmans_to_spawn = 4
-    local knights_to_spawn = 1
-    local siege_units_to_spawn = 1
-    local riflemans_to_spawn = 1
-    local sorcerrers_to_spawn = 1
-    local healers_to_spawn = 1
+    local footmans = 4
+    local knights = 1
+    local siege_units = 1
+    local riflemans = 1
+    local sorcerrers = 1
+    local healers = 1
     local team = DOTA_TEAM_GOODGUYS
 
     --Loop trough all human buildings and check the levels of all the abilities then add unit level and new units to spawn
     for position, building in ipairs(humanBuildings) do
-        print(position, building)
-        local ability_1 = building:GetAbilityByIndex(0):GetLevel()
-        local ability_2 = building:GetAbilityByIndex(1):GetLevel()
-        local ability_3 = building:GetAbilityByIndex(2):GetLevel()
-        local ability_4 = building:GetAbilityByIndex(3):GetLevel()
         
-        local waypoint = nil
+        local ability_1
+        local ability_2
+        local ability_3
+        local ability_4
+
+        if IsValidEntity(building) then 
+            ability_1 = building:GetAbilityByIndex(0):GetLevel()
+            ability_2 = building:GetAbilityByIndex(1):GetLevel()
+            ability_3 = building:GetAbilityByIndex(2):GetLevel()
+            ability_4 = building:GetAbilityByIndex(3):GetLevel()
+        else
+            ability_1 = humanBuildingAbilities[position][1]
+            ability_2 = humanBuildingAbilities[position][2]
+            ability_3 = humanBuildingAbilities[position][3]
+            ability_4 = humanBuildingAbilities[position][4]
+        end
+        
+        local waypoint
         if humanBuildings[position] == humanBuildings[1] or humanBuildings[position] == humanBuildings[2] then
             waypoint = human_waypoint_1
         elseif humanBuildings[position] == humanBuildings[3] or humanBuildings[position] == humanBuildings[4] then
@@ -34,42 +46,42 @@ function Spawner:SpawnHumanWaves()
             waypoint = human_waypoint_3
         end
 
-        if building:GetUnitName() == "human_melee_barracks" then
+        if position % 2 ~= 0 then
             if ability_1 >= 2 then
-                Spawner:SpawnAndMoveAtPosition(footmans_to_spawn, ("footman_"..ability_1), humanSpawners[position], waypoint, team)
+                Spawner:SpawnAndMoveAtPosition(footmans, ("footman_"..ability_1), humanSpawners[position], waypoint, team)
             else
-                Spawner:SpawnAndMoveAtPosition(footmans_to_spawn, "footman", humanSpawners[position], waypoint, team)
+                Spawner:SpawnAndMoveAtPosition(footmans, "footman", humanSpawners[position], waypoint, team)
             end 
             if ability_4 > 2 then
                 if ability_2 >= 2 then
-                    Spawner:SpawnAndMoveAtPosition(knights_to_spawn, ("knight_"..ability_2), humanSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(knights, ("knight_"..ability_2), humanSpawners[position], waypoint, team)
                 else
-                    Spawner:SpawnAndMoveAtPosition(knights_to_spawn, "knight", humanSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(knights, "knight", humanSpawners[position], waypoint, team)
                 end
             end
             if ability_4 > 3 then
-                Spawner:SpawnAndMoveAtPosition(siege_units_to_spawn, "human_siege_unit", humanSpawners[position], waypoint, team)
+                Spawner:SpawnAndMoveAtPosition(siege_units, "human_siege_unit", humanSpawners[position], waypoint, team)
             end
         end
 
-        if building:GetUnitName() == "human_ranged_barracks" then
+        if position % 2 == 0 then
             if ability_1 >= 2 then
-                Spawner:SpawnAndMoveAtPosition(riflemans_to_spawn, ("rifleman_"..ability_1), humanSpawners[position], waypoint, team)
+                Spawner:SpawnAndMoveAtPosition(riflemans, ("rifleman_"..ability_1), humanSpawners[position], waypoint, team)
             else
-                Spawner:SpawnAndMoveAtPosition(riflemans_to_spawn, "rifleman", humanSpawners[position], waypoint, team)
+                Spawner:SpawnAndMoveAtPosition(riflemans, "rifleman", humanSpawners[position], waypoint, team)
             end
             if ability_4 > 2 then
                 if ability_2 >= 2 then
-                    Spawner:SpawnAndMoveAtPosition(sorcerrers_to_spawn, ("sorcerer_"..ability_2), humanSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(sorcerrers, ("sorcerer_"..ability_2), humanSpawners[position], waypoint, team)
                 else
-                    Spawner:SpawnAndMoveAtPosition(sorcerrers_to_spawn, "sorcerer", humanSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(sorcerrers, "sorcerer", humanSpawners[position], waypoint, team)
                 end
             end
             if ability_4 > 3 then
                 if ability_3 >= 2 then
-                    Spawner:SpawnAndMoveAtPosition(sorcerrers_to_spawn, ("priest_"..ability_3), humanSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(sorcerrers, ("priest_"..ability_3), humanSpawners[position], waypoint, team)
                 else
-                    Spawner:SpawnAndMoveAtPosition(sorcerrers_to_spawn, "priest", humanSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(sorcerrers, "priest", humanSpawners[position], waypoint, team)
                 end
             end
         end
@@ -83,16 +95,21 @@ function Spawner:SpawnUndeadWaves()
     local undead_mele_spawn_point_2 = Entities:FindByName( nil, "undead_mele_spawner_2"):GetAbsOrigin()
     local undead_range_spawn_point_1 = Entities:FindByName( nil, "undead_range_spawner_1"):GetAbsOrigin()
     local undead_range_spawn_point_2 = Entities:FindByName( nil, "undead_range_spawner_2"):GetAbsOrigin()
+    local undead_mele_spawn_point_3 = Entities:FindByName( nil, "undead_mele_spawner_3"):GetAbsOrigin()
+    local undead_range_spawn_point_3 = Entities:FindByName( nil, "undead_range_spawner_3"):GetAbsOrigin()
     local undead_waypoint_1 = Entities:FindByName(nil, "undead_waypoint_night_elf_side")
     local undead_waypoint_2 = Entities:FindByName(nil, "undead_waypoint_human_side")
-    local mele_units_to_spawn = 20
-    local range_units_to_spawn = 1
+    local undead_waypoint_3 = Entities:FindByName(nil, "undead_waypoint_orc_side")
+    local ghouls = 14
+    local crypt_fiends = 5
     local team = DOTA_TEAM_BADGUYS
 
-    Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "ghoul", undead_mele_spawn_point_1, undead_waypoint_1, team)
-    Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "crypt_fiend", undead_range_spawn_point_1, undead_waypoint_1, team)
-    Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "ghoul", undead_mele_spawn_point_2, undead_waypoint_2, team)
-    Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "crypt_fiend", undead_range_spawn_point_2, undead_waypoint_2, team)
+    Spawner:SpawnAndMoveAtPosition(ghouls, "ghoul", undead_mele_spawn_point_1, undead_waypoint_1, team)
+    Spawner:SpawnAndMoveAtPosition(crypt_fiends, "crypt_fiend", undead_range_spawn_point_1, undead_waypoint_1, team)
+    Spawner:SpawnAndMoveAtPosition(ghouls, "ghoul", undead_mele_spawn_point_2, undead_waypoint_2, team)
+    Spawner:SpawnAndMoveAtPosition(crypt_fiends, "crypt_fiend", undead_range_spawn_point_2, undead_waypoint_2, team)
+    Spawner:SpawnAndMoveAtPosition(ghouls, "ghoul", undead_mele_spawn_point_3, undead_waypoint_3, team)
+    Spawner:SpawnAndMoveAtPosition(crypt_fiends, "crypt_fiend", undead_range_spawn_point_3, undead_waypoint_3, team)
 end
 
 --[[Night Elf units
@@ -100,18 +117,23 @@ end
 function Spawner:SpawnNightElfWaves()
     local night_elf_mele_spawn_point_1 = Entities:FindByName( nil, "night_elf_mele_spawner_1"):GetAbsOrigin()
     local night_elf_mele_spawn_point_2 = Entities:FindByName( nil, "night_elf_mele_spawner_2"):GetAbsOrigin()
+    local night_elf_mele_spawn_point_3 = Entities:FindByName( nil, "night_elf_mele_spawner_3"):GetAbsOrigin()
     local night_elf_range_spawn_point_1 = Entities:FindByName( nil, "night_elf_range_spawner_1"):GetAbsOrigin()
     local night_elf_range_spawn_point_2 = Entities:FindByName( nil, "night_elf_range_spawner_2"):GetAbsOrigin()
-    local night_elf_waypoint_1 = Entities:FindByName(nil, "orc_base"):GetAbsOrigin()
-    local night_elf_waypoint_2 = Entities:FindByName(nil, "undead_base"):GetAbsOrigin()
+    local night_elf_range_spawn_point_3 = Entities:FindByName( nil, "night_elf_range_spawner_3"):GetAbsOrigin()
+    local night_elf_waypoint_1 = Entities:FindByName(nil, "night_elf_waypoint_orc_side")
+    local night_elf_waypoint_2 = Entities:FindByName(nil, "night_elf_waypoint_undead_side")
+    local night_elf_waypoint_3 = Entities:FindByName(nil, "night_elf_waypoint_human_side")
     local mele_units_to_spawn = 4
     local range_units_to_spawn = 1
     local team = DOTA_TEAM_CUSTOM_1
 
     Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "treant", night_elf_mele_spawn_point_1, night_elf_waypoint_1, team)
     Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "treant", night_elf_mele_spawn_point_2, night_elf_waypoint_2, team)
+    Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "treant", night_elf_mele_spawn_point_3, night_elf_waypoint_3, team)
     Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "archer", night_elf_range_spawn_point_1, night_elf_waypoint_1, team)
     Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "archer", night_elf_range_spawn_point_2, night_elf_waypoint_2, team)
+    Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "archer", night_elf_range_spawn_point_3, night_elf_waypoint_3, team)
 end
 
 --[[Orc units
@@ -119,18 +141,23 @@ end
 function Spawner:SpawnOrcWaves()
     local orc_mele_spawn_point_1 = Entities:FindByName( nil, "orc_mele_spawner_1"):GetAbsOrigin()
     local orc_mele_spawn_point_2 = Entities:FindByName( nil, "orc_mele_spawner_2"):GetAbsOrigin()
+    local orc_mele_spawn_point_3 = Entities:FindByName( nil, "orc_mele_spawner_3"):GetAbsOrigin()
     local orc_range_spawn_point_1 = Entities:FindByName( nil, "orc_range_spawner_1"):GetAbsOrigin()
     local orc_range_spawn_point_2 = Entities:FindByName( nil, "orc_range_spawner_2"):GetAbsOrigin()
-    local orc_waypoint_1 = Entities:FindByName(nil, "human_king"):GetAbsOrigin()
-    local orc_waypoint_2 = Entities:FindByName(nil, "night_elf_base"):GetAbsOrigin()
+    local orc_range_spawn_point_3 = Entities:FindByName( nil, "orc_range_spawner_3"):GetAbsOrigin()
+    local orc_waypoint_1 = Entities:FindByName(nil, "orc_waypoint_human_side")
+    local orc_waypoint_2 = Entities:FindByName(nil, "orc_waypoint_night_elf_side")
+    local orc_waypoint_3 = Entities:FindByName(nil, "orc_waypoint_undead_side")
     local mele_units_to_spawn = 4
     local range_units_to_spawn = 1
     local team = DOTA_TEAM_CUSTOM_2
 
     Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "grund", orc_mele_spawn_point_1, orc_waypoint_1, team)
     Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "grund", orc_mele_spawn_point_2, orc_waypoint_2, team)
+    Spawner:SpawnAndMoveAtPosition(mele_units_to_spawn, "grund", orc_mele_spawn_point_3, orc_waypoint_3, team)
     Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "headhunter", orc_range_spawn_point_1, orc_waypoint_1, team)
     Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "headhunter", orc_range_spawn_point_2, orc_waypoint_2, team)
+    Spawner:SpawnAndMoveAtPosition(range_units_to_spawn, "headhunter", orc_range_spawn_point_3, orc_waypoint_3, team)
 end
 
 function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point, waypoint, team )
@@ -152,6 +179,9 @@ function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point,
                         unit:SetModifierStackCount((ability_name.."_modifier"), blacksmith, (ability_level - 1))
                     end
                 end
+            end
+
+            if team == DOTA_TEAM_BADGUYS then
             end
         end)
     end

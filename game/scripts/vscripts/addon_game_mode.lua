@@ -2,8 +2,6 @@
 
 require('internal/util')
 require('gamemode')
-require('building_spawner')
-require('spawner')
 
 function Precache( context )
 --[[
@@ -45,13 +43,13 @@ function Precache( context )
   PrecacheUnitByNameSync("undead_ranged_barracks", context)
 
     -- Night Elf units
-  PrecacheUnitByNameSync("treant", context)
-  PrecacheUnitByNameSync("archer", context)
+  PrecacheUnitByNameAsync("treant", context)
+  PrecacheUnitByNameAsync("archer", context)
     -- Night Elf buildings
 
     -- Orc units
-  PrecacheUnitByNameSync("grund", context)
-  PrecacheUnitByNameSync("headhunter", context)
+  PrecacheUnitByNameAsync("grund", context)
+  PrecacheUnitByNameAsync("headhunter", context)
     --Orc buildings
 
 

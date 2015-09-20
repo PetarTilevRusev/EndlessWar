@@ -16,7 +16,6 @@ end
 -- Applues upgrades from the Barracks
 function UpgradeUnit( event )
     local caster = event.caster
-    local caster_name = caster:GetName()
     local ability = event.ability
     local ability_level = ability:GetLevel()
     local ability_name = ability:GetName()

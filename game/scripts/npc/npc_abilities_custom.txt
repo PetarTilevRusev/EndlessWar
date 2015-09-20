@@ -1,5 +1,3 @@
-// DataDriven Ability Guide: https://moddota.com/forums/discussion/14/datadriven-ability-breakdown-documentation
-
 "DOTAAbilities"
 {
 	"Version"		"1"
@@ -18,10 +16,13 @@
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
 		"AnimationIgnoresModelScale"    "0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"				"1"
 
 		"precache"
 		{
-			"particle"  "particles/frostivus_herofx/juggernaut_omnislash_ascension_sparks.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
 			"soundfile" "soundevents/voscripts/game_sounds_vo_omniknight.vsndevts"
 		}
 
@@ -36,13 +37,6 @@
 
 		"OnSpellStart"
     	{
-    		"FireEffect"
-    		{
-    			"EffectName"        "particles/frostivus_herofx/juggernaut_omnislash_ascension_sparks.vpcf"
-    			"EffectAttachType"  "follow_origin"
-    			"Target"            "CASTER"
-    		}
-
     		"FireSound"
 		    {
 		        "EffectName"    "omniknight_omni_doubdam_02"
@@ -53,7 +47,13 @@
 	        {
 	            "ScriptFile"    "units/human/human_upgrades.lua"
 	            "Function" 		"ApplyKingUpgrade"
-	        } 
+	        }
+
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"human_king_damage_upgrade_particle_modifier"
+	        	"Target" 		"CASTER"
+	        }
     	}
 
 		"Modifiers"
@@ -71,6 +71,30 @@
 		            "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%damage"
 		        }
 		    }
+
+		    "human_king_damage_upgrade_particle_modifier"
+		    {
+		    	"Duration"			"1.5"
+		    	"IsHidden"			"1"
+		    	"StatusEffectName"     "particles/status_fx/status_effect_guardian_angel.vpcf"
+            	"StatusEffectPriority" "10"
+            	"OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+	                    "EffectAttachType"  "follow_overhead"
+	                    "Target"            "CASTER"
+	                }
+
+	                "AttachEffect"
+	                {
+	                	"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+	                	"EffectAttachType"  "follow_origin"
+	                	"Target"            "CASTER"
+	                }
+                }
+		    }
 		}
 	}
 
@@ -83,10 +107,13 @@
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
 		"AnimationIgnoresModelScale"    "0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"				"1"
 
 		"precache"
 		{
-			"particle"  "particles/frostivus_herofx/juggernaut_omnislash_ascension_sparks.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
 			"soundfile" "soundevents/voscripts/game_sounds_vo_omniknight.vsndevts"
 		}
 
@@ -101,13 +128,6 @@
 
 		"OnSpellStart"
     	{
-    		"FireEffect"
-    		{
-    			"EffectName"        "particles/frostivus_herofx/juggernaut_omnislash_ascension_sparks.vpcf"
-    			"EffectAttachType"  "follow_origin"
-    			"Target"            "CASTER"
-    		}
-
     		"FireSound"
 		    {
 		        "EffectName"    "omniknight_omni_ability_repel_05"
@@ -118,7 +138,13 @@
 	        {
 	            "ScriptFile"    "units/human/human_upgrades.lua"
 	            "Function" 		"ApplyKingUpgrade"
-	        } 
+	        }
+
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"human_king_armor_upgrade_particle_modifier"
+	        	"Target" 		"CASTER"
+	        }
     	}
 
 		"Modifiers"
@@ -136,75 +162,29 @@
 		            "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
 		        }
 		    }
-		}
-	}
 
-	"human_king_speed_upgrade"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"human_king_speed_bonus"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
-		"AbilityGoldCost"				"500"
-		"AbilitySharedWithTeammates" 	"1"
-		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
-
-		"precache"
-		{
-			"particle"  "particles/frostivus_herofx/juggernaut_omnislash_ascension_sparks.vpcf"
-			"soundfile" "soundevents/voscripts/game_sounds_vo_omniknight.vsndevts"
-		}
-
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"attack_speed"					"5"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"move_speed"					"7"
-			}
-		}
-
-		"OnSpellStart"
-    	{
-    		"FireEffect"
-    		{
-    			"EffectName"        "particles/frostivus_herofx/juggernaut_omnislash_ascension_sparks.vpcf"
-    			"EffectAttachType"  "follow_origin"
-    			"Target"            "CASTER"
-    		}
-
-			"FireSound"
+		    "human_king_armor_upgrade_particle_modifier"
 		    {
-		        "EffectName"    "omniknight_omni_haste_02"
-		        "Target"        "CASTER"
-		    }
+		    	"Duration"			"1.5"
+		    	"IsHidden"			"1"
+		    	"StatusEffectName"     "particles/status_fx/status_effect_guardian_angel.vpcf"
+            	"StatusEffectPriority" "10"
+            	"OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+	                    "EffectAttachType"  "follow_overhead"
+	                    "Target"            "CASTER"
+	                }
 
-	        "RunScript"
-	        {
-	            "ScriptFile"    "units/human/human_upgrades.lua"
-	            "Function" 		"ApplyKingUpgrade"
-	        } 
-    	}
-
-		"Modifiers"
-		{
-		    "human_king_speed_upgrade_modifier"
-		    {
-		       	"Duration"  "-1"
-		        "Passive"   "0"
-		        "IsBuff"	"1"
-		        "IsPurgeble" "0"
-
-		        "Properties"
-		        {
-		        	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	 "%attack_speed"
-		        	"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"     "%move_speed"
-		        }
+	                "AttachEffect"
+	                {
+	                	"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+	                	"EffectAttachType"  "follow_origin"
+	                	"Target"            "CASTER"
+	                }
+                }
 		    }
 		}
 	}
@@ -218,10 +198,13 @@
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
 		"AnimationIgnoresModelScale"    "0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"				"1"
 
 		"precache"
 		{
-			"particle"  "particles/frostivus_herofx/juggernaut_omnislash_ascension_sparks.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
 			"soundfile" "soundevents/voscripts/game_sounds_vo_omniknight.vsndevts"
 		}
 
@@ -241,13 +224,6 @@
 
 		"OnSpellStart"
     	{
-    		"FireEffect"
-    		{
-    			"EffectName"        "particles/frostivus_herofx/juggernaut_omnislash_ascension_sparks.vpcf"
-    			"EffectAttachType"  "follow_origin"
-    			"Target"            "CASTER"
-    		}
-
     		"FireSound"
 		    {
 		        "EffectName"    "omniknight_omni_ability_repel_06"
@@ -258,7 +234,13 @@
 	        {
 	            "ScriptFile"    "units/human/human_upgrades.lua"
 	            "Function" 		"ApplyKingUpgrade"
-	        } 
+	        }
+
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"human_king_health_upgrade_particle_modifier"
+	        	"Target" 		"CASTER"
+	        }
     	}
 
 		"Modifiers"
@@ -274,6 +256,126 @@
 		        {
 		        	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	 "%regen"
 		        }
+		    }
+
+		    "human_king_health_upgrade_particle_modifier"
+		    {
+		    	"Duration"			"1.5"
+		    	"IsHidden"			"1"
+		    	"StatusEffectName"     "particles/status_fx/status_effect_guardian_angel.vpcf"
+            	"StatusEffectPriority" "10"
+            	"OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+	                    "EffectAttachType"  "follow_overhead"
+	                    "Target"            "CASTER"
+	                }
+
+	                "AttachEffect"
+	                {
+	                	"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+	                	"EffectAttachType"  "follow_origin"
+	                	"Target"            "CASTER"
+	                }
+                }
+		    }
+		}
+	}
+
+	"human_king_speed_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"human_king_speed_bonus"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"500"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"				"1"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+			"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+			"soundfile" "soundevents/voscripts/game_sounds_vo_omniknight.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_speed"					"5"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"move_speed"					"7"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+			"FireSound"
+		    {
+		        "EffectName"    "omniknight_omni_haste_02"
+		        "Target"        "CASTER"
+		    }
+
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/human/human_upgrades.lua"
+	            "Function" 		"ApplyKingUpgrade"
+	        }
+
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"human_king_speed_upgrade_particle_modifier"
+	        	"Target" 		"CASTER"
+	        }
+    	}
+
+		"Modifiers"
+		{
+		    "human_king_speed_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+		        "IsPurgeble" "0"
+
+		        "Properties"
+		        {
+		        	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	 "%attack_speed"
+		        	"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"     "%move_speed"
+		        }
+		    }
+
+		    "human_king_speed_upgrade_particle_modifier"
+		    {
+		    	"Duration"			"1.5"
+		    	"IsHidden"			"1"
+		    	"StatusEffectName"     "particles/status_fx/status_effect_guardian_angel.vpcf"
+            	"StatusEffectPriority" "10"
+            	"OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+	                    "EffectAttachType"  "follow_overhead"
+	                    "Target"            "CASTER"
+	                }
+
+	                "AttachEffect"
+	                {
+	                	"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+	                	"EffectAttachType"  "follow_origin"
+	                	"Target"            "CASTER"
+	                }
+                }
 		    }
 		}
 	}
@@ -2015,7 +2117,6 @@
 	    	{
 		        "Passive"           "1"  
 	            "IsHidden"      	"1"
-	            "Duration"      	"-1"
 	            "ThinkInterval"     "0.3"
 	            "OnIntervalThink"
 	            {
@@ -2043,28 +2144,377 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"						"1"
 
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"value"				"900"
-			}
-		}
-
 		"Modifiers"
 		{
 		    "building_magic_immune_modifier"
 		    {
-		        "Passive"   "1"
-		        "IsHidden"  "1"
-		        "Duration"	"-1"
+		        "Passive"   		"1"
+		        "IsHidden"  		"1"
+	            "ThinkInterval"     "-1"
+	            "OnIntervalThink"
+	            {
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"      "modifier_magic_immune"
+	                    "Target" 			"CASTER"
+	                    "Duration"      	"-1"
+	                }
+	            }
+
+	            "Properties"
+	            {
+	            	"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL" "1"
+	                "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"    "1" 
+	            }
+		    }
+		}
+	}
+
+//********************************************************************************************************
+//=================================== UNDEAD RACE ABILITIES ==============================================
+//________________________________________________________________________________________________________
+	
+	"undead_king_damage_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"undead_king_damage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"500"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
+		"AbilityCastAnimation"			"ACT_DOTA_IDLE_RARE"
+		"AbilityCastPoint"				"1.5"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+			"particle"  "particles/status_fx/status_effect_wraithking_ghosts.vpcf"
+			"soundfile" "soundevents/voscripts/game_sounds_vo_skeleton_king.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"25"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+    		"FireSound"
+		    {
+		        "EffectName"    "skeleton_king_wraith_spawn_02"
+		        "Target"        "CASTER"
+		    }
+
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/undead/undead_upgrades.lua"
+	            "Function" 		"ApplyKingUpgrade"
+	        }
+
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"undead_king_damage_upgrade_particle_modifier"
+	        	"Target" 		"CASTER"
+	        }
+    	}
+
+		"Modifiers"
+		{
+		    "undead_king_damage_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		       	"IsPurgeble" "0"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+
 
 		        "Properties"
 		        {
-		        	"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"MODIFIER_STATE_VALUE_ENABLED"
-		        	"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"		"MODIFIER_STATE_VALUE_ENABLED"
+		            "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%damage"
 		        }
+		    }
+
+		    "undead_king_damage_upgrade_particle_modifier"
+		    {
+		    	"Duration"	"2"
+		    	"IsHidden"	"1"
+		    	"StatusEffectName"     "particles/status_fx/status_effect_wraithking_ghosts.vpcf"
+            	"StatusEffectPriority" "10"
+            	"OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+	                    "EffectAttachType"  "follow_origin"
+	                    "Target"            "CASTER"
+	                }
+	            }
+		    }
+		}
+	}
+
+	"undead_king_armor_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"undead_king_armor"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"500"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
+		"AbilityCastAnimation"			"ACT_DOTA_IDLE_RARE"
+		"AbilityCastPoint"				"1.5"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+			"particle"  "particles/status_fx/status_effect_wraithking_ghosts.vpcf"
+			"soundfile" "soundevents/voscripts/game_sounds_vo_skeleton_king.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"armor"							"5"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+    		"FireSound"
+		    {
+		        "EffectName"    "skeleton_king_wraith_purch_03"
+		        "Target"        "CASTER"
+		    }
+
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/undead/undead_upgrades.lua"
+	            "Function" 		"ApplyKingUpgrade"
+	        }
+
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"undead_king_armor_upgrade_particle_modifier"
+	        	"Target" 		"CASTER"
+	        }
+    	}
+
+		"Modifiers"
+		{
+		    "undead_king_armor_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+		        "IsPurgeble" "0"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+		        }
+		    }
+
+		    "undead_king_armor_upgrade_particle_modifier"
+		    {
+		    	"Duration"	"2"
+		    	"IsHidden"	"1"
+		    	"StatusEffectName"     "particles/status_fx/status_effect_wraithking_ghosts.vpcf"
+            	"StatusEffectPriority" "10"
+            	"OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+	                    "EffectAttachType"  "follow_origin"
+	                    "Target"            "CASTER"
+	                }
+	            }
+		    }
+		}
+	}
+
+	"undead_king_health_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"undead_king_health"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"500"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
+		"AbilityCastAnimation"			"ACT_DOTA_IDLE_RARE"
+		"AbilityCastPoint"				"1.5"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+			"particle"  "particles/status_fx/status_effect_wraithking_ghosts.vpcf"
+			"soundfile" "soundevents/voscripts/game_sounds_vo_skeleton_king.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"regen"							"2.5"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health"						"250"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+    		"FireSound"
+		    {
+		        "EffectName"    "skeleton_king_wraith_move_09"
+		        "Target"        "CASTER"
+		    }
+
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/undead/undead_upgrades.lua"
+	            "Function" 		"ApplyKingUpgrade"
+	        }
+
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"undead_king_health_upgrade_particle_modifier"
+	        	"Target" 		"CASTER"
+	        }
+    	}
+
+		"Modifiers"
+		{
+		    "undead_king_health_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+		        "IsPurgeble" "0"
+
+		        "Properties"
+		        {
+		        	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	 "%regen"
+		        }
+		    }
+
+		    "undead_king_health_upgrade_particle_modifier"
+		    {
+		    	"Duration"	"2"
+		    	"IsHidden"	"1"
+		    	"StatusEffectName"     "particles/status_fx/status_effect_wraithking_ghosts.vpcf"
+            	"StatusEffectPriority" "10"
+            	"OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+	                    "EffectAttachType"  "follow_origin"
+	                    "Target"            "CASTER"
+	                }
+	            }
+		    }
+		}
+	}
+
+	"undead_king_speed_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"undead_king_speed"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"500"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+		"AnimationIgnoresModelScale"    "0"
+		"AbilityCastAnimation"			"ACT_DOTA_IDLE_RARE"
+		"AbilityCastPoint"				"1.5"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+			"particle"  "particles/status_fx/status_effect_wraithking_ghosts.vpcf"
+			"soundfile" "soundevents/voscripts/game_sounds_vo_skeleton_king.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_speed"					"5"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"move_speed"					"7"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+			"FireSound"
+		    {
+		        "EffectName"    "skeleton_king_wraith_ability_mortalstrike_01"
+		        "Target"        "CASTER"
+		    }
+
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/undead/undead_upgrades.lua"
+	            "Function" 		"ApplyKingUpgrade"
+	        }
+
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"undead_king_speed_upgrade_particle_modifier"
+	        	"Target" 		"CASTER"
+	        }
+    	}
+
+		"Modifiers"
+		{
+		    "undead_king_speed_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+		        "IsPurgeble" "0"
+
+		        "Properties"
+		        {
+		        	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	 "%attack_speed"
+		        	"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"     "%move_speed"
+		        }
+		    }
+
+		    "undead_king_speed_upgrade_particle_modifier"
+		    {
+		    	"Duration"	"2"
+		    	"IsHidden"	"1"
+		    	"StatusEffectName"     "particles/status_fx/status_effect_wraithking_ghosts.vpcf"
+            	"StatusEffectPriority" "10"
+            	"OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+	                    "EffectAttachType"  "follow_origin"
+	                    "Target"            "CASTER"
+	                }
+	            }
 		    }
 		}
 	}

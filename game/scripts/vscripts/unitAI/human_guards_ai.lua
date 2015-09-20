@@ -3,32 +3,45 @@ if HumanGuardsAI == nil then
 end
 
 function HumanGuardsAI:Start()
-	-- Lopp trough all melee guards
-	for table_number,guard in pairs(humanMeleeGuards) do
-		if IsValidEntity(guard) then
-			local spawn_position = Entities:FindByName(nil, ("human_melee_guard_"..table_number)):GetAbsOrigin()
-			local guard_position = guard:GetAbsOrigin()
+	local directions = { Vector(0.864811, -0.501796, 0.017395), 
+                    	Vector(0.864811, -0.501796, 0.017395), 
+                    	Vector(-0.884213, -0.466778, 0.016900), 
+                    	Vector(-0.884213, -0.466778, 0.016900), 
+                    	Vector(0.250427, 0.935186, 0.250426), 
+                    	Vector(0.250427, 0.935186, 0.250426) }
+	local repeat_interval = 1
 
-			-- Check if the guard has moved from his spawn position (Im using math.ceil to remove the floating point)
-			if math.ceil(guard_position:Length()) ~= math.ceil(spawn_position:Length()) then
+	Timers:CreateTimer(function()
+		-- Lopp trough all melee guards
+		for table_number,guard in pairs(humanMeleeGuards) do
+			if IsValidEntity(guard) then
+				local spawn_position = Entities:FindByName(nil, ("human_melee_guard_"..table_number)):GetAbsOrigin()
+				local guard_position = guard:GetAbsOrigin()
 
-				HumanGuardsAI:GodsStrength( guard )
-				HumanGuardsAI:ShieldAttack( guard )
-				HumanGuardsAI:ReturnToSpawnPosition( guard , spawn_position)
+				-- Check if the guard has moved from his spawn position (Im using math.ceil to remove the floating point)
+				if math.ceil(guard_position:Length()) ~= math.ceil(spawn_position:Length()) then
 
-			else
-				local vector = Entities:FindByName(nil, "human_waypoint_undead_side"):GetAbsOrigin()
-				guard:SetForwardVector( vector )
+					HumanGuardsAI:GodsStrength( guard )
+					HumanGuardsAI:ShieldAttack( guard )
+					HumanGuardsAI:ReturnToSpawnPosition( guard , spawn_position)
+
+				else
+					--Set the forward vector the the guards, so they don't end up facing at the wall
+					guard:SetForwardVector( directions[table_number] )
+				end
 			end
 		end
-	end
 
-	-- Lopp trough all ranged guards
-	for table_number,guard in pairs(humanRangedGuards) do
-		if IsValidEntity(guard) then
-			HumanGuardsAI:Assassinate( guard )
+		-- Lopp trough all ranged guards
+		for table_number,guard in pairs(humanRangedGuards) do
+			if IsValidEntity(guard) then
+				HumanGuardsAI:Assassinate( guard )
+			end
 		end
-	end
+
+		return repeat_interval
+	end)
+	
 end
 
 function HumanGuardsAI:GodsStrength( guard )
@@ -68,7 +81,7 @@ function HumanGuardsAI:ReturnToSpawnPosition( guard, spawn_position )
 	local distance = ( spawn_position - guard:GetAbsOrigin() ):Length()
 	local leash_range = 1000
 
-	-- If the guard is outside the leash_range, force him to retrun to the spawn point
+	-- If the guard is outside the leash_range, force him to return to the spawn point
 	if distance > leash_range then
 		guard:MoveToPosition(spawn_position)
 	else

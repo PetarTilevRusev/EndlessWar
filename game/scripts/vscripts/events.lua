@@ -103,7 +103,7 @@ function GameMode:OnNonPlayerUsedAbility(keys)
   DebugPrint('[BAREBONES] OnNonPlayerUsedAbility')
   DebugPrintTable(keys)
 
-  local abilityname=  keys.abilityname
+  local abilityname = keys.abilityname
 end
 
 -- A player changed their name
@@ -223,9 +223,23 @@ function GameMode:OnEntityKilled( keys )
 
   GameMode:_OnEntityKilled( keys )
   
-
   -- The Unit that was Killed
   local killedUnit = EntIndexToHScript( keys.entindex_killed )
+
+  -- Check if the killed unit is one of the human barracks
+  if killedUnit:GetUnitName() == "human_melee_barracks" or killedUnit:GetUnitName() == "human_ranged_barracks" then
+    
+    -- Loop trough all the human barracks and find the killed one
+    for row,building in pairs(humanBuildings) do
+
+      if killedUnit == building then
+        for col=1,4 do
+          humanBuildingAbilities[row][col] = building:GetAbilityByIndex(col - 1):GetLevel()
+        end
+      end
+    end
+  end
+
   -- The Killing entity
   local killerEntity = nil
 

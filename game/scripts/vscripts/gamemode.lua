@@ -30,8 +30,13 @@ require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
 require('events')
 
+require('base_spawner')
+require('spawner')
+
 -- Start the AI systems to control the guards behavior
-require("unitAI/human_guards_ai")
+require('unitAI/human_guards_ai')
+
+require('units/human/human_upgrades')
 
 
 --[[
@@ -87,18 +92,12 @@ function GameMode:OnAllPlayersLoaded()
   table.insert(undeadSpawners, Entities:FindByName( nil, "undead_mele_spawner_3"):GetAbsOrigin())
   table.insert(undeadSpawners, Entities:FindByName( nil, "undead_range_spawner_3"):GetAbsOrigin())
 
-  BuildingSpawner:CreateHumanBuildings()
-  BuildingSpawner:CreateUndeadBuildings()
+  Base:CreateHumanBase()
+  Base:CreateUndeadBase()
 
   -- Start the Guard AI systems for all races
-  local repeat_interval = 1 -- Rerun this timer every *repeat_interval* game-time seconds
-
-    Timers:CreateTimer(function()
-        HumanGuardsAI:Start()
-        --UndeadGuardsAI:Start()
-        --etc
-        return repeat_interval
-    end)
+  HumanGuardsAI:Start()
+  --UndeadGuardsAI:Start()
 end
 
 --[[
@@ -208,6 +207,14 @@ function GameMode:InitGameMode()
 
   -- Tables that will hold the buildings for every team
   humanBuildings = {}
+  humanBuildingAbilities = {}
+  for row=1,6 do
+    humanBuildingAbilities[row] = {}
+    humanBuildingAbilities[row][1] = 0
+    humanBuildingAbilities[row][2] = 0
+    humanBuildingAbilities[row][3] = 0
+    humanBuildingAbilities[row][4] = 1
+  end
   humanUpgradeBuildings = {}
   humanMeleeGuards = {}
   humanRangedGuards = {}
