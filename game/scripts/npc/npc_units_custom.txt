@@ -226,6 +226,7 @@
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
         "Level"             "25"
         "ModelScale"        "1"
+        "CanBeDominated"    "0"
 
         "precache"
         {
@@ -277,6 +278,7 @@
         "SoundSet"          "Building_RadiantTower"
         "Level"             "25"
         "ModelScale"        "1"
+        "CanBeDominated"    "0"
 
         "precache"
         {
@@ -1545,8 +1547,8 @@
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "50"     // Damage range min.
-        "AttackDamageMax"        "60"     // Damage range max.
+        "AttackDamageMin"        "30"     // Damage range min.
+        "AttackDamageMax"        "40"     // Damage range max.
         "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
         "AttackRate"             "2.5"     // Speed of attack.
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
@@ -1627,8 +1629,8 @@
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "65"     // Damage range min.
-        "AttackDamageMax"        "75"     // Damage range max.
+        "AttackDamageMin"        "45"     // Damage range min.
+        "AttackDamageMax"        "55"     // Damage range max.
         "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
         "AttackRate"             "2.3"     // Speed of attack.
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
@@ -1709,8 +1711,8 @@
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "80"     // Damage range min.
-        "AttackDamageMax"        "90"     // Damage range max.
+        "AttackDamageMin"        "60"     // Damage range min.
+        "AttackDamageMax"        "70"     // Damage range max.
         "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
         "AttackRate"             "2"     // Speed of attack.
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
@@ -1791,8 +1793,8 @@
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "95"     // Damage range min.
-        "AttackDamageMax"        "105"     // Damage range max.
+        "AttackDamageMin"        "75"     // Damage range min.
+        "AttackDamageMax"        "85"     // Damage range max.
         "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
         "AttackRate"             "1.7"     // Speed of attack.
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
