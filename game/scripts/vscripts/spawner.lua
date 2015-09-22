@@ -145,7 +145,7 @@ function Spawner:SpawnUndeadWaves()
                 end
             end
             if ability_4 > 3 then
-                Spawner:SpawnAndMoveAtPosition(siege_units, "human_siege_engine", undeadSpawners[position], waypoint, team)
+                Spawner:SpawnAndMoveAtPosition(meat_wagons, "undead_meat_wagon", undeadSpawners[position], waypoint, team)
             end
         end
 

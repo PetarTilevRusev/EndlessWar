@@ -3073,7 +3073,7 @@
     "undead_crypt_fiend_upgrade"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"human_crypt_fiend_upgrade"
+		"AbilityTextureName"			"undead_crypt_fiend_upgrade"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"AbilityGoldCost"				"300 500 700"
 		"AbilitySharedWithTeammates" 	"1"
@@ -3145,42 +3145,15 @@
 		}
 	}
 
-	"double_attack"
+	"crypt_fiend_double_attack"
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"             "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"    "undead_crypt_fiend_double_attack"
-	    "MaxLevel"				"4"
-	    
-	    // Special
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"                      "FIELD_INTEGER"
-	            "cooldown"            			"0 10 5 3"
-	        }
-	    }
-	    
-	    // Data driven
-	    //-------------------------------------------------------------------------------------------------------------
-	    "Modifiers"
-	    {
-	        "eagle_eye_modifier"
-	        {
-	            "Passive"           "1"
-	            "IsPurgable"        "0"
-	            "IsHidden"          "1"
-	            
-	            "Properties"
-	            {
-	                "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"  "%bonus_attack_range"
-	            }
-	        }
-	    }
+	    "BaseClass"             		"ability_datadriven"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"  
+	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	    "AbilityTextureName"            "weaver_geminate_attack"
 	}
 
 	"undead_banshee_upgrade"

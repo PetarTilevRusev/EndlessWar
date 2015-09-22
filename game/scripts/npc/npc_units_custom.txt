@@ -1157,7 +1157,7 @@
         "MagicalResistance"     "100"     // Magical protection.
 
         // Attack
-        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
         "AttackDamageMin"        "100"     // Damage range min.
         "AttackDamageMax"        "120"     // Damage range max.
         "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
@@ -2314,7 +2314,7 @@
         "Model"             "models/items/courier/deathripper/deathripper.vmdl"  // Model.
         "BaseClass"         "npc_dota_building"  // Class of entity of link to.
         "Level"             "25"
-        "ModelScale"        "0.5"
+        "ModelScale"        "2"
 
         "precache"
         {
@@ -3083,6 +3083,67 @@
         }
     }
 
+    "undead_meat_wagon"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/creeps/lane_creeps/creep_bad_siege/creep_bad_siege.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "Level"             "1"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "particle"  "particles/base_attacks/ranged_siege_bad.vpcf"
+        }
+
+        // Armor
+        "ArmorPhysical"         "5"     // Physical protection.
+        "MagicalResistance"     "100"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "100"     // Damage range min.
+        "AttackDamageMax"        "120"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "3"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "1200"   // Range within a target can be attacked.
+        "ProjectileModel"         "particles/base_attacks/ranged_siege_bad.vpcf" // Particle system model for projectile.
+        "ProjectileSpeed"         "1000"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"            "90"     // Experience earn.
+        "BountyGoldMin"       "99"     // Gold earned min.
+        "BountyGoldMax"       "119"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "80"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "300"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "800"     // Base health.
+        "StatusHealthRegen"     "0"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+    }
+
     //================================================================
     // Crypt Fiend
     //================================================================
@@ -3093,7 +3154,6 @@
         //----------------------------------------------------------------
         "Model"             "models/heroes/weaver/weaver.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "GameSoundsFile"    "soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
         "SoundSet"          "Hero_Weaver"
         "Level"             "1"
         "ModelScale"        "0.8"
@@ -3103,11 +3163,6 @@
             "soundfile" "soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
             "particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
         }
-        
-        // Abilities
-        "Ability1"          "double_strike"      // Ability 1.
-        "Ability2"          "hide"      // Ability 2.
-        "Ability3"          "time_warp"      // Ability 3.
 
         // Armor
         "ArmorPhysical"         "0"     // Physical protection.
@@ -3123,7 +3178,7 @@
         "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
         "AttackRange"             "550"   // Range within a target can be attacked.
         "ProjectileModel"     "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf" // Particle system model for projectile.
-        "ProjectileSpeed"     "1500"   // Speed of projectile.
+        "ProjectileSpeed"     "1000"   // Speed of projectile.
 
         // Bounty
         "BountyXP"          "10"     // Experience earn.
@@ -3162,10 +3217,247 @@
             "DisableClumpingBehavior"       "1"
             "AttachWearables"
             {
-                "Wearable1" { "ItemDef" "277" }
-                "Wearable2" { "ItemDef" "278" }
-                "Wearable3" { "ItemDef" "279" }
-                "Wearable4" { "ItemDef" "280" }
+                "Wearable1" { "ItemDef" "277" } // Head
+                "Wearable2" { "ItemDef" "278" } // Legs
+                "Wearable3" { "ItemDef" "279" } // Arms
+                "Wearable4" { "ItemDef" "280" } // Back
+            }
+        }
+    }
+
+    "crypt_fiend_2"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/weaver/weaver.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_Weaver"
+        "Level"             "2"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
+            "particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+        }
+
+        //Abilities
+        "AbilityLayout"     "1"
+        "Ability1"          "crypt_fiend_double_attack"
+
+        // Armor
+        "ArmorPhysical"         "0"     // Physical protection.
+        "MagicalResistance"     "10"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "55"     // Damage range min.
+        "AttackDamageMax"        "60"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "2"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "550"   // Range within a target can be attacked.
+        "ProjectileModel"     "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf" // Particle system model for projectile.
+        "ProjectileSpeed"     "1000"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "30"     // Experience earn.
+        "BountyGoldMin"       "49"     // Gold earned min.
+        "BountyGoldMax"       "59"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "400"     // Base health.
+        "StatusHealthRegen"     "0"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "277" } // Head
+                "Wearable2" { "ItemDef" "4637" } // Legs
+                "Wearable3" { "ItemDef" "4570" } // Arms
+                "Wearable4" { "ItemDef" "280" } // Back
+            }
+        }
+    }
+
+    "crypt_fiend_3"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/weaver/weaver.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_Weaver"
+        "Level"             "3"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
+            "particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+        }
+
+        //Abilities
+        "AbilityLayout"     "1"
+        "Ability1"          "crypt_fiend_double_attack"
+
+        // Armor
+        "ArmorPhysical"         "0"     // Physical protection.
+        "MagicalResistance"     "20"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "75"     // Damage range min.
+        "AttackDamageMax"        "80"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1.5"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "550"   // Range within a target can be attacked.
+        "ProjectileModel"     "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf" // Particle system model for projectile.
+        "ProjectileSpeed"     "1000"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "30"     // Experience earn.
+        "BountyGoldMin"       "59"     // Gold earned min.
+        "BountyGoldMax"       "69"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "500"     // Base health.
+        "StatusHealthRegen"     "0"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "4636" } // Head
+                "Wearable2" { "ItemDef" "4637" } // Legs
+                "Wearable3" { "ItemDef" "4570" } // Arms
+                "Wearable4" { "ItemDef" "280" } // Back
+            }
+        }
+    }
+
+    "crypt_fiend_4"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/weaver/weaver.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_Weaver"
+        "Level"             "4"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
+            "particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+        }
+
+        //Abilities
+        "AbilityLayout"     "1"
+        "Ability1"          "crypt_fiend_double_attack"
+
+        // Armor
+        "ArmorPhysical"         "0"     // Physical protection.
+        "MagicalResistance"     "30"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "95"     // Damage range min.
+        "AttackDamageMax"        "100"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "550"   // Range within a target can be attacked.
+        "ProjectileModel"     "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf" // Particle system model for projectile.
+        "ProjectileSpeed"     "1000"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "40"     // Experience earn.
+        "BountyGoldMin"       "69"     // Gold earned min.
+        "BountyGoldMax"       "79"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "600"     // Base health.
+        "StatusHealthRegen"     "0"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "4636" } // Head
+                "Wearable2" { "ItemDef" "4637" } // Legs
+                "Wearable3" { "ItemDef" "4570" } // Arms
+                "Wearable4" { "ItemDef" "4635" } // Back
             }
         }
     }
