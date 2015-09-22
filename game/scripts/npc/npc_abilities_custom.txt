@@ -2538,7 +2538,7 @@
 			"02"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"regen"							"0.5 1 1.5 2"
+				"regen"							"0 0.5 0.5 1"
 			}
 			"03"
 			{
@@ -2592,6 +2592,94 @@
 				"health"						"650"
 			}
 		}
+	}
+
+	"ghoul_feast"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"             		"ability_datadriven"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	    "AbilityTextureName"            "life_stealer_feast"
+
+	    "precache"
+	    {
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+	        "particle"          "particles/units/heroes/hero_life_stealer/life_stealer_feast.vpcf"
+	    }
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "hp_leech_percent"      "2 4 6 8"
+	        }
+	    }
+	    "Modifiers"
+	    {
+	        "modifier_feast_datadriven"
+	        {
+	            "Passive"           "1"
+	            "IsHidden"          "1"
+	            "IsDebuff"          "0"
+
+	            "OnAttackStart"
+	            // "%attack_damage" is set to the damage value before mitigation
+	            {
+	                "RemoveModifier"
+	                {
+	                    "ModifierName"  	"feast_damage_modifier"
+	                    "Target"        	"CASTER"
+	                }
+
+	                "RunScript"
+	                {
+	                    "ScriptFile"    	"units/undead/ghoul.lua"
+	                    "Function"      	"FeastAttack"
+	                    "feast_modifier"    "feast_damage_modifier"
+	                }
+	            }
+
+	            "OnAttack"
+	            {
+	                "FireEffect"
+	                {
+	                    "EffectName"        "particles/generic_gameplay/generic_lifesteal.vpcf"
+	                    "EffectAttachType"  "follow_origin"
+	                    "Target"            "CASTER"
+	                }
+
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "units/undead/ghoul.lua"
+	                    "Function"      "FeastHeal"
+	                }
+	            }           
+	        }
+
+	        "feast_damage_modifier"
+	        {
+	            "IsHidden"      "1"
+	            "IsPurgable"    "0"
+
+	            "OnAttackLanded"
+	            {
+	                "RemoveModifier"
+	                {
+	                    "ModifierName"  "feast_damage_modifier"
+	                    "Target"        "CASTER"
+	                }
+	            }
+
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "1"
+	            }
+	        }
+	    }
 	}
 
 	"undead_abomination_upgrade"
@@ -2667,6 +2755,147 @@
 				"health"						"1100"
 			}
 		}
+	}
+
+	"abomination_disease_cloud"
+	{
+		// General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"             		"ability_datadriven"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+	    "AbilityTextureName"            "abomination_disease_cloud"
+
+	    // Precache
+	    //-------------------------------------------------------------------------------------------------------------
+	    "precache"
+	    {
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+        	"particle"          "particles/units/heroes/hero_pudge/pudge_rot.vpcf"
+	    }
+	    
+	    // Damage
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityDamage"                 "0 5 10 20"
+
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                  "FIELD_FLOAT"
+	            "duration"                  "3.0"
+	        }
+	        "02"
+	        {
+	        	"var_type"					"FIELD_FLOAT"
+	        	"disease_cloud_tick"		"0.2"
+	        }
+	        "03"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "disease_cloud_slow"        "0 -5 -10 -15"
+	        }
+	        "04"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "disease_cloud_radius"      "250"
+	        }
+	        "05"
+	        {
+	        	"var_type"                  "FIELD_INTEGER"
+	            "disease_cloud_tick_damage" "0 1 2 4"
+	        }
+	    }
+
+	    "Modifiers"
+	    {
+	        "abomination_disease_cloud_modifier"
+	        {
+	            "Passive"   "1"
+	            "IsHidden"  "1"
+
+	            "OnTakeDamage"
+	            {
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"      "abomination_disease_cloud_debuff_modifier"
+	                    "Target"            "CASTER"
+	                }
+
+	                "RunScript"
+	                {
+	                	"ScriptFile"	"units/undead/abomination.lua"
+	                	"Function"		"DiseaseCloudStartSound"
+	                }
+	            }
+	        }
+
+	        "abomination_disease_cloud_debuff_modifier"
+	        {
+	            "IsDebuff"      "1"
+	            "Duration"		"%duration"
+
+            	"ThinkInterval" "%disease_cloud_tick"
+
+	            "OnIntervalThink"
+	            {
+	                "ActOnTargets"
+	                {
+	                    "Target"
+	                    {
+	                        "Center" "CASTER"
+	                        "Radius" "%disease_cloud_radius"
+	                        "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+	                        "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                    }
+
+	                    "Action"
+	                    {
+	                        "Damage"
+	                        {
+	                            "Target"    "TARGET"
+	                            "Type"      "DAMAGE_TYPE_MAGICAL"
+	                            "Damage"    "%disease_cloud_tick_damage"
+	                        }
+	                    }
+	                }
+	            }
+
+	            "OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"    	"particles/units/heroes/hero_pudge/pudge_rot.vpcf"
+	                    "EffectAttachType"  "follow_origin"
+	                    "Target"        	"CASTER"
+
+	                    "ControlPoints"
+	                    {
+	                        "00"    "0 0 0"
+	                        "01"    "%disease_cloud_radius 0 0"
+	                    }
+	                }
+	            }
+
+	            "Aura"          "disease_cloud_slow_modifier"
+	            "Aura_Radius"   "%disease_cloud_radius"
+	            "Aura_Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	        }
+        }
+
+        "disease_cloud_slow_modifier"
+        {
+            "IsDebuff"  "1"         
+
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%disease_cloud_slow"
+            }
+        }
 	}
 
 	"undead_meat_wagon_disabled"

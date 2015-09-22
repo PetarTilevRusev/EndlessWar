@@ -139,9 +139,9 @@ function Spawner:SpawnUndeadWaves()
             end 
             if ability_4 > 2 then
                 if ability_2 >= 2 then
-                    Spawner:SpawnAndMoveAtPosition(knights, ("knight_"..ability_2), undeadSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(abominations, ("abomination_"..ability_2), undeadSpawners[position], waypoint, team)
                 else
-                    Spawner:SpawnAndMoveAtPosition(knights, "knight", undeadSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(abominations, "abomination", undeadSpawners[position], waypoint, team)
                 end
             end
             if ability_4 > 3 then

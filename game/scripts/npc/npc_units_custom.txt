@@ -384,8 +384,8 @@
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
         
         // Vision
-        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
-        "VisionNighttimeRange"  "900"   // Range of vision at night time.
+        "VisionDaytimeRange"    "1500"   // Range of vision during day light.
+        "VisionNighttimeRange"  "1200"   // Range of vision at night time.
 
         "Creature"
         {
@@ -493,8 +493,8 @@
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
         
         // Vision
-        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
-        "VisionNighttimeRange"  "900"   // Range of vision at night time.
+        "VisionDaytimeRange"    "1500"   // Range of vision during day light.
+        "VisionNighttimeRange"  "1200"   // Range of vision at night time.
 
         "Creature"
         {
@@ -2551,7 +2551,7 @@
         }
 
         // Abilities
-        "AbilityLayout"     "1"
+        "AbilityLayout"     "0"
         "Ability1"          "ghoul_feast"
 
         // Armor
@@ -2588,7 +2588,7 @@
 
         // Status
         "StatusHealth"        "450"     // Base health.
-        "StatusHealthRegen"     "0"     // Health regeneration rate.
+        "StatusHealthRegen"    "0.5"     // Health regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
@@ -2632,7 +2632,7 @@
         "Ability1"          "ghoul_feast"
 
         // Armor
-        "ArmorPhysical"         "2"     // Physical protection.
+        "ArmorPhysical"         "1"     // Physical protection.
         "MagicalResistance"     "20"     // Magical protection.
 
         // Attack
@@ -2665,7 +2665,7 @@
 
         // Status
         "StatusHealth"        "550"     // Base health.
-        "StatusHealthRegen"     "1"     // Health regeneration rate.
+        "StatusHealthRegen"     "0.5"     // Health regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
@@ -2710,7 +2710,7 @@
         "Ability1"          "ghoul_feast"
 
         // Armor
-        "ArmorPhysical"         "3"     // Physical protection.
+        "ArmorPhysical"         "2"     // Physical protection.
         "MagicalResistance"     "30"     // Magical protection.
 
         // Attack
@@ -2768,11 +2768,326 @@
         }
     }
 
+    "abomination"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/pudge/pudge.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_Pudge"
+        "Level"             "1"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+        }
+
+        // Armor
+        "ArmorPhysical"         "0"     // Physical protection.
+        "MagicalResistance"     "10"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "45"     // Damage range min.
+        "AttackDamageMax"        "60"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "2"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "100"   // Range within a target can be attacked.
+        "ProjectileModel"     "" // Particle system model for projectile.
+        "ProjectileSpeed"     ""   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "25"     // Experience earn.
+        "BountyGoldMin"       "39"     // Gold earned min.
+        "BountyGoldMax"       "49"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "350"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "650"     // Base health.
+        "StatusHealthRegen"     "0.5"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "47" }  // Hook
+                "Wearable2" { "ItemDef" "258" }  // Back
+                "Wearable3" { "ItemDef" "259" }  // Off hand
+                "Wearable4" { "ItemDef" "260" }  // Shoulder
+                "Wearable5" { "ItemDef" "261" }  // Arms
+                "Wearable6" { "ItemDef" "262" }  // Head
+            }
+        }
+    }
+
+    "abomination_2"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/pudge/pudge.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_Pudge"
+        "Level"             "2"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+        }
+
+        "AbilityLayout"     "1"
+        "Ability1"          "abomination_disease_cloud"
+
+        // Armor
+        "ArmorPhysical"         "1"     // Physical protection.
+        "MagicalResistance"     "20"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "55"     // Damage range min.
+        "AttackDamageMax"        "70"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1.8"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "100"   // Range within a target can be attacked.
+        "ProjectileModel"     "" // Particle system model for projectile.
+        "ProjectileSpeed"     ""   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "35"     // Experience earn.
+        "BountyGoldMin"       "49"     // Gold earned min.
+        "BountyGoldMax"       "59"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "350"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "800"     // Base health.
+        "StatusHealthRegen"    "1"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "6116" }  // Hook
+                "Wearable2" { "ItemDef" "258" }  // Back
+                "Wearable3" { "ItemDef" "6212" }  // Off hand
+                "Wearable4" { "ItemDef" "260" }  // Shoulder
+                "Wearable5" { "ItemDef" "261" }  // Arms
+                "Wearable6" { "ItemDef" "262" }  // Head
+            }
+        }
+    }
+
+    "abomination_3"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/pudge/pudge.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_Pudge"
+        "Level"             "3"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+        }
+
+        "AbilityLayout"     "1"
+        "Ability1"          "abomination_disease_cloud"
+
+        // Armor
+        "ArmorPhysical"         "1"     // Physical protection.
+        "MagicalResistance"     "30"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "75"     // Damage range min.
+        "AttackDamageMax"        "90"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1.6"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "100"   // Range within a target can be attacked.
+        "ProjectileModel"     "" // Particle system model for projectile.
+        "ProjectileSpeed"     ""   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "45"     // Experience earn.
+        "BountyGoldMin"       "59"     // Gold earned min.
+        "BountyGoldMax"       "69"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "350"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "950"     // Base health.
+        "StatusHealthRegen"     "1.5"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "6116" }  // Hook
+                "Wearable2" { "ItemDef" "258" }  // Back
+                "Wearable3" { "ItemDef" "6212" }  // Off hand
+                "Wearable4" { "ItemDef" "6203" }  // Shoulder
+                "Wearable5" { "ItemDef" "6204" }  // Belt
+                "Wearable6" { "ItemDef" "261" }  // Arms
+                "Wearable7" { "ItemDef" "262" }  // Head
+            }
+        }
+    }
+
+    "abomination_4"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/pudge/pudge.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_Pudge"
+        "Level"             "4"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+        }
+
+        "AbilityLayout"     "1"
+        "Ability1"          "abomination_disease_cloud"
+
+        // Armor
+        "ArmorPhysical"         "2"     // Physical protection.
+        "MagicalResistance"     "40"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "105"     // Damage range min.
+        "AttackDamageMax"        "120"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1.4"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "100"   // Range within a target can be attacked.
+        "ProjectileModel"     "" // Particle system model for projectile.
+        "ProjectileSpeed"     ""   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"            "55"     // Experience earn.
+        "BountyGoldMin"       "69"     // Gold earned min.
+        "BountyGoldMax"       "79"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "350"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "1100"     // Base health.
+        "StatusHealthRegen"     "2"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "6116" }  // Hook
+                "Wearable2" { "ItemDef" "6115" }  // Back
+                "Wearable3" { "ItemDef" "6212" }  // Off hand
+                "Wearable4" { "ItemDef" "6203" }  // Shoulder
+                "Wearable5" { "ItemDef" "6204" }  // Belt
+                "Wearable6" { "ItemDef" "6202" }  // Arms
+                "Wearable7" { "ItemDef" "6007" }  // Head
+            }
+        }
+    }
+
     //================================================================
     // Crypt Fiend
     //================================================================
 
-  "crypt_fiend"
+    "crypt_fiend"
     {
         // GeneralS
         //----------------------------------------------------------------
