@@ -38,7 +38,7 @@ function ApplyBuildingUpgrade( event )
 
     if caster_name == "human_melee_barracks" then
         if ability_level == 3 then
-            caster:FindAbilityByName("human_siege_unit_disabled"):SetLevel(1)
+            caster:FindAbilityByName("human_siege_engine_disabled"):SetLevel(1)
             caster:RemoveAbility("human_melee_barracks_upgrade")
             caster:AddAbility("human_melee_barracks_upgrade_disabled"):SetLevel(4)
         elseif ability_level == 2 then
@@ -66,7 +66,7 @@ function ApplyBuildingUpgrade( event )
 end
 
 -- Applyes upgrades from the Balacksmith
-function ApplyUnitUpgrade( event )
+function ApplyBlacksmithUpgrade( event )
     local caster = event.caster
     local ability = event.ability
     local ability_name = ability:GetName()

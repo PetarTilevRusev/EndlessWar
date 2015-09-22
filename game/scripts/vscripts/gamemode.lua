@@ -220,6 +220,14 @@ function GameMode:InitGameMode()
   humanRangedGuards = {}
 
   undeadBuildings = {}
+  undeadBuildingAbilities = {}
+  for row=1,6 do
+    undeadBuildingAbilities[row] = {}
+    undeadBuildingAbilities[row][1] = 0
+    undeadBuildingAbilities[row][2] = 0
+    undeadBuildingAbilities[row][3] = 0
+    undeadBuildingAbilities[row][4] = 1
+  end
   undeadUpgradeBuildings = {}
   undeadMeleeGuards = {}
   undeadRangedGuards = {}

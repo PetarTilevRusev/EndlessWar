@@ -13,6 +13,57 @@ function ApplyKingUpgrade( event )
     SetStackCount( caster, caster, modifier_name)
 end
 
+function UpgradeUnit( event )
+    local caster = event.caster
+    local ability = event.ability
+    local ability_level = ability:GetLevel()
+    local ability_name = ability:GetName()
+
+    --Don't upgrade if the ability is maxed and replace it with empty one
+    if ability_level == 3 then
+        caster:RemoveAbility(ability_name)
+        caster:AddAbility(ability_name.."_disabled"):SetLevel(ability_level + 1)
+    else
+        ability:SetLevel(ability_level + 1)
+    end
+end
+
+function ApplyBuildingUpgrade( event )
+    local caster = event.caster
+    local caster_name = caster:GetUnitName()
+    local ability = event.ability
+    local ability_level = ability:GetLevel()
+    local ability_name = ability:GetName()
+
+    if caster_name == "undead_melee_barracks" then
+        if ability_level == 3 then
+            caster:FindAbilityByName("undead_meat_wagon_disabled"):SetLevel(1)
+            caster:RemoveAbility("undead_melee_barracks_upgrade")
+            caster:AddAbility("undead_melee_barracks_upgrade_disabled"):SetLevel(4)
+        elseif ability_level == 2 then
+            caster:FindAbilityByName("undead_abomination_upgrade"):SetLevel(1)
+            caster:FindAbilityByName("undead_melee_barracks_upgrade"):SetLevel(3)
+        elseif ability_level == 1 then
+            caster:FindAbilityByName("undead_ghoul_upgrade"):SetLevel(1)
+            caster:FindAbilityByName("undead_melee_barracks_upgrade"):SetLevel(2)
+        end
+    end
+
+    if caster_name == "undead_ranged_barracks" then
+        if ability_level == 3 then
+            caster:FindAbilityByName("undead_necromancer_upgrade"):SetLevel(1)
+            caster:RemoveAbility("undead_ranged_barracks_upgrade")
+            caster:AddAbility("undead_ranged_barracks_upgrade_disabled"):SetLevel(4)
+        elseif ability_level == 2 then
+            caster:FindAbilityByName("undead_banshee_upgrade"):SetLevel(1)
+            caster:FindAbilityByName("undead_ranged_barracks_upgrade"):SetLevel(3)
+        elseif ability_level == 1 then
+            caster:FindAbilityByName("undead_crypt_fiend_upgrade"):SetLevel(1)
+            caster:FindAbilityByName("undead_ranged_barracks_upgrade"):SetLevel(2)
+        end
+    end
+end
+
 function ApplyHealthUpgrade( unit, ability )
     local health_bonus = ability:GetLevelSpecialValueFor("health", ability:GetLevel())
     local max_health = unit:GetMaxHealth()

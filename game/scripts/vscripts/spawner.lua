@@ -11,7 +11,7 @@ function Spawner:SpawnHumanWaves()
 
     local footmans = 4
     local knights = 1
-    local siege_units = 1
+    local siege_engines = 1
     local riflemans = 1
     local sorcerrers = 1
     local healers = 1
@@ -60,7 +60,7 @@ function Spawner:SpawnHumanWaves()
                 end
             end
             if ability_4 > 3 then
-                Spawner:SpawnAndMoveAtPosition(siege_units, "human_siege_unit", humanSpawners[position], waypoint, team)
+                Spawner:SpawnAndMoveAtPosition(siege_engines, "human_siege_engine", humanSpawners[position], waypoint, team)
             end
         end
 
@@ -91,25 +91,86 @@ end
 --[[Undead units
 =============================================================================================================]]
 function Spawner:SpawnUndeadWaves()
-    local undead_mele_spawn_point_1 = Entities:FindByName( nil, "undead_mele_spawner_1"):GetAbsOrigin()
-    local undead_mele_spawn_point_2 = Entities:FindByName( nil, "undead_mele_spawner_2"):GetAbsOrigin()
-    local undead_range_spawn_point_1 = Entities:FindByName( nil, "undead_range_spawner_1"):GetAbsOrigin()
-    local undead_range_spawn_point_2 = Entities:FindByName( nil, "undead_range_spawner_2"):GetAbsOrigin()
-    local undead_mele_spawn_point_3 = Entities:FindByName( nil, "undead_mele_spawner_3"):GetAbsOrigin()
-    local undead_range_spawn_point_3 = Entities:FindByName( nil, "undead_range_spawner_3"):GetAbsOrigin()
     local undead_waypoint_1 = Entities:FindByName(nil, "undead_waypoint_night_elf_side")
     local undead_waypoint_2 = Entities:FindByName(nil, "undead_waypoint_human_side")
     local undead_waypoint_3 = Entities:FindByName(nil, "undead_waypoint_orc_side")
-    local ghouls = 14
-    local crypt_fiends = 5
+    local ghouls = 4
+    local abominations = 1
+    local meat_wagons = 1
+    local crypt_fiends = 1
+    local banshees = 1
+    local necromancers = 1
     local team = DOTA_TEAM_BADGUYS
 
-    Spawner:SpawnAndMoveAtPosition(ghouls, "ghoul", undead_mele_spawn_point_1, undead_waypoint_1, team)
-    Spawner:SpawnAndMoveAtPosition(crypt_fiends, "crypt_fiend", undead_range_spawn_point_1, undead_waypoint_1, team)
-    Spawner:SpawnAndMoveAtPosition(ghouls, "ghoul", undead_mele_spawn_point_2, undead_waypoint_2, team)
-    Spawner:SpawnAndMoveAtPosition(crypt_fiends, "crypt_fiend", undead_range_spawn_point_2, undead_waypoint_2, team)
-    Spawner:SpawnAndMoveAtPosition(ghouls, "ghoul", undead_mele_spawn_point_3, undead_waypoint_3, team)
-    Spawner:SpawnAndMoveAtPosition(crypt_fiends, "crypt_fiend", undead_range_spawn_point_3, undead_waypoint_3, team)
+    --Loop trough all human buildings and check the levels of all the abilities then add unit level and new units to spawn
+    for position, building in ipairs(undeadBuildings) do
+        
+        local ability_1
+        local ability_2
+        local ability_3
+        local ability_4
+
+        if IsValidEntity(building) then 
+            ability_1 = building:GetAbilityByIndex(0):GetLevel()
+            ability_2 = building:GetAbilityByIndex(1):GetLevel()
+            ability_3 = building:GetAbilityByIndex(2):GetLevel()
+            ability_4 = building:GetAbilityByIndex(3):GetLevel()
+        else
+            ability_1 = undeadBuildingAbilities[position][1]
+            ability_2 = undeadBuildingAbilities[position][2]
+            ability_3 = undeadBuildingAbilities[position][3]
+            ability_4 = undeadBuildingAbilities[position][4]
+        end
+        
+        local waypoint
+        if undeadBuildings[position] == undeadBuildings[1] or undeadBuildings[position] == undeadBuildings[2] then
+            waypoint = undead_waypoint_1
+        elseif undeadBuildings[position] == undeadBuildings[3] or undeadBuildings[position] == undeadBuildings[4] then
+            waypoint = undead_waypoint_2
+        elseif undeadBuildings[position] == undeadBuildings[5] or undeadBuildings[position] == undeadBuildings[6] then
+            waypoint = undead_waypoint_3
+        end
+
+        if position % 2 ~= 0 then
+            if ability_1 >= 2 then
+                Spawner:SpawnAndMoveAtPosition(ghouls, ("ghoul_"..ability_1), undeadSpawners[position], waypoint, team)
+            else
+                Spawner:SpawnAndMoveAtPosition(ghouls, "ghoul", undeadSpawners[position], waypoint, team)
+            end 
+            if ability_4 > 2 then
+                if ability_2 >= 2 then
+                    Spawner:SpawnAndMoveAtPosition(knights, ("knight_"..ability_2), undeadSpawners[position], waypoint, team)
+                else
+                    Spawner:SpawnAndMoveAtPosition(knights, "knight", undeadSpawners[position], waypoint, team)
+                end
+            end
+            if ability_4 > 3 then
+                Spawner:SpawnAndMoveAtPosition(siege_units, "human_siege_engine", undeadSpawners[position], waypoint, team)
+            end
+        end
+
+        if position % 2 == 0 then
+            if ability_1 >= 2 then
+                Spawner:SpawnAndMoveAtPosition(crypt_fiends, ("crypt_fiend_"..ability_1), undeadSpawners[position], waypoint, team)
+            else
+                Spawner:SpawnAndMoveAtPosition(crypt_fiends, "crypt_fiend", undeadSpawners[position], waypoint, team)
+            end
+            if ability_4 > 2 then
+                if ability_2 >= 2 then
+                    Spawner:SpawnAndMoveAtPosition(sorcerrers, ("sorcerer_"..ability_2), undeadSpawners[position], waypoint, team)
+                else
+                    Spawner:SpawnAndMoveAtPosition(sorcerrers, "sorcerer", undeadSpawners[position], waypoint, team)
+                end
+            end
+            if ability_4 > 3 then
+                if ability_3 >= 2 then
+                    Spawner:SpawnAndMoveAtPosition(sorcerrers, ("priest_"..ability_3), undeadSpawners[position], waypoint, team)
+                else
+                    Spawner:SpawnAndMoveAtPosition(sorcerrers, "priest", undeadSpawners[position], waypoint, team)
+                end
+            end
+        end
+    end
 end
 
 --[[Night Elf units

@@ -8,12 +8,12 @@ end
 function Base:CreateHumanBase()
     local team = DOTA_TEAM_GOODGUYS
     local king_spawn_point = Entities:FindByName(nil, "human_king"):GetAbsOrigin()
-    local human_blacksmith_position = Entities:FindByName(nil, "human_blacksmith"):GetAbsOrigin()
-    local human_research_facility_position = Entities:FindByName(nil, "human_research_facility"):GetAbsOrigin()
+    local blacksmith_position = Entities:FindByName(nil, "human_blacksmith"):GetAbsOrigin()
+    local research_facility_position = Entities:FindByName(nil, "human_research_facility"):GetAbsOrigin()
 
     Base:Spawn("human_king", king_spawn_point, team)
-    Base:Spawn("human_blacksmith", human_blacksmith_position, team)
-    Base:Spawn("human_research_facility", human_research_facility_position, team)
+    Base:Spawn("human_blacksmith", blacksmith_position, team)
+    Base:Spawn("human_research_facility", research_facility_position, team)
 
     -- Spawn the barracks
     for i=1,3 do
@@ -44,16 +44,28 @@ end
 
 function Base:CreateUndeadBase()
     local team = DOTA_TEAM_BADGUYS
-
     local king_spawn_point = Entities:FindByName(nil, "undead_king"):GetAbsOrigin()
-    Base:Spawn("undead_king", king_spawn_point, team)
+    local graveyard_position = Entities:FindByName(nil, "undead_graveyard"):GetAbsOrigin()
+    local tample_of_the_damned_position = Entities:FindByName(nil, "undead_tample_of_the_damned"):GetAbsOrigin()
 
+    Base:Spawn("undead_king", king_spawn_point, team)
+    Base:Spawn("undead_graveyard", graveyard_position, team)
+    Base:Spawn("undead_tample_of_the_damned", tample_of_the_damned_position, team)
+
+    -- Spawn the barracks
     for i=1,3 do
         local melee_rax_position = Entities:FindByName(nil, ("undead_melee_barracks_"..i)):GetAbsOrigin()
         local ranged_rax_position = Entities:FindByName(nil, ("undead_ranged_barracks_"..i)):GetAbsOrigin()
 
         Base:Spawn("undead_melee_barracks", melee_rax_position, team)
         Base:Spawn("undead_ranged_barracks", ranged_rax_position, team)
+    end
+
+    -- Set the Forward Vector
+    for _,building in pairs(undeadBuildings) do
+        local forward_vector = building:GetForwardVector()
+
+        building:SetForwardVector(forward_vector * (-1))
     end
 end
 
@@ -71,7 +83,7 @@ function Base:Spawn(unit_name, unit_location, team)
         if unit_name == "human_melee_barracks" then
             unit:AddAbility("human_footman_upgrade"):SetLevel(0)
             unit:AddAbility("human_knight_upgrade"):SetLevel(0)
-            unit:AddAbility("human_siege_unit_disabled"):SetLevel(0)
+            unit:AddAbility("human_siege_engine_disabled"):SetLevel(0)
             unit:AddAbility("human_melee_barracks_upgrade"):SetLevel(1)
             unit:AddAbility("building_magic_immune"):SetLevel(1)
 
@@ -99,7 +111,6 @@ function Base:Spawn(unit_name, unit_location, team)
             unit:SetHasInventory(true)
 
             table.insert(humanBuildings, unit)
-            humanBuildings[unit] = {}
             print("The building: "..unit_name.." is created and added into humanBuildings, table number: "..#humanBuildings)
         end
 
@@ -120,6 +131,30 @@ function Base:Spawn(unit_name, unit_location, team)
         if unit_name == "undead_king" then
             -- Start the Undead King AI system
             UndeadKingAI:MakeInstance( unit, { spawnPos = unit_location, aggroRange = 800, leashRange = 1200 } )
+        end
+
+        if unit_name == "undead_melee_barracks" then
+            unit:AddAbility("undead_ghoul_upgrade"):SetLevel(0)
+            unit:AddAbility("undead_abomination_upgrade"):SetLevel(0)
+            unit:AddAbility("undead_meat_wagon_disabled"):SetLevel(0)
+            unit:AddAbility("undead_melee_barracks_upgrade"):SetLevel(1)
+
+            unit:SetHasInventory(true)
+
+            table.insert(undeadBuildings, unit)
+            print("The building: "..unit_name.." is created and added into undeadBuildings, table number: "..#undeadBuildings)
+        end
+
+        if unit_name == "undead_ranged_barracks" then
+            unit:AddAbility("undead_crypt_fiend_upgrade"):SetLevel(0)
+            unit:AddAbility("undead_banshee_upgrade"):SetLevel(0)
+            unit:AddAbility("undead_necromancer_upgrade"):SetLevel(0)
+            unit:AddAbility("undead_ranged_barracks_upgrade"):SetLevel(1)
+
+            unit:SetHasInventory(true)
+
+            table.insert(undeadBuildings, unit)
+            print("The building: "..unit_name.." is created and added into undeadBuildings, table number: "..#undeadBuildings)
         end
     end
 end

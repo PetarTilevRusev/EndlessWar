@@ -133,13 +133,11 @@
         //----------------------------------------------------------------
         "Model"             "models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl"  // Model.
         "BaseClass"         "npc_dota_building"  // Class of entity of link to.
-        "SoundSet"          "Hero_Rattletrap"
         "Level"             "25"
         "ModelScale"        "3"
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds_heroes/game_sounds_rattletrap.vsndevts"
         }
         
         // Abilities
@@ -256,8 +254,6 @@
         // Status
         "StatusHealth"        "2500"     // Base health.
         "StatusHealthRegen"     "5"     // Health regeneration rate.
-        "StatusMana"        "100"     // Base mana.
-        "StatusManaRegen"     "0"     // Mana regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
@@ -309,8 +305,6 @@
         // Status
         "StatusHealth"        "1500"     // Base health.
         "StatusHealthRegen"     "1"     // Health regeneration rate.
-        "StatusMana"        "100"     // Base mana.
-        "StatusManaRegen"     "0"     // Mana regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_GOODGUYS"
@@ -1144,7 +1138,7 @@
         }
     }
 
-    "human_siege_unit"
+    "human_siege_engine"
     {
         // GeneralS
         //----------------------------------------------------------------
@@ -2268,32 +2262,117 @@
         }
     }
 
+    "undead_graveyard"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/props_gameplay/tombstonea01.vmdl"  // Model.
+        "BaseClass"         "npc_dota_building"  // Class of entity of link to.
+        "Level"             "25"
+        "ModelScale"        "2"
+
+        "precache"
+        {
+        }
+        
+        // Abilities
+        "AbilityLayout"     "4"
+        "Ability1"          "undead_units_damage_upgrade"      // Ability 1.
+        "Ability2"          "undead_units_armor_upgrade"      // Ability 2.
+        "Ability3"          "undead_units_speed_upgrade"      // Ability 3.
+        "Ability4"          "undead_units_health_upgrade"
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
+
+        // Bounds
+        "RingRadius"                "150"
+        "HealthBarOffset"           "260"
+        "CollisionSize"             "250"
+        "BoundsHullName"            "DOTA_HULL_SIZE_BARRACKS"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
+
+        // Status
+        "StatusHealth"        "100"     // Base health.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"  "900"   // Range of vision at night time.
+    }
+
+    "undead_tample_of_the_damned"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/items/courier/deathripper/deathripper.vmdl"  // Model.
+        "BaseClass"         "npc_dota_building"  // Class of entity of link to.
+        "Level"             "25"
+        "ModelScale"        "0.5"
+
+        "precache"
+        {
+        }
+        
+        // Abilities
+        "AbilityLayout"     "4"
+        "Ability1"          ""      // Ability 1.
+        "Ability2"          ""      // Ability 2.
+        "Ability3"          ""      // Ability 3.
+        "Ability4"          ""
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
+
+        // Bounds
+        "RingRadius"                "150"
+        "HealthBarOffset"           "260"
+        "CollisionSize"             "250"
+        "BoundsHullName"            "DOTA_HULL_SIZE_BARRACKS"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
+
+        // Status
+        "StatusHealth"        "100"     // Base health.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"  "900"   // Range of vision at night time.
+    }
+
     // Melee Barrack
     "undead_melee_barracks"
     {
         // GeneralS
         //----------------------------------------------------------------
-        "Model"             "models/props_structures/dire_barracks_melee001.vmdl"  // Model.
+        "Model"             "models/props_structures/bad_barracks001_melee.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "SoundSet"          "Building_DireTower"
-        "Level"             "1"
+        "Level"             "25"
         "ModelScale"        "1"
+        "CanBeDominated"    "0"
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds.vsndevts"
         }
-        
-        // Abilities
 
         // Armor
         "ArmorPhysical"         "5"     // Physical protection.
-        "MagicalResistance"     "0"     // Magical protection.
+        "MagicalResistance"     "100"     // Magical protection.
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "0"     // Damage range min.
-        "AttackDamageMax"        "0"     // Damage range max.
         "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
 
         // Bounty
@@ -2308,18 +2387,15 @@
         "BoundsHullName"            "DOTA_HULL_SIZE_BARRACKS"    // Hull type used for navigation/locomotion.
 
         // Movement
-        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
         "MovementSpeed"           "0"   // Speed
 
         // Status
-        "StatusHealth"        "1500"     // Base health.
-        "StatusHealthRegen"     "1"     // Health regeneration rate.
-        "StatusMana"        "100"     // Base mana.
-        "StatusManaRegen"     "0"     // Mana regeneration rate.
+        "StatusHealth"        "2500"     // Base health.
+        "StatusHealthRegen"     "5"     // Health regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_BADGUYS"
-        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
         "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
         
@@ -2332,24 +2408,14 @@
     {
         // GeneralS
         //----------------------------------------------------------------
-        "Model"             "models/props_structures/dire_barracks_ranged001.vmdl"  // Model.
+        "Model"             "models/props_structures/bad_barracks001_ranged.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "SoundSet"          "Building_DireTower"
-        "Level"             "1"
+        "Level"             "25"
         "ModelScale"        "1"
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds.vsndevts"
         }
-        
-        // Abilities
-        "AbilityLayout"     "5"
-        "Ability1"          "upgrade_barrack"      // Ability 1.
-        "Ability2"          "upgrade_rifleman"      // Ability 2.
-        "Ability3"          "empty"      // Ability 3.
-        "Ability4"          "empty"
-        "Ability5"          "empty"
 
         // Armor
         "ArmorPhysical"         "5"     // Physical protection.
@@ -2357,9 +2423,6 @@
 
         // Attack
         "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
-        "AttackDamageMin"        "0"     // Damage range min.
-        "AttackDamageMax"        "0"     // Damage range max.
-        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
 
         // Bounty
         "BountyXP"          "300"     // Experience earn.
@@ -2374,17 +2437,13 @@
 
         // Movement
         "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
-        "MovementSpeed"           "0"   // Speed
 
         // Status
-        "StatusHealth"        "2500"     // Base health.
-        "StatusHealthRegen"     "5"     // Health regeneration rate.
-        "StatusMana"        "100"     // Base mana.
-        "StatusManaRegen"     "0"     // Mana regeneration rate.
+        "StatusHealth"        "1500"     // Base health.
+        "StatusHealthRegen"     "1"     // Health regeneration rate.
 
         // Team
         "TeamName"              "DOTA_TEAM_BADGUYS"
-        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
         "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
         "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
         
@@ -2395,7 +2454,7 @@
 
     // Ghoul
     //================================================================
-  "ghoul"
+    "ghoul"
     {
         // GeneralS
         //----------------------------------------------------------------
@@ -2469,8 +2528,242 @@
             "DisableClumpingBehavior"       "1"
             "AttachWearables"
             {
-                "Wearable1" { "ItemDef" "443" }
-                "Wearable2" { "ItemDef" "444" }
+                "Wearable1" { "ItemDef" "443" } // Belt
+                "Wearable2" { "ItemDef" "444" } // Arms
+            }
+        }
+    }
+
+    "ghoul_2"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/life_stealer/life_stealer.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "GameSoundsFile"    "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+        "SoundSet"          "Hero_LifeStealer"
+        "Level"             "1"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+        }
+
+        // Abilities
+        "AbilityLayout"     "1"
+        "Ability1"          "ghoul_feast"
+
+        // Armor
+        "ArmorPhysical"         "1"     // Physical protection.
+        "MagicalResistance"     "10"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "35"     // Damage range min.
+        "AttackDamageMax"        "40"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1.7"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "100"   // Range within a target can be attacked.
+        "ProjectileModel"     "" // Particle system model for projectile.
+        "ProjectileSpeed"     ""   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "20"     // Experience earn.
+        "BountyGoldMin"       "39"     // Gold earned min.
+        "BountyGoldMax"       "49"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"         "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"           "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "450"     // Base health.
+        "StatusHealthRegen"     "0"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "6475" } // Belt
+                "Wearable2" { "ItemDef" "6476" } // Arms
+            }
+        }
+    }
+
+    "ghoul_3"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/life_stealer/life_stealer.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "GameSoundsFile"    "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+        "SoundSet"          "Hero_LifeStealer"
+        "Level"             "1"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+        }
+
+        // Abilities
+        "AbilityLayout"     "1"
+        "Ability1"          "ghoul_feast"
+
+        // Armor
+        "ArmorPhysical"         "2"     // Physical protection.
+        "MagicalResistance"     "20"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "45"     // Damage range min.
+        "AttackDamageMax"        "50"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1.5"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "100"   // Range within a target can be attacked.
+        "ProjectileModel"     "" // Particle system model for projectile.
+        "ProjectileSpeed"     ""   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "30"     // Experience earn.
+        "BountyGoldMin"       "49"     // Gold earned min.
+        "BountyGoldMax"       "59"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"         "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"           "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "550"     // Base health.
+        "StatusHealthRegen"     "1"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "6475" } // Belt
+                "Wearable2" { "ItemDef" "6476" } // Arms
+                "Wearable3" { "ItemDef" "6477" } // Head
+            }
+        }
+    }
+
+    "ghoul_4"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/life_stealer/life_stealer.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "GameSoundsFile"    "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+        "SoundSet"          "Hero_LifeStealer"
+        "Level"             "1"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+        }
+
+        // Abilities
+        "AbilityLayout"     "1"
+        "Ability1"          "ghoul_feast"
+
+        // Armor
+        "ArmorPhysical"         "3"     // Physical protection.
+        "MagicalResistance"     "30"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "55"     // Damage range min.
+        "AttackDamageMax"        "60"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1.3"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "100"   // Range within a target can be attacked.
+        "ProjectileModel"     "" // Particle system model for projectile.
+        "ProjectileSpeed"     ""   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "40"     // Experience earn.
+        "BountyGoldMin"       "59"     // Gold earned min.
+        "BountyGoldMax"       "69"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"         "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"           "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "650"     // Base health.
+        "StatusHealthRegen"     "1"     // Health regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "6475" } // Belt
+                "Wearable2" { "ItemDef" "6476" } // Arms
+                "Wearable3" { "ItemDef" "6477" } // Head
+                "Wearable6" { "ItemDef" "6478" } // Back
             }
         }
     }
