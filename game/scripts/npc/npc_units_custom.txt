@@ -1588,12 +1588,12 @@
             "DisableClumpingBehavior"       "1"
             "AttachWearables"
             {
-                "Wearable4" { "ItemDef" "27" } // Weapon
-                "Wearable4" { "ItemDef" "28" } // Shield
-                "Wearable1" { "ItemDef" "301" } // Arms
-                "Wearable2" { "ItemDef" "302" } // Head
-                "Wearable3" { "ItemDef" "303" } // Shoulder
-                "Wearable4" { "ItemDef" "304" } // Belt
+                "Wearable1" { "ItemDef" "27" } // Weapon
+                "Wearable2" { "ItemDef" "28" } // Shield
+                "Wearable3" { "ItemDef" "301" } // Arms
+                "Wearable4" { "ItemDef" "302" } // Head
+                "Wearable5" { "ItemDef" "303" } // Shoulder
+                "Wearable6" { "ItemDef" "304" } // Belt
             }
         }
     }
@@ -1670,12 +1670,12 @@
             "DisableClumpingBehavior"       "1"
             "AttachWearables"
             {
-                "Wearable4" { "ItemDef" "8235" } // Weapon
-                "Wearable4" { "ItemDef" "8123" } // Shield
-                "Wearable1" { "ItemDef" "301" } // Arms
-                "Wearable2" { "ItemDef" "302" } // Head
-                "Wearable3" { "ItemDef" "303" } // Shoulder
-                "Wearable4" { "ItemDef" "304" } // Belt
+                "Wearable1" { "ItemDef" "8235" } // Weapon
+                "Wearable2" { "ItemDef" "8123" } // Shield
+                "Wearable3" { "ItemDef" "301" } // Arms
+                "Wearable4" { "ItemDef" "302" } // Head
+                "Wearable5" { "ItemDef" "303" } // Shoulder
+                "Wearable6" { "ItemDef" "304" } // Belt
             }
         }
     }
@@ -1752,12 +1752,12 @@
             "DisableClumpingBehavior"       "1"
             "AttachWearables"
             {
-                "Wearable4" { "ItemDef" "8235" } // Weapon
-                "Wearable4" { "ItemDef" "8123" } // Shield
-                "Wearable1" { "ItemDef" "8124" } // Arms
-                "Wearable2" { "ItemDef" "302" } // Head
-                "Wearable3" { "ItemDef" "303" } // Shoulder
-                "Wearable4" { "ItemDef" "304" } // Belt
+                "Wearable1" { "ItemDef" "8235" } // Weapon
+                "Wearable2" { "ItemDef" "8123" } // Shield
+                "Wearable3" { "ItemDef" "8124" } // Arms
+                "Wearable4" { "ItemDef" "302" } // Head
+                "Wearable5" { "ItemDef" "303" } // Shoulder
+                "Wearable6" { "ItemDef" "304" } // Belt
             }
         }
     }
@@ -1834,12 +1834,12 @@
             "DisableClumpingBehavior"       "1"
             "AttachWearables"
             {
-                "Wearable4" { "ItemDef" "8235" } // Weapon
-                "Wearable4" { "ItemDef" "8123" } // Shield
-                "Wearable1" { "ItemDef" "8124" } // Arms
-                "Wearable2" { "ItemDef" "8122" } // Head
-                "Wearable3" { "ItemDef" "8126" } // Shoulder
-                "Wearable4" { "ItemDef" "8125" } // Belt
+                "Wearable1" { "ItemDef" "8235" } // Weapon
+                "Wearable2" { "ItemDef" "8123" } // Shield
+                "Wearable3" { "ItemDef" "8124" } // Arms
+                "Wearable4" { "ItemDef" "8122" } // Head
+                "Wearable5" { "ItemDef" "8126" } // Shoulder
+                "Wearable6" { "ItemDef" "8125" } // Belt
             }
         }
     }
@@ -3458,6 +3458,324 @@
                 "Wearable2" { "ItemDef" "4637" } // Legs
                 "Wearable3" { "ItemDef" "4570" } // Arms
                 "Wearable4" { "ItemDef" "4635" } // Back
+            }
+        }
+    }
+
+    "banshee"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/death_prophet/death_prophet.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_DeathProphet"
+        "Level"             "1"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+            "particle"  "particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf"
+        }
+
+        // Armor
+        "ArmorPhysical"         "0"     // Physical protection.
+        "MagicalResistance"     "30"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "30"     // Damage range min.
+        "AttackDamageMax"        "40"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "2.5"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "750"   // Range within a target can be attacked.
+        "ProjectileModel"     "particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf" // Particle system model for projectile.
+        "ProjectileSpeed"     "1200"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "30"     // Experience earn.
+        "BountyGoldMin"       "69"     // Gold earned min.
+        "BountyGoldMax"       "79"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "500"     // Base health.
+        "StatusHealthRegen"     "0.5"     // Health regeneration rate.
+        "StatusMana"        "300"     // Base mana.
+        "StatusManaRegen"     "2"     // Mana regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "168" } // Legs
+                "Wearable2" { "ItemDef" "169" } // Head
+                "Wearable3" { "ItemDef" "170" } // Armor
+                "Wearable4" { "ItemDef" "171" } // Belt
+            }
+        }
+    }
+
+    "banshee_2"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/death_prophet/death_prophet.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_DeathProphet"
+        "Level"             "2"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+            "particle"  "particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf"
+        }
+
+        "AbilityLayout"     "2"
+        "Ability1"          "sorcerer_hex"
+
+        // Armor
+        "ArmorPhysical"         "0"     // Physical protection.
+        "MagicalResistance"     "40"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "45"     // Damage range min.
+        "AttackDamageMax"        "55"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "2.3"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "750"   // Range within a target can be attacked.
+        "ProjectileModel"     "particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf" // Particle system model for projectile.
+        "ProjectileSpeed"     "1200"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "40"     // Experience earn.
+        "BountyGoldMin"       "79"     // Gold earned min.
+        "BountyGoldMax"       "89"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "600"     // Base health.
+        "StatusHealthRegen"     "1"     // Health regeneration rate.
+        "StatusMana"        "400"     // Base mana.
+        "StatusManaRegen"     "3"     // Mana regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "168" } // Legs
+                "Wearable2" { "ItemDef" "5095" } // Head
+                "Wearable3" { "ItemDef" "170" } // Armor
+                "Wearable4" { "ItemDef" "171" } // Belt
+            }
+        }
+    }
+
+    "banshee_3"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/death_prophet/death_prophet.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_DeathProphet"
+        "Level"             "3"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+            "particle"  "particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf"
+        }
+
+        "AbilityLayout"     "2"
+        "Ability1"          "sorcerer_hex"
+
+        // Armor
+        "ArmorPhysical"         "0"     // Physical protection.
+        "MagicalResistance"     "50"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "60"     // Damage range min.
+        "AttackDamageMax"        "70"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "2"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "750"   // Range within a target can be attacked.
+        "ProjectileModel"     "particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf" // Particle system model for projectile.
+        "ProjectileSpeed"     "1200"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "50"     // Experience earn.
+        "BountyGoldMin"       "89"     // Gold earned min.
+        "BountyGoldMax"       "99"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "700"     // Base health.
+        "StatusHealthRegen"     "2"     // Health regeneration rate.
+        "StatusMana"        "550"     // Base mana.
+        "StatusManaRegen"     "4"     // Mana regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "5094" } // Legs
+                "Wearable2" { "ItemDef" "5095" } // Head
+                "Wearable3" { "ItemDef" "170" } // Armor
+                "Wearable4" { "ItemDef" "5092" } // Belt
+            }
+        }
+    }
+
+    "banshee_4"
+    {
+        // GeneralS
+        //----------------------------------------------------------------
+        "Model"             "models/heroes/death_prophet/death_prophet.vmdl"  // Model.
+        "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
+        "SoundSet"          "Hero_DeathProphet"
+        "Level"             "4"
+        "ModelScale"        "0.8"
+
+        "precache"
+        {
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+            "particle"  "particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf"
+        }
+
+        "AbilityLayout"     "2"
+        "Ability1"          "sorcerer_hex"
+
+        // Armor
+        "ArmorPhysical"         "0"     // Physical protection.
+        "MagicalResistance"     "60"     // Magical protection.
+
+        // Attack
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"     // Type of attack - melee, ranged, etc.
+        "AttackDamageMin"        "75"     // Damage range min.
+        "AttackDamageMax"        "85"     // Damage range max.
+        "AttackDamageType"       "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"             "1.7"     // Speed of attack.
+        "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
+        "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
+        "AttackRange"             "750"   // Range within a target can be attacked.
+        "ProjectileModel"     "particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf" // Particle system model for projectile.
+        "ProjectileSpeed"     "1200"   // Speed of projectile.
+
+        // Bounty
+        "BountyXP"          "60"     // Experience earn.
+        "BountyGoldMin"       "99"     // Gold earned min.
+        "BountyGoldMax"       "109"     // Gold earned max.
+
+        // Bounds
+        "RingRadius"                "70"
+        "HealthBarOffset"           "160"
+        "BoundsHullName"            "DOTA_HULL_SIZE_REGULAR"    // Hull type used for navigation/locomotion.
+
+        // Movement
+        "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
+        "MovementSpeed"       "320"   // Speed
+        "MovementTurnRate"      "1.0"   // Turning rate.
+        "FollowRange"       "250"   // Distance to keep when following
+
+        // Status
+        "StatusHealth"        "800"     // Base health.
+        "StatusHealthRegen"     "2"     // Health regeneration rate.
+        "StatusMana"        "750"     // Base mana.
+        "StatusManaRegen"     "5"     // Mana regeneration rate.
+
+        // Team
+        "TeamName"              "DOTA_TEAM_GOODGUYS"
+        "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+        "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+        "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        
+        // Vision
+        "VisionDaytimeRange"    "1200"   // Range of vision during day light.
+        "VisionNighttimeRange"    "900"   // Range of vision at night time.
+
+        "Creature"
+        {
+            "DisableClumpingBehavior"       "1"
+            "AttachWearables"
+            {
+                "Wearable1" { "ItemDef" "5094" } // Legs
+                "Wearable2" { "ItemDef" "5095" } // Head
+                "Wearable3" { "ItemDef" "5091" } // Armor
+                "Wearable4" { "ItemDef" "5092" } // Belt
+                "Wearable5" { "ItemDef" "5093" } // Belt
             }
         }
     }

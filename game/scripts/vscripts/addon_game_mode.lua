@@ -42,6 +42,8 @@ function Precache( context )
   PrecacheUnitByNameSync("abomination_4", context)
   PrecacheUnitByNameSync("crypt_fiend", context)
   PrecacheUnitByNameSync("crypt_fiend_4", context)
+  PrecacheUnitByNameSync("banshee", context)
+  PrecacheUnitByNameSync("banshee_4", context)
     -- Undead buildings
   PrecacheUnitByNameSync("undead_graveyard", context)
   PrecacheUnitByNameSync("undead_tample_of_the_damned", context)

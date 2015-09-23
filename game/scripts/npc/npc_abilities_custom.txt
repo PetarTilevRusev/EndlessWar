@@ -3154,6 +3154,64 @@
 	    "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"  
 	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"            "weaver_geminate_attack"
+
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityDuration"              "0 0 0 0"
+	    
+	    // Time     
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"               "0 15.0 7.0 4.0"
+
+	    "AbilitySpecial"
+	    {
+	    	"01"
+	    	{
+	    		"var_type"			"FIELD_FLOAT"
+	    		"duration"			"0.2"
+	    	}
+	    	"02"
+	    	{
+	    		"var_type"				"FIELD_INTEGER"
+	    		"attack_speed_bonus"	"500"
+	    	}
+	    }
+
+	    "Modifiers"
+	    {
+	    	"crypt_fiend_double_attack_modifier"
+	        {
+	            "Passive"                   "1"
+	            "IsHidden"                  "1"
+	            "IsPurgable"                "0"
+
+	            "OnAttackStart"
+	            {
+	                "ApplyModifier"
+	                {
+	                	"ModifierName"	"crypt_fiend_attack_speed_modifier"
+	                	"Target" 		"CASTER"
+	                	"Duration"		"%duration"
+	                }
+
+	                "RunScript"
+	                {
+	                	"ScriptFile"	"units/undead/crypt_fiend.lua"
+	                	"Function"		"DoubleAttackCooldown"
+	                }
+	            }
+	        }
+
+	        "crypt_fiend_attack_speed_modifier"
+	        {
+	        	"IsHidden"	"0"
+
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_speed_bonus"
+	            }
+	        }
+	    }
 	}
 
 	"undead_banshee_upgrade"
