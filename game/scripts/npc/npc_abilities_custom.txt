@@ -426,7 +426,7 @@
 	"human_footman_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"human_footman_upgrade"
+		"AbilityTextureName"			"human_footman_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -501,7 +501,7 @@
 	"human_knight_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"human_knight_upgrade"
+		"AbilityTextureName"			"human_knight_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -881,7 +881,7 @@
 	"human_rifleman_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"human_rifleman_upgrade"
+		"AbilityTextureName"			"human_rifleman_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -999,7 +999,7 @@
 	"human_sorcerer_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"human_sorcerer_upgrade"
+		"AbilityTextureName"			"human_sorcerer_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -1276,7 +1276,7 @@
 	"human_priest_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"human_priest_upgrade"
+		"AbilityTextureName"			"human_priest_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -2565,7 +2565,7 @@
 	"undead_ghoul_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"undead_ghoul_upgrade"
+		"AbilityTextureName"			"undead_ghoul_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -2728,7 +2728,7 @@
 	"undead_abomination_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"undead_abomination_upgrade"
+		"AbilityTextureName"			"undead_abomination_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -3116,7 +3116,7 @@
 	"undead_crypt_fiend_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"undead_crypt_fiend_upgrade"
+		"AbilityTextureName"			"undead_crypt_fiend_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
