@@ -61,6 +61,15 @@ function Base:CreateUndeadBase()
         Base:Spawn("undead_ranged_barracks", ranged_rax_position, team)
     end
 
+    -- Spawn the guards
+    for i=1,6 do
+        local melee_guard_position = Entities:FindByName(nil, ("undead_melee_guard_"..i)):GetAbsOrigin()
+        local ranged_guard_position = Entities:FindByName(nil, ("undead_ranged_guard_"..i)):GetAbsOrigin()
+
+        Base:Spawn("undead_melee_guard", melee_guard_position, team)
+        Base:Spawn("undead_ranged_guard", ranged_guard_position, team)
+    end
+
     -- Set the Forward Vector
     for _,building in pairs(undeadBuildings) do
         local forward_vector = building:GetForwardVector()
@@ -155,6 +164,18 @@ function Base:Spawn(unit_name, unit_location, team)
 
             table.insert(undeadBuildings, unit)
             print("The building: "..unit_name.." is created and added into undeadBuildings, table number: "..#undeadBuildings)
+        end
+
+        -- Insert the buildings and the guards into a proper table, for later use
+        if unit_name == "undead_graveyard" or unit_name == "undead_tample_of_the_damned" then
+            table.insert(undeadUpgradeBuildings, unit)
+            print("The building: "..unit_name.." is created and added into undeadUpgradeBuildings, table number: "..#undeadUpgradeBuildings)
+        elseif unit_name == "undead_melee_guard" then
+            table.insert(undeadMeleeGuards, unit)
+            print("The building: "..unit_name.." is created and added into undeadMeleeGuards, table number: "..#undeadMeleeGuards)
+        elseif unit_name == "undead_ranged_guard" then
+            table.insert(undeadRangedGuards, unit)
+            print("The building: "..unit_name.." is created and added into undeadRangedGuards, table number: "..#undeadRangedGuards)
         end
     end
 end

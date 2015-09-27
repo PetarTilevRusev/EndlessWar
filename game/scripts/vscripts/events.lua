@@ -232,9 +232,25 @@ function GameMode:OnEntityKilled( keys )
     -- Loop trough all the human barracks and find the killed one
     for row,building in pairs(humanBuildings) do
 
+      -- Save the ability levels (units lvels)
       if killedUnit == building then
         for col=1,4 do
           humanBuildingAbilities[row][col] = building:GetAbilityByIndex(col - 1):GetLevel()
+        end
+      end
+    end
+  end
+
+  -- Check if the killed unit is one of the undead barracks
+  if killedUnit:GetUnitName() == "undead_melee_barracks" or killedUnit:GetUnitName() == "undead_ranged_barracks" then
+    
+    -- Loop trough all the undead barracks and find the killed one
+    for row,building in pairs(undeadBuildings) do
+
+      -- Save the ability levels (units lvels)
+      if killedUnit == building then
+        for col=1,4 do
+          undeadBuildingAbilities[row][col] = building:GetAbilityByIndex(col - 1):GetLevel()
         end
       end
     end

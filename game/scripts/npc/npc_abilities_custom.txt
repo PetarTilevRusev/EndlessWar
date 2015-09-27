@@ -15,9 +15,8 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCastPoint"				"1"
 
 		"precache"
 		{
@@ -74,7 +73,7 @@
 
 		    "human_king_damage_upgrade_particle_modifier"
 		    {
-		    	"Duration"			"1.5"
+		    	"Duration"			"2"
 		    	"IsHidden"			"1"
 		    	"StatusEffectName"     "particles/status_fx/status_effect_guardian_angel.vpcf"
             	"StatusEffectPriority" "10"
@@ -106,9 +105,8 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCastPoint"				"1"
 
 		"precache"
 		{
@@ -165,7 +163,7 @@
 
 		    "human_king_armor_upgrade_particle_modifier"
 		    {
-		    	"Duration"			"1.5"
+		    	"Duration"			"2"
 		    	"IsHidden"			"1"
 		    	"StatusEffectName"     "particles/status_fx/status_effect_guardian_angel.vpcf"
             	"StatusEffectPriority" "10"
@@ -197,9 +195,8 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCastPoint"				"1"
 
 		"precache"
 		{
@@ -260,7 +257,7 @@
 
 		    "human_king_health_upgrade_particle_modifier"
 		    {
-		    	"Duration"			"1.5"
+		    	"Duration"			"2"
 		    	"IsHidden"			"1"
 		    	"StatusEffectName"     "particles/status_fx/status_effect_guardian_angel.vpcf"
             	"StatusEffectPriority" "10"
@@ -292,9 +289,8 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCastPoint"				"1"
 
 		"precache"
 		{
@@ -356,7 +352,7 @@
 
 		    "human_king_speed_upgrade_particle_modifier"
 		    {
-		    	"Duration"			"1.5"
+		    	"Duration"			"2"
 		    	"IsHidden"			"1"
 		    	"StatusEffectName"     "particles/status_fx/status_effect_guardian_angel.vpcf"
             	"StatusEffectPriority" "10"
@@ -1044,7 +1040,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		
 		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"750"
@@ -1315,7 +1311,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		
 		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"750"
@@ -1693,7 +1689,7 @@
 	    "AbilityTextureName"            "human_guard_gods_strength"
 	    "MaxLevel"						"1"
 	    "AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
-	    "AnimationIgnoresModelScale"    "0"
+	    "AnimationIgnoresModelScale"    "1"
 
 	    // Precache
 	    //-------------------------------------------------------------------------------------------------------------
@@ -1703,10 +1699,6 @@
 	        "particle"          "particles/units/heroes/hero_sven/sven_spell_gods_strength.vpcf"
 	        "particle"          "particles/status_fx/status_effect_avatar.vpcf"
 	    }
-	    
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilityCastPoint"              "0.5"
 
 	    // Time     
 	    //-------------------------------------------------------------------------------------------------------------
@@ -1802,7 +1794,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 
 		"precache"
 		{
@@ -1812,7 +1804,6 @@
 		}
 
 		"AbilityCastRange"              "200"
-    	"AbilityCastPoint"              "0.3"
     
     	// Time     
     	//-------------------------------------------------------------------------------------------------------------
@@ -1906,6 +1897,7 @@
 	    "MaxLevel"               		"1"
 	    "AbilityTextureName"            "human_guard_assassinate"
 	    "AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+	    "AnimationIgnoresModelScale"	"1"
 	    
 	    // Casting
 	    //-------------------------------------------------------------------------------------------------------------
@@ -2170,9 +2162,8 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		"AbilityCastAnimation"			"ACT_DOTA_IDLE_RARE"
-		"AbilityCastPoint"				"1.5"
 
 		"precache"
 		{
@@ -2254,9 +2245,8 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		"AbilityCastAnimation"			"ACT_DOTA_IDLE_RARE"
-		"AbilityCastPoint"				"1.5"
 
 		"precache"
 		{
@@ -2338,9 +2328,8 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		"AbilityCastAnimation"			"ACT_DOTA_IDLE_RARE"
-		"AbilityCastPoint"				"1.5"
 
 		"precache"
 		{
@@ -2426,9 +2415,8 @@
 		"AbilityGoldCost"				"500"
 		"AbilitySharedWithTeammates" 	"1"
 		"MaxLevel"						"1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		"AbilityCastAnimation"			"ACT_DOTA_IDLE_RARE"
-		"AbilityCastPoint"				"1.5"
 
 		"precache"
 		{
@@ -3217,7 +3205,7 @@
 	"undead_banshee_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"undead_banshee_upgrade"
+		"AbilityTextureName"			"undead_banshee_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -3262,7 +3250,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
-		"AnimationIgnoresModelScale"    "0"
+		"AnimationIgnoresModelScale"    "1"
 		
 		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"750"
@@ -3416,7 +3404,7 @@
 			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"armor"							"0 0 1 2"
+				"armor"							"0 0 1 1"
 			}
 			"04"
 			{
@@ -3448,7 +3436,7 @@
 	"undead_necromancer_upgrade_disabled"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"undead_necromancer_upgrade"
+		"AbilityTextureName"			"undead_necromancer_upgrade_disabled"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"						"1"
 
@@ -3480,5 +3468,102 @@
 				"health"						"1300"
 			}
 		}
+	}
+
+	"necromancer_summon_skeletons"
+	{
+		// General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"             		"ability_datadriven"
+	    "AbilityTextureName"			"undead_necromancer_summon_skeletons"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AnimationIgnoresModelScale"    "1"
+		"MaxLevel"						"4"
+	        
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCastPoint"              "0.3"
+
+	    // Time     
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"               "45"
+
+	    // Cost
+	    //-------------------------------------------------------------------------------------------------------------
+		"AbilityManacost"				"0 150 250 350"
+
+		"Precache"
+		{
+			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
+		}
+
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "warriors_duration"         "60"
+	        }
+	        "02"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "melee_skeleton_hp"         "0 360 480 600"
+	        }
+	        "03"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "ranged_skeleton_hp"        "0 260 380 500"
+	        }
+	        "04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"autocast_radius"	"750"
+			}
+		}
+
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "n_creep_Skeleton.Spawn"
+	            "Target"        "CASTER"
+	        }
+
+	        "RunScript"
+	        {
+	        	"ScriptFile"	"units/undead/necromancer.lua"
+	        	"Function"		"SummonSkeletons"
+	        }
+	    }
+
+	    "Modifiers"
+	    {
+	        "summon_skeletons_autocast_modifier"
+			{
+				"Passive"		"1"
+				"IsHidden"		"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"units/undead/necromancer.lua"
+						"Function"		"ToggleOnAutocast"
+					}
+				}
+
+				"ThinkInterval" "1.0"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"units/undead/necromancer.lua"
+						"Function"		"SummonAutocast"
+					}
+				}
+			}
+	    }
 	}
 }

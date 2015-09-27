@@ -35,6 +35,7 @@ require('spawner')
 
 -- Start the AI systems to control the guards behavior
 require('unitAI/human_guards_ai')
+require('unitAI/undead_guards_ai')
 
 require('units/human/human_upgrades')
 
@@ -97,7 +98,7 @@ function GameMode:OnAllPlayersLoaded()
 
   -- Start the Guard AI systems for all races
   HumanGuardsAI:Start()
-  --UndeadGuardsAI:Start()
+  UndeadGuardsAI:Start()
 end
 
 --[[

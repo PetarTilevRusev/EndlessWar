@@ -164,9 +164,9 @@ function Spawner:SpawnUndeadWaves()
             end
             if ability_4 > 3 then
                 if ability_3 >= 2 then
-                    Spawner:SpawnAndMoveAtPosition(sorcerrers, ("priest_"..ability_3), undeadSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(necromancers, ("necromancer_"..ability_3), undeadSpawners[position], waypoint, team)
                 else
-                    Spawner:SpawnAndMoveAtPosition(sorcerrers, "priest", undeadSpawners[position], waypoint, team)
+                    Spawner:SpawnAndMoveAtPosition(necromancers, "necromancer", undeadSpawners[position], waypoint, team)
                 end
             end
         end
