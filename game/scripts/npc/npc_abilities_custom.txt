@@ -1169,12 +1169,6 @@
 		                "ScriptFile"    "units/human/sorcerer.lua"
 		                "Function"      "ShowWearables"
 		            }
-
-		            "RunScript"
-					{
-						"ScriptFile"	"units/human/sorcerer.lua"
-						"Function"		"GiveOrder"
-					}
 				}
 
 				"Properties"
@@ -1386,12 +1380,6 @@
 				"ScriptFile"	"units/human/priest.lua"
 				"Function"		"HealingWave"
 				"healing_wave_particle" "particles/units/human/priest/priest_healing_wave.vpcf"
-			}
-
-			"RunScript"
-			{
-				"ScriptFile"	"units/human/priest.lua"
-				"Function"		"GiveOrder"
 			}
 		}
 
@@ -3151,65 +3139,29 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"             		"ability_datadriven"
 	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"  
-	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"            "weaver_geminate_attack"
-
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilityDuration"              "0 0 0 0"
 	    
 	    // Time     
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilityCooldown"               "0 15.0 7.0 4.0"
 
-	    "AbilitySpecial"
-	    {
-	    	"01"
-	    	{
-	    		"var_type"			"FIELD_FLOAT"
-	    		"duration"			"0.2"
-	    	}
-	    	"02"
-	    	{
-	    		"var_type"				"FIELD_INTEGER"
-	    		"attack_speed_bonus"	"500"
-	    	}
-	    }
-
 	    "Modifiers"
 	    {
 	    	"crypt_fiend_double_attack_modifier"
 	        {
-	            "Passive"                   "1"
-	            "IsHidden"                  "1"
-	            "IsPurgable"                "0"
+	        	"Passive"                   "1"
+                "IsHidden"                  "1"
+                "IsPurgable"                "0"
 
-	            "OnAttackStart"
-	            {
-	                "ApplyModifier"
-	                {
-	                	"ModifierName"	"crypt_fiend_attack_speed_modifier"
-	                	"Target" 		"CASTER"
-	                	"Duration"		"%duration"
-	                }
-
-	                "RunScript"
-	                {
-	                	"ScriptFile"	"units/undead/crypt_fiend.lua"
-	                	"Function"		"DoubleAttackCooldown"
-	                }
-	            }
-	        }
-
-	        "crypt_fiend_attack_speed_modifier"
-	        {
-	        	"IsHidden"	"0"
-
-	            "Properties"
-	            {
-	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_speed_bonus"
-	            }
+                "OnAttackLanded"
+                {
+                	"RunScript"
+			        {
+			            "ScriptFile"    "units/undead/crypt_fiend.lua"
+			            "Function"      "StartAttack"
+			            "Target"        "TARGET"
+			        } 
+                }
 	        }
 	    }
 	}
@@ -3299,10 +3251,10 @@
 		}
 	}
 
-	"sorcerer_hex"
+	"banshee_curse"
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"human_sorcerer_hex"
+		"AbilityTextureName"			"undead_banshee_curse"
 
 		"MaxLevel"						"4"
 		
@@ -3316,34 +3268,39 @@
 		"AbilityCastRange"				"750"
 		"AbilityCooldown"				"30"
 		"AbilityManacost"				"0 150 200 300"
-		"AbilityDuration"				"0 2 3 5"
+		"AbilityDuration"				"0 7 10 13"
 		
 		"precache"
 		{
-			"particle"	"particles/units/heroes/hero_silencer/silencer_curse_cast.vpcf"
-			"particle"  "particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+			"particle"	"particles/units/undead/banshee/banshee_curse.vpcf"
+			"particle"  "particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
 		}
 
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"hex_duration"	"0 2 3 5"
+				"var_type"			"FIELD_INTEGER"
+				"curse_duration"	"0 7 10 13"
 			}
 
 			"02"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"movespeed"			"100"
+				"var_type"				"FIELD_INTEGER"
+				"blind_pct"				"0 20 30 40"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_reduction"		"0 -2 -3 -5"
 			}
 
 			"03"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"autocast_radius"	"750"
+				"var_type"				"FIELD_INTEGER"
+				"autocast_radius"		"750"
 			}
 
 			"04"
@@ -3358,27 +3315,21 @@
 
 			"FireSound"
 	        {
-	            "EffectName"    "Hero_Silencer.Curse.Cast"
+	            "EffectName"    "Hero_DeathProphet.Silence"
 	            "Target"        "CASTER"
 	        }
 
 			"FireEffect"
 			{
-				"EffectName"		"particles/units/heroes/hero_silencer/silencer_curse_cast.vpcf"
+				"EffectName"		"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
 				"EffectAttachType"  "follow_origin"
 				"Target"			"CASTER"
 			}
 
-			"FireSound"
-			{
-				"EffectName"	"Hero_Lion.Voodoo"
-				"Target"		"TARGET"
-			}
-
 			"FireEffect"
 			{
-				"EffectName"        "particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
-				"EffectAttachType"  "follow_origin"
+				"EffectName"        "particles/units/undead/banshee/banshee_curse.vpcf"
+				"EffectAttachType"  "follow_overhead"
 				"Target"            "TARGET"
 			}
 
@@ -3389,9 +3340,9 @@
 				{
 					"ApplyModifier"
 					{
-						"ModifierName"	"sorcerer_hex_modifier"
+						"ModifierName"	"banshee_curse_modifier"
 						"Target" 		"TARGET"
-						"Duration"		"%hex_duration"
+						"Duration"		"%curse_duration"
 					}
 				}
 			}
@@ -3400,65 +3351,20 @@
 
 		"Modifiers"
 		{
-			"sorcerer_hex_modifier"
+			"banshee_curse_modifier"
 			{
 				"IsDebuff"		"1"
 				"IsPurgable"	"1"
-				"Duration"		"%hex_duration"
-
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"units/human/sorcerer.lua"
-						"Function"		"HexStart"
-						"model"			"models/items/hex/sheep_hex/sheep_hex.vmdl"
-					}
-
-					"RunScript"
-					{
-						"ScriptFile"	"units/human/sorcerer.lua"
-						"Function"		"HideWearables"
-					}
-				}
-
-				"OnDestroy"
-				{
-					"RunScript"
-		            {
-		                "ScriptFile"    "units/human/sorcerer.lua"
-		                "Function"      "HexEnd"
-		            }
-
-		            "RunScript"
-		            {
-		                "ScriptFile"    "units/human/sorcerer.lua"
-		                "Function"      "ShowWearables"
-		            }
-
-		            "RunScript"
-					{
-						"ScriptFile"	"units/human/sorcerer.lua"
-						"Function"		"GiveOrder"
-					}
-				}
+				"Duration"		"%curse_duration"
 
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"     "%movespeed"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor_reduction"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE" 		"%blind_pct"
 				}
-
-				"States"
-	            {
-	                "MODIFIER_STATE_DISARMED"   "MODIFIER_STATE_VALUE_ENABLED"
-	                "MODIFIER_STATE_MUTED"      "MODIFIER_STATE_VALUE_ENABLED"
-	                "MODIFIER_STATE_HEXED"      "MODIFIER_STATE_VALUE_ENABLED"
-	                "MODIFIER_STATE_EVADE_DISABLED" "MODIFIER_STATE_VALUE_ENABLED"
-	                "MODIFIER_STATE_BLOCK_DISABLED" "MODIFIER_STATE_VALUE_ENABLED"
-	            }
 			}
 
-			"hex_autocast_modifier"
+			"curse_autocast_modifier"
 			{
 
 				"Passive"		"1"
@@ -3468,7 +3374,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"units/human/sorcerer.lua"
+						"ScriptFile"	"units/undead/banshee.lua"
 						"Function"		"ToggleOnAutocast"
 					}
 				}
@@ -3478,8 +3384,8 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"units/human/sorcerer.lua"
-						"Function"		"HexAutocast"
+						"ScriptFile"	"units/undead/banshee.lua"
+						"Function"		"CurseAutocast"
 					}
 				}
 			}

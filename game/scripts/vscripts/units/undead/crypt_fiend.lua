@@ -1,16 +1,11 @@
-function DoubleAttackCooldown( event )
-	-- Variables
-    local caster = event.caster
-    local ability = event.ability
-    local cooldown = ability:GetCooldown( ability:GetLevel() )
-    local modifierName = "crypt_fiend_double_attack_modifier"
-    
-    -- Remove cooldown
-    caster:RemoveModifierByName( modifierName )
-    ability:StartCooldown( cooldown )
-    Timers:CreateTimer( cooldown, function()
-            ability:ApplyDataDrivenModifier( caster, caster, modifierName, {} )
-            return nil
-        end
-    )
+function StartAttack( keys )
+    local target = keys.target
+    local caster = keys.caster
+    local ability = keys.ability
+    local cooldown = ability:GetCooldown(ability:GetLevel())
+
+    if ability:IsCooldownReady() then
+        caster:PerformAttack(target, true, true, true, true)
+        ability:StartCooldown(cooldown)
+    end
 end

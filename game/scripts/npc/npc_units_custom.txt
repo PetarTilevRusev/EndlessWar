@@ -3556,7 +3556,7 @@
         }
 
         "AbilityLayout"     "2"
-        "Ability1"          "sorcerer_hex"
+        "Ability1"          "banshee_curse"
 
         // Armor
         "ArmorPhysical"         "0"     // Physical protection.
@@ -3636,7 +3636,7 @@
         }
 
         "AbilityLayout"     "2"
-        "Ability1"          "sorcerer_hex"
+        "Ability1"          "banshee_curse"
 
         // Armor
         "ArmorPhysical"         "0"     // Physical protection.
@@ -3716,7 +3716,7 @@
         }
 
         "AbilityLayout"     "2"
-        "Ability1"          "sorcerer_hex"
+        "Ability1"          "banshee_curse"
 
         // Armor
         "ArmorPhysical"         "0"     // Physical protection.
