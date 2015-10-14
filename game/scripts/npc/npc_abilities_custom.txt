@@ -1646,7 +1646,7 @@
 	        "RunScript"
 	        {
 	            "ScriptFile"    "units/human/human_upgrades.lua"
-	            "Function" 		"ApplyHumanStrength"
+	            "Function" 		"AddAbilityToGuard"
 	        } 
     	}
 	}
@@ -1674,7 +1674,40 @@
 	        "RunScript"
 	        {
 	            "ScriptFile"    "units/human/human_upgrades.lua"
-	            "Function" 		"ApplyEagleEye"
+	            "Function" 		"AddAbilityToGuard"
+	        } 
+    	}
+	}
+
+	"knight_strike_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"chaos_knight_chaos_strike"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"500 800 1100"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"4"
+
+		"AbilitySpecial"
+		{
+			"01"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "crit_damage"               "0 150 200 250"
+	        }
+	        "02"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "crit_chance"               "0 20 30 40"
+	        }
+	    }
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/human/human_upgrades.lua"
+	            "Function" 		"AddAbilityToGuard"
 	        } 
     	}
 	}
@@ -2131,6 +2164,7 @@
 		    {
 		        "Passive"   		"1"
 		        "IsHidden"  		"1"
+		        "IsPurgeble"		"0"
 	            "ThinkInterval"     "-1"
 	            "OnIntervalThink"
 	            {

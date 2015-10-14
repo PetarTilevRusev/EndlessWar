@@ -104,70 +104,54 @@ function ApplyBlacksmithUpgrade( event )
     end
 end
 
--- Applyes the upgrades from Research Facility
-function ResearchedUpgrades( event )
+-- Adds the ability from Research Facility to the guards
+function AddAbilityToGuard( event )
     local caster = event.caster
     local ability = event.ability
     local ability_name = ability:GetName()
-    local modifier_name = ability_name.."_modifier"
-
-    for _,rax in pairs(humanBuildings) do
-        if IsValidEntity(rax) then
-            ability:ApplyDataDrivenModifier(caster, rax, modifier_name, nil)
-
-            if ability_name == "human_facility_health_upgrade" then
-                ApplyHealthUpgrade( rax, ability )
-                print("Health upgraded!")
-            end
-        end
-
-        SetStackCount( caster, rax, modifier_name)
-    end
-end
-
-function ApplyHumanStrength( event )
-    local caster = event.caster
-    local ability = event.ability
     local ability_level = ability:GetLevel()
 
-    -- Add human_strength ability melee to the guards
-    for _,guard in pairs(humanMeleeGuards) do
-        -- Check if the guard is alive
-        if IsValidEntity(guard) then
-            if guard:HasAbility("human_strength") then
-                guard:FindAbilityByName("human_strength"):SetLevel( ability_level + 1)
-            else
-                guard:AddAbility("human_strength"):SetLevel( ability_level + 1)
+    if ability_name == "human_strength_upgrade" then
+        -- Add human_strength ability melee to the guards
+        for _,guard in pairs(humanMeleeGuards) do
+            -- Check if the guard is alive
+            if IsValidEntity(guard) then
+                if guard:HasAbility("human_strength") then
+                    guard:FindAbilityByName("human_strength"):SetLevel( ability_level + 1)
+                else
+                    guard:AddAbility("human_strength"):SetLevel( ability_level + 1)
+                end
+            end
+        end
+    elseif ability_name == "knight_strike_upgrade" then
+        -- Add human_knight_strike ability melee to the guards
+        for _,guard in pairs(humanMeleeGuards) do
+            -- Check if the guard is alive
+            if IsValidEntity(guard) then
+                if guard:HasAbility("human_knight_strike") then
+                    guard:FindAbilityByName("human_knight_strike"):SetLevel( ability_level + 1)
+                else
+                    guard:AddAbility("human_knight_strike"):SetLevel( ability_level + 1)
+                end
+            end
+        end
+    elseif ability_name == "eagle_eye_upgrade" then
+            -- Add eagle_eye ability to the ranged guards
+        for _,guard in pairs(humanRangedGuards) do
+            -- Check if the guard is alive
+            if IsValidEntity(guard) then
+                if guard:HasAbility("eagle_eye") then
+                    guard:FindAbilityByName("eagle_eye"):SetLevel( ability_level + 1)
+                else
+                    guard:AddAbility("eagle_eye"):SetLevel( ability_level + 1)
+                end
             end
         end
     end
 
+    -- Level up the ability and if it's maxed then remove it.
     if ability_level == 3 then
-        caster:RemoveAbility(ability:GetName())
-    else
-        ability:SetLevel(ability_level + 1)
-    end
-end
-
-function ApplyEagleEye( event )
-    local caster = event.caster
-    local ability = event.ability
-    local ability_level = ability:GetLevel()
-
-    -- Add eagle_eye ability to the ranged guards
-    for _,guard in pairs(humanRangedGuards) do
-        -- Check if the guard is alive
-        if IsValidEntity(guard) then
-            if guard:HasAbility("eagle_eye") then
-                guard:FindAbilityByName("eagle_eye"):SetLevel( ability_level + 1)
-            else
-                guard:AddAbility("eagle_eye"):SetLevel( ability_level + 1)
-            end
-        end
-    end
-
-    if ability_level == 3 then
-        caster:RemoveAbility(ability:GetName())
+        caster:RemoveAbility(ability_name)
     else
         ability:SetLevel(ability_level + 1)
     end

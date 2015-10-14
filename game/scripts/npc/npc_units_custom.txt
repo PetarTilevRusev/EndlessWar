@@ -185,7 +185,7 @@
         "AbilityLayout"     "6"
         "Ability1"          "human_strength_upgrade"
         "Ability2"          "eagle_eye_upgrade"
-        //"Ability3"          "rifleman_headshot"
+        "Ability3"          "knight_strike_upgrade"
         //"Ability4"          "knight_armor_aura"
         //"Ability5"          "sorcerer_arcane_aura"
         //"Ability6"          "priest_healing_aura"
@@ -333,7 +333,7 @@
             "soundfile" "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
         }
 
-        "AbilityLayout"         "2"
+        "AbilityLayout"         "6"
         "Ability1"              "human_guards_gods_strength"
         "Ability2"              "human_guards_shield_attack"
         "Ability3"              "truesight"
@@ -2469,7 +2469,7 @@
             "soundfile" "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
         }
 
-        "AbilityLayout"         "2"
+        "AbilityLayout"         "6"
         "Ability1"              ""
         "Ability2"              ""
         "Ability3"              "truesight"
@@ -2590,7 +2590,7 @@
         "ProjectileSpeed"     "1000"   // Speed of projectile.
 
         // Bounty
-        "BountyXP"          "200"     // Experience earn.
+        "BountyXP"          "300"     // Experience earn.
         "BountyGoldMin"       "390"     // Gold earned min.
         "BountyGoldMax"       "490"     // Gold earned max.
 
