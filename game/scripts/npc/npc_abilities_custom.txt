@@ -1835,6 +1835,7 @@
 	        	"radius"			    "400"
 	        }
 	    }
+
 	    "OnSpellStart"
 	    {
 	    	"FireEffect"
@@ -1939,12 +1940,12 @@
 	        "03"
 	        {
 	            "var_type"                  "FIELD_FLOAT"
-	            "charge_time"               "0.5"
+	            "charge_time"               "2.5"
 	        }
 	        "04"
 	        {
 	            "var_type"                  "FIELD_FLOAT"
-	            "debuff_duration"           "1.0"
+	            "debuff_duration"           "2.5"
 	        }
 	    }
 	    
@@ -1980,7 +1981,7 @@
 	        "RunScript"
 	        {
 	            "ScriptFile"            "units/human/range_guard.lua"
-	            "Function"              "assassinate_register_target"
+	            "Function"              "AssassinateRegisterTarget"
 	        }
 	    }
 	    
@@ -2048,7 +2049,7 @@
 	                "RunScript"
 	                {
 	                    "ScriptFile"            "units/human/range_guard.lua"
-	                    "Function"              "assassinate_remove_target"
+	                    "Function"              "AssassinateRemoveTarget"
 	                }
 	            }
 	        }
@@ -2065,7 +2066,7 @@
 	            
 	            "States"
 	            {
-	                "MODIFIER_STATE_INVISIBLE"          "MODIFIER_STATE_VALUE_DISABLED"
+	                "MODIFIER_STATE_INVISIBLE"          "MODIFIER_STATE_VALUE_ENABLED"
 	                "MODIFIER_STATE_PROVIDES_VISION"    "MODIFIER_STATE_VALUE_ENABLED"
 	            }
 	        }
@@ -2570,7 +2571,7 @@
 		}
 	}
 
-	"ghoul_feast"
+	"ghoul_lifesteal"
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
@@ -2578,12 +2579,14 @@
 	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"            "life_stealer_feast"
+	    "MaxLevel"						"4"
 
 	    "precache"
 	    {
 	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 	        "particle"          "particles/units/heroes/hero_life_stealer/life_stealer_feast.vpcf"
 	    }
+
 	    // Special
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilitySpecial"
@@ -2591,35 +2594,19 @@
 	        "01"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "hp_leech_percent"      "2 4 6 8"
+	            "lifesteal_percent"     "0 15 20 25"
 	        }
 	    }
+
 	    "Modifiers"
 	    {
-	        "modifier_feast_datadriven"
+	        "modifier_ghoul_lifesteal_datadriven"
 	        {
 	            "Passive"           "1"
 	            "IsHidden"          "1"
 	            "IsDebuff"          "0"
 
-	            "OnAttackStart"
-	            // "%attack_damage" is set to the damage value before mitigation
-	            {
-	                "RemoveModifier"
-	                {
-	                    "ModifierName"  	"feast_damage_modifier"
-	                    "Target"        	"CASTER"
-	                }
-
-	                "RunScript"
-	                {
-	                    "ScriptFile"    	"units/undead/ghoul.lua"
-	                    "Function"      	"FeastAttack"
-	                    "feast_modifier"    "feast_damage_modifier"
-	                }
-	            }
-
-	            "OnAttack"
+            	"OnAttackLanded"
 	            {
 	                "FireEffect"
 	                {
@@ -2630,29 +2617,24 @@
 
 	                "RunScript"
 	                {
-	                    "ScriptFile"    "units/undead/ghoul.lua"
-	                    "Function"      "FeastHeal"
-	                }
-	            }           
-	        }
-
-	        "feast_damage_modifier"
-	        {
-	            "IsHidden"      "1"
-	            "IsPurgable"    "0"
-
-	            "OnAttackLanded"
-	            {
-	                "RemoveModifier"
-	                {
-	                    "ModifierName"  "feast_damage_modifier"
-	                    "Target"        "CASTER"
+	                    "ScriptFile"            "units/undead/ghoul.lua"
+	                    "Function"              "Lifesteal"
 	                }
 	            }
+	        }
 
-	            "Properties"
+	        "modifier_ghoul_lifesteal"
+	        {
+	        	"Passive"           "0"
+	            "IsHidden"          "1"
+
+	            "OnDealDamage"
 	            {
-	                "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "1"
+	                "Lifesteal"
+	                {
+	                    "Target"            "ATTACKER"
+	                    "LifestealPercent"  "%lifesteal_percent"
+	                }
 	            }
 	        }
 	    }
@@ -3303,8 +3285,8 @@
 
 			"FireSound"
 	        {
-	            "EffectName"    "Hero_DeathProphet.Silence"
-	            "Target"        "CASTER"
+	            "EffectName"    	"Hero_DeathProphet.Silence"
+	            "Target"        	"CASTER"
 	        }
 
 			"FireEffect"
@@ -3334,7 +3316,6 @@
 					}
 				}
 			}
-			
 		}
 
 		"Modifiers"
@@ -3496,6 +3477,7 @@
 		"Precache"
 		{
 			"soundfile"	"soundevents/game_sounds_creeps.vsndevts"
+			"soundfile" "soundevents/voscripts/game_sounds_vo_undying.vsndevts"
 		}
 
 	    // Special
@@ -3505,7 +3487,7 @@
 	        "01"
 	        {
 	            "var_type"                  "FIELD_INTEGER"
-	            "warriors_duration"         "60"
+	            "skeletons_duration"        "60"
 	        }
 	        "02"
 	        {
@@ -3519,13 +3501,19 @@
 	        }
 	        "04"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"autocast_radius"	"750"
+				"var_type"					"FIELD_INTEGER"
+				"autocast_radius"			"750"
 			}
 		}
 
 	    "OnSpellStart"
 	    {
+	    	"FireSound"
+	    	{
+	    		"EffectName"	"undying_undying_tombstone_12"
+	    		"Target" 		"CASTER"
+	    	}
+
 	        "FireSound"
 	        {
 	            "EffectName"    "n_creep_Skeleton.Spawn"
@@ -3565,5 +3553,216 @@
 				}
 			}
 	    }
+	}
+
+	"undead_units_damage_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"undead_unit_damage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"2000"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"10"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"gold_cost"						"2000"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/undead/undead_upgrades.lua"
+	            "Function" 		"ApplyGraveyardUpgrade"
+	        } 
+    	}
+
+		"Modifiers"
+		{
+		    "undead_units_damage_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+		        "IsPurgeble" "0"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%damage"
+		        }
+		    }
+		}
+	}
+
+	"undead_units_armor_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"undead_unit_armor"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"2000"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"armor"							"10"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"gold_cost"						"2000"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/undead/undead_upgrades.lua"
+	            "Function" 		"ApplyGraveyardUpgrade"
+	        } 
+    	}
+
+		"Modifiers"
+		{
+		    "undead_units_armor_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+		        "IsPurgeble" "0"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+		        }
+		    }
+		}
+	}
+
+	"undead_units_speed_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"undead_unit_speed"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"2000"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_speed"					"10"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed"						"10"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"gold_cost"						"2000"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/undead/undead_upgrades.lua"
+	            "Function" 		"ApplyGraveyardUpgrade"
+	        } 
+    	}
+
+		"Modifiers"
+		{
+		    "undead_units_speed_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+		        "IsPurgeble" "0"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_speed"
+		            "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"  	  "%movespeed"
+		        }
+		    }
+		}
+	}
+
+	"undead_units_health_upgrade"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"undead_unit_health"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+		"AbilityGoldCost"				"2000"
+		"AbilitySharedWithTeammates" 	"1"
+		"MaxLevel"						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"regen"							"5"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"health"						"500"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"gold_cost"						"2000"
+			}
+		}
+
+		"OnSpellStart"
+    	{
+	        "RunScript"
+	        {
+	            "ScriptFile"    "units/undead/undead_upgrades.lua"
+	            "Function" 		"ApplyGraveyardUpgrade"
+	        } 
+    	}
+
+		"Modifiers"
+		{
+		    "undead_units_health_upgrade_modifier"
+		    {
+		       	"Duration"  "-1"
+		        "Passive"   "0"
+		        "IsBuff"	"1"
+		        "IsPurgeble" "0"
+
+
+		        "Properties"
+		        {
+		            "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"%regen"
+		        }
+		    }
+		}
 	}
 }

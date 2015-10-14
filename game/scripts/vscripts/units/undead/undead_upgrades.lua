@@ -64,6 +64,66 @@ function ApplyBuildingUpgrade( event )
     end
 end
 
+-- Applyes upgrades from the Graveyard
+function ApplyGraveyardUpgrade( event )
+    local caster = event.caster
+    local ability = event.ability
+    local ability_name = ability:GetName()
+    local ability_level = ability:GetLevel()
+    local modifier_name = ability_name.."_modifier"
+
+    ability:SetLevel(ability_level + 1)
+    caster:SetModifierStackCount(modifier_name, caster, (ability_level - 1))
+
+    -- Loop trough the guard and apply the datadriven modifier
+    for _,guard in pairs(undeadMeleeGuards) do
+        -- Check if the guard is alive
+        if IsValidEntity(guard) then
+            ability:ApplyDataDrivenModifier(caster, guard, modifier_name, nil)
+
+            if ability_name == "undead_units_health_upgrade" then
+                ApplyHealthUpgrade( guard, ability )
+            end
+
+            SetStackCount( caster, guard, modifier_name)
+        end
+    end
+
+    for _,guard in pairs(undeadRangedGuards) do
+        -- Check if the guard is alive
+        if IsValidEntity(guard) then
+            ability:ApplyDataDrivenModifier(caster, guard, modifier_name, nil)
+
+            if ability_name == "undead_units_health_upgrade" then
+                ApplyHealthUpgrade( guard, ability )
+            end
+
+            SetStackCount( caster, guard, modifier_name)
+        end
+    end
+end
+
+-- Applyes the upgrades from Research Facility
+function ResearchedUpgrades( event )
+    local caster = event.caster
+    local ability = event.ability
+    local ability_name = ability:GetName()
+    local modifier_name = ability_name.."_modifier"
+
+    for _,rax in pairs(humanBuildings) do
+        if IsValidEntity(rax) then
+            ability:ApplyDataDrivenModifier(caster, rax, modifier_name, nil)
+
+            if ability_name == "human_facility_health_upgrade" then
+                ApplyHealthUpgrade( rax, ability )
+                print("Health upgraded!")
+            end
+        end
+
+        SetStackCount( caster, rax, modifier_name)
+    end
+end
+
 function ApplyHealthUpgrade( unit, ability )
     local health_bonus = ability:GetLevelSpecialValueFor("health", ability:GetLevel())
     local max_health = unit:GetMaxHealth()

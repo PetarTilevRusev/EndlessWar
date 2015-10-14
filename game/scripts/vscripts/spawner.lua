@@ -229,8 +229,10 @@ function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point,
             unit:SetInitialGoalEntity(waypoint) -- The unit will fallow the path_corner links after this waypoint
             
             if team == DOTA_TEAM_GOODGUYS then
+
                 -- Loop trough the blacksmith abilities and apply their modifiers to the unit
                 local blacksmith = humanUpgradeBuildings[1]
+
                 for i=0, 3 do
                     local ability = blacksmith:GetAbilityByIndex(i)
                     local ability_name = ability:GetName()
@@ -240,9 +242,20 @@ function Spawner:SpawnAndMoveAtPosition( units_to_spawn, unit_name, spawn_point,
                         unit:SetModifierStackCount((ability_name.."_modifier"), blacksmith, (ability_level - 1))
                     end
                 end
-            end
+            elseif team == DOTA_TEAM_BADGUYS then
 
-            if team == DOTA_TEAM_BADGUYS then
+                -- Loop trough the graveyard abilities and apply their modifiers to the unit
+                local graveyard = undeadUpgradeBuildings[1]
+
+                for i=0, 3 do
+                    local ability = graveyard:GetAbilityByIndex(i)
+                    local ability_name = ability:GetName()
+                    local ability_level = graveyard:GetAbilityByIndex(i):GetLevel()
+                    if ability_level > 1 then
+                        ability:ApplyDataDrivenModifier(graveyard, unit, (ability_name.."_modifier"), nil)
+                        unit:SetModifierStackCount((ability_name.."_modifier"), graveyard, (ability_level - 1))
+                    end
+                end
             end
         end)
     end

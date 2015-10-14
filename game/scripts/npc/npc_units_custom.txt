@@ -2457,16 +2457,16 @@
     {
         // GeneralS
         //----------------------------------------------------------------
-        "Model"             "models/items/warlock/golem/mdl_warlock_golem/mdl_warlock_golem.vmdl"  // Model.
+        "Model"             "models/heroes/undying/undying_flesh_golem.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "SoundSet"          "Hero_WarlockGolem"
+        "SoundSet"          "Hero_Undying_Golem"
         "Level"             "25"
         "ModelScale"        "1.2"
 
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
         }
 
         "AbilityLayout"         "2"
@@ -2557,16 +2557,16 @@
     {
         // GeneralS
         //----------------------------------------------------------------
-        "Model"             "models/heroes/weaver/weaver.vmdl"  // Model.
+        "Model"             "models/heroes/necrolyte/necrolyte.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "SoundSet"          "Hero_Weaver"
+        "SoundSet"          "Hero_Necrolyte"
         "Level"             "1"
         "ModelScale"        "1.5"
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
-            "particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+            "particle"  "particles/econ/items/necrolyte/necronub_base_attack/necrolyte_base_attack_ka.vpcf"
         }
 
         "AbilityLayout"         "1"
@@ -2586,7 +2586,7 @@
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
         "AttackAcquisitionRange"  "1100"   // Range within a target can be acquired.
         "AttackRange"             "1200"   // Range within a target can be attacked.
-        "ProjectileModel"     "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf" //Particle system model for projectile.
+        "ProjectileModel"     "particles/econ/items/necrolyte/necronub_base_attack/necrolyte_base_attack_ka.vpcf" //Particle system model for projectile.
         "ProjectileSpeed"     "1000"   // Speed of projectile.
 
         // Bounty
@@ -2626,11 +2626,10 @@
             "DisableClumpingBehavior"       "1"
             "AttachWearables"
             {
-                "Wearable1" { "ItemDef" "5660" } // Head
-                "Wearable2" { "ItemDef" "5633" } // Legs
-                "Wearable3" { "ItemDef" "5606" } // Arms
-                "Wearable4" { "ItemDef" "5635" } // Back
-                "Wearable5" { "ItemDef" "5632" } // Misc
+                "Wearable1" { "ItemDef" "6377" } // Body-Head
+                "Wearable2" { "ItemDef" "6378" } // Head
+                "Wearable3" { "ItemDef" "6379" } // Weapon
+                "Wearable4" { "ItemDef" "6380" } // Shoulder
             }
         }
     }
@@ -2735,7 +2734,7 @@
 
         // Abilities
         "AbilityLayout"     "0"
-        "Ability1"          "ghoul_feast"
+        "Ability1"          "ghoul_lifesteal"
 
         // Armor
         "ArmorPhysical"         "1"     // Physical protection.
@@ -2812,7 +2811,7 @@
 
         // Abilities
         "AbilityLayout"     "1"
-        "Ability1"          "ghoul_feast"
+        "Ability1"          "ghoul_lifesteal"
 
         // Armor
         "ArmorPhysical"         "1"     // Physical protection.
@@ -2890,7 +2889,7 @@
 
         // Abilities
         "AbilityLayout"     "1"
-        "Ability1"          "ghoul_feast"
+        "Ability1"          "ghoul_lifesteal"
 
         // Armor
         "ArmorPhysical"         "2"     // Physical protection.
@@ -4284,19 +4283,19 @@
     {
         // GeneralS
         //----------------------------------------------------------------
-        "Model"             "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"  // Model.
+        "Model"             "models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "SoundSet"          "n_creep_Skeleton"
+        "SoundSet"          "Undying_Zombie"
         "Level"             "1"
         "ModelScale"        "0.8"
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds_creeps.vsndevts"
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
         }
 
         // Armor
-        "ArmorPhysical"         "0"     // Physical protection.
+        "ArmorPhysical"         "1"     // Physical protection.
         "MagicalResistance"     "0"     // Magical protection.
 
         // Attack
@@ -4346,19 +4345,19 @@
     {
         // GeneralS
         //----------------------------------------------------------------
-        "Model"             "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"  // Model.
+        "Model"             "models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "SoundSet"          "n_creep_Skeleton"
+        "SoundSet"          "Undying_Zombie"
         "Level"             "2"
         "ModelScale"        "1"
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds_creeps.vsndevts"
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
         }
 
         // Armor
-        "ArmorPhysical"         "0"     // Physical protection.
+        "ArmorPhysical"         "2"     // Physical protection.
         "MagicalResistance"     "0"     // Magical protection.
 
         // Attack
@@ -4408,19 +4407,19 @@
     {
         // GeneralS
         //----------------------------------------------------------------
-        "Model"             "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"  // Model.
+        "Model"             "models/items/undying/idol_of_ruination/ruin_wight_minion.vmdl"  // Model.
         "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-        "SoundSet"          "n_creep_Skeleton"
+        "SoundSet"          "Undying_Zombie"
         "Level"             "3"
         "ModelScale"        "1.2"
 
         "precache"
         {
-            "soundfile" "soundevents/game_sounds_creeps.vsndevts"
+            "soundfile" "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
         }
 
         // Armor
-        "ArmorPhysical"         "0"     // Physical protection.
+        "ArmorPhysical"         "3"     // Physical protection.
         "MagicalResistance"     "0"     // Magical protection.
 
         // Attack
@@ -4431,7 +4430,7 @@
         "AttackRate"             "1"     // Speed of attack.
         "AttackAnimationPoint"    "0.5"   // Normalized time in animation cycle to attack.
         "AttackAcquisitionRange"  "900"   // Range within a target can be acquired.
-        "AttackRange"             "150"   // Range within a target can be attacked.
+        "AttackRange"             "100"   // Range within a target can be attacked.
         "ProjectileModel"     "" // Particle system model for projectile.
         "ProjectileSpeed"     ""   // Speed of projectile.
 

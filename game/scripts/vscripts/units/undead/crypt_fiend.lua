@@ -1,7 +1,7 @@
-function StartAttack( keys )
-    local target = keys.target
-    local caster = keys.caster
-    local ability = keys.ability
+function StartAttack( event )
+    local target = event.target
+    local caster = event.caster
+    local ability = event.ability
     local cooldown = ability:GetCooldown(ability:GetLevel())
 
     if ability:IsCooldownReady() then

@@ -90,7 +90,7 @@ function HexAutocast( event )
                                             nil, -- Enemy handle
                                             hero_search_radius, -- Search radius
                                             DOTA_UNIT_TARGET_TEAM_ENEMY, -- Searching radius
-                                            DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, -- Attack tipes
+                                            DOTA_UNIT_TARGET_HERO, -- Attack tipes
                                             DOTA_UNIT_TARGET_FLAG_NONE, 
                                             FIND_ANY_ORDER, -- Order 
                                             false)

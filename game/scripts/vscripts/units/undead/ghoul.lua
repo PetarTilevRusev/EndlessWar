@@ -1,25 +1,10 @@
-function FeastAttack( keys )
-    local attacker = keys.attacker
-    local target = keys.target
-    local ability = keys.ability
+function Lifesteal( event )
+  local target = event.target
+  local ability = event.ability
+  local attacker = event.attacker
+  local modifier_duration = {duration = 0.03}
 
-    ability.hp_leech_percent = ability:GetLevelSpecialValueFor("hp_leech_percent", ability:GetLevel() - 1)
-    local feast_modifier = keys.feast_modifier 
-
-    local damage = target:GetHealth() * (ability.hp_leech_percent / 100)
-
-    -- this sets the number of stacks of damage
-    ability:ApplyDataDrivenModifier(attacker, attacker, feast_modifier, {})
-    attacker:SetModifierStackCount(feast_modifier, ability, damage)
-end
-
-function FeastHeal( keys )
-  local attacker = keys.attacker
-  local target = keys.target
-  local ability = keys.ability
-
-  ability.hp_leech_percent = ability:GetLevelSpecialValueFor("hp_leech_percent", ability:GetLevel() - 1)
-  local damage = target:GetHealth() * (ability.hp_leech_percent / 100)
-
-  attacker:Heal(damage, ability)
+    if target.GetInvulnCount == nil and not target:IsMechanical() then
+        ability:ApplyDataDrivenModifier(attacker, attacker, "modifier_ghoul_lifesteal", modifier_duration)
+    end
 end

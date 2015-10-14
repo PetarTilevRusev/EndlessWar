@@ -1,10 +1,15 @@
-function assassinate_register_target( keys )
-    keys.caster.assassinate_target = keys.target
+function AssassinateRegisterTarget( event )
+	local caster = event.caster
+	local target = event.target
+
+    caster.assassinate_target = target
 end
 
-function assassinate_remove_target( keys )
-    if keys.caster.assassinate_target then
-        keys.caster.assassinate_target:RemoveModifierByName( "modifier_assassinate_target_datadriven" )
-        keys.caster.assassinate_target = nil
+function AssassinateRemoveTarget( event )
+	local caster = event.caster
+
+    if caster.assassinate_target then
+        caster.assassinate_target:RemoveModifierByName( "assassinate_target_modifier" )
+        caster.assassinate_target = nil
     end
 end

@@ -112,8 +112,9 @@ function HumanGuardsAI:Assassinate( guard )
 
 	for _,hero in pairs(heroes) do
 		local hero_health = hero:GetHealthPercent()
-		if hero_health < 50 then
-			guard:CastAbilityOnTarget(hero, ability, 0)
+
+		if hero_health < 50 and not hero:HasModifier( "assassinate_target_modifier" ) then
+			guard:CastAbilityOnTarget(hero, ability, hero:GetPlayerID())
 		end
 	end
 end
